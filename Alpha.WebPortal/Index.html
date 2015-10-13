@@ -1,0 +1,72 @@
+﻿<!-- index.html -->
+<!DOCTYPE html>
+<html data-ng-app="alphaApp">
+<head>
+    <title>Alpha Games</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <base href="/">
+    <!-- SCROLLS -->
+    <!-- load bootstrap and fontawesome via CDN -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="Content/AlphaStylesheet.css" />
+</head>
+<body data-ng-controller="mainController">
+
+    <!-- HEADER AND NAVBAR -->
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#/">Alpha Game Store</a>
+
+                   <!-- Mobile Menu --> 
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="text-right icon-bar"></span>
+                    </button>
+                </div>
+
+                <!-- Normal menu --> 
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#/"><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="#games"><i class="fa fa-gamepad"></i> Games</a></li>
+                        <li><a href="#publishers"><i class="fa fa-male"></i> Publishers</a></li>
+                        <li><a href="#accessories"><i class="fa fa-rocket"></i> Accessories</a></li>
+                        <li><a href="#addons"><i class="fa fa-puzzle-piece"></i> Addons</a></li>
+                        <!--<li><a href="#about"><i class="fa fa-shield"></i> About</a></li>
+                        <li><a href="#contact"><i class="fa fa-comment"></i> Contact</a></li>-->
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <!-- main container where the angular views will be placed-->
+    <div class="container">
+        <div id="main">
+
+            <div data-ng-view></div>
+            <!-- this is where content will be located -->
+
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="Scripts/angular.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="Scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.js"></script>
+
+
+    <!-- This is my main AngularJS file for controllers and module -->
+    <script type="text/javascript" src="Scripts/alpha-routes.js"></script>
+    <script type="text/javascript" src="Scripts/Alpha.js"></script>
+</body>
+</html>

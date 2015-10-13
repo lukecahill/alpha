@@ -1,0 +1,16 @@
+﻿<div class="jumbotron text-center">
+    <h1><i class="fa fa-rocket"></i> Accessories</h1>
+
+    <p>{{ message }}</p>
+</div>
+
+<table class="table table-striped">
+    <tr>
+        <th>Name</th>
+        <th>Game</th>
+    </tr>
+    <tr data-ng-repeat="item in accessories">
+        <td>{{ item.Name }}</td>
+        <td>{{ item.GameTitle }}</td>
+    </tr>
+</table>

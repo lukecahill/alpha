@@ -1,0 +1,74 @@
+﻿<!-- about.html -->
+<div class="jumbotron text-center">
+    <h1><i class="fa fa-gamepad"></i> Games</h1>
+    <p>All the games!</p>
+</div>
+<form>
+    <div class="col-lg-4">
+        <label for="publisher">Enter a title: </label>
+        <input data-ng-model="Name" class="form-control" name="Name" type="text" value="White Label" placeholder="Call of Duty 2" />
+    </div>
+    <div class="col-lg-4">
+        <label for="Publisher">Choose a publisher: </label>
+        <select name="Publisher" data-ng-model="Publisher" class="form-control">
+            <option data-ng-repeat="item in publishers" value="{{ item.PublisherId }}">{{ item.Name }}</option>
+        </select>
+    </div>
+    <div class="col-lg-4">
+        <input data-ng-model="ReleaseDate" class="form-control" name="release" type="text" placeholder="2015-10-02T22:25:09.79" />
+    </div>
+    <div class="col-lg-4">
+        <button class="btn btn-default" data-ng-click="postData()">Add a new Game!</button>
+    </div>
+</form>
+<div class="col-md-10 well-lg">
+    <form>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+
+                <input type="text" class="form-control" placeholder="Search game titles" data-ng-model="searchGames">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="col-md-10">
+    <p>Total games we have a record of: {{ totalGames }}</p>
+    <p>List of all available games. You can sort and filter this table.</p>
+</div>
+<table class="table table-striped">
+    <tr>
+        <th>
+            <a href="" data-ng-click="sortType = 'Title'; sortReverse = !sortReverse">
+                Game Title
+                <span data-ng-show="sortType == 'Title' && !sortReverse" class="fa fa-caret-down"></span>
+                <span data-ng-show="sortType == 'Title' && sortReverse" class="fa fa-caret-up"></span>
+            </a>
+        </th>
+        <th>
+            <a href="" data-ng-click="sortType = 'PublisherName'; sortReverse = !sortReverse">
+                Publisher
+                <span data-ng-show="sortType == 'PublisherName' && !sortReverse" class="fa fa-caret-down"></span>
+                <span data-ng-show="sortType == 'PublisherName' && sortReverse" class="fa fa-caret-up"></span>
+            </a>
+        </th>
+        <th>
+            <a href="" data-ng-click="sortType = 'ReleaseDate'; sortReverse = !sortReverse">
+                Release Date
+                <span data-ng-show="sortType == 'ReleaseDate' && !sortReverse" class="fa fa-caret-down"></span>
+                <span data-ng-show="sortType == 'ReleaseDate' && sortReverse" class="fa fa-caret-up"></span>
+            </a>
+        </th>
+    </tr>
+    <tr data-ng-repeat="item in games | orderBy:sortType:sortReverse | filter: searchGames track by $index">
+        <td>
+			<a href="#/games/{{ item.GameId }}">{{ item.Title }}</a>
+        </td>
+        <td>
+            {{ item.PublisherName }}
+        </td>
+        <td>
+            {{ item.ReleaseDate | date:"dd/MM/yyyy 'at' h:mma"}}
+        </td>
+    </tr>
+</table>

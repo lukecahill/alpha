@@ -1,0 +1,61 @@
+﻿<!-- about.html -->
+<div class="jumbotron text-center">
+    <h1><i class="fa fa-male"></i> Publishers</h1>
+    <p>All the publishers!</p>
+</div>
+<p>To see all the publishers we have in stock click the button below: </p>
+<p>
+    <button data-ng-click="GetPublishers()" class="btn btn-primary">Get list!</button>
+</p>
+<!--<p>
+    <button data-ng-click="postData()" class="btn btn-primary">Post!</button>
+</p>-->
+<form>
+    <div class="col-lg-4">
+        <input data-ng-model="Name" class="form-control" name="Name" type="text" value="White Label" placeholder="Joe Bloggs"/>
+    </div>
+    <div class="col-lg-4">
+        <input data-ng-model="Location" type="text" name="Location" class="form-control" value="USA" placeholder="USA" />
+    </div>
+    <div class="col-lg-4">
+        <button class="btn btn-primary" data-ng-click="postData()">Add a new publisher!</button>
+    </div>
+</form>
+<div class="col-md-10">
+    <form>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+
+                <input type="text" class="form-control" placeholder="Search publisher" data-ng-model="searchPublishers">
+
+            </div>
+        </div>
+    </form>
+</div>
+<table data-ng-show="show_table" class="table table-striped well">
+    <tr>
+        <th>
+            <a href="" data-ng-click="sortType = 'Name'; sortReverse = !sortReverse">
+                Publisher Name
+                <span data-ng-show="sortType == 'Name' && !sortReverse" class="fa fa-caret-down"></span>
+                <span data-ng-show="sortType == 'Name' && sortReverse" class="fa fa-caret-up"></span>
+            </a>
+        </th>
+        <th>
+            <a href="" data-ng-click="sortType = 'Location'; sortReverse = !sortReverse">
+                Location
+                <span data-ng-show="sortType == 'Location' && !sortReverse" class="fa fa-caret-down"></span>
+                <span data-ng-show="sortType == 'Location' && sortReverse" class="fa fa-caret-up"></span>
+            </a>
+        </th>
+    </tr>
+    <tr data-ng-repeat="item in publishers | orderBy:sortType:sortReverse | filter: searchPublishers track by $index">
+        <td>
+            <a href="#/publishers/{{ item.PublisherId }}">{{ item.Name }}</a>
+        </td>
+        <td>
+            {{ item.Location }}
+        </td>
+    </tr>
+</table>

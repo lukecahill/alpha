@@ -1,0 +1,18 @@
+﻿<div class="jumbotron text-center">
+    <h1><i class="fa fa-puzzle-piece"></i> Addons</h1>
+
+    <p>{{ message }}</p>
+</div>
+
+<table class="table table-striped">
+    <tr>
+        <th>Addon Name</th>
+        <th>Game</th>
+        <th>Publisher</th>
+    </tr>
+    <tr data-ng-repeat="item in addons">
+        <td>{{ item.AddonName }}</td>
+        <td>{{ item.GameTitle }}</td>
+        <td>{{ item.Publisher }}</td>
+    </tr>
+</table>

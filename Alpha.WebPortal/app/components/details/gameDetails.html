@@ -1,0 +1,48 @@
+﻿<!-- about.html -->
+<!--<div class="jumbotron text-center">
+    <h1><i class="fa fa-gamepad"></i> {{ game.Title }}</h1>
+</div>-->
+<div class="jumbotron text-center">
+    <h1>
+        Details for {{ game.Title }}
+    </h1>
+</div>
+<div class="col-lg-6">
+        <a href="#/games/">
+            <small>
+                Back to games...
+            </small>
+        </a>
+</div>
+<div class="col-lg-6 text-right">
+    <button class="btn btn-default" data-ng-click="edit()">Edit this games details</button>
+</div>
+
+<div class="col-lg-12 clearLeft well-lg">
+    <table class="table table-striped">
+        <tr>
+            <td>
+                <strong>Title</strong>
+            </td>
+            <td>
+                {{ game.Title }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Name</strong>
+            </td>
+            <td>
+                {{ game.Publisher }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Release date for this game</strong>
+            </td>
+            <td>
+                {{ game.ReleaseDate | date:"dd/MM/yyyy 'at' h:mma" }}
+            </td>
+        </tr>
+    </table>
+</div>
