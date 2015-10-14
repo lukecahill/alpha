@@ -8,5 +8,10 @@ namespace Alpha.DAL.Models {
         // This is used to implment soft deletes - bool to say if it is deleted and the datetime for the date of when it was deleted (can be empty)
         public bool IsDeleted { get; set; } = false;
         public DateTime? DateDeleted { get; set; }
+        
+        public void Delete() {
+            IsDeleted = true;
+            DateDeleted = DateTime.Now;
+        }
     }
 }

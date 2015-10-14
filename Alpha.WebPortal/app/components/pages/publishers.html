@@ -12,13 +12,13 @@
 </p>-->
 <form>
     <div class="col-lg-4">
-        <input data-ng-model="Name" class="form-control" name="Name" type="text" value="White Label" placeholder="Joe Bloggs"/>
+        <input data-ng-model="Name" data-ng-required="true" class="form-control" name="Name" type="text" placeholder="Activison" />
     </div>
     <div class="col-lg-4">
-        <input data-ng-model="Location" type="text" name="Location" class="form-control" value="USA" placeholder="USA" />
+        <input data-ng-model="Location" type="text" name="Location" class="form-control" placeholder="USA" />
     </div>
     <div class="col-lg-4">
-        <button class="btn btn-primary" data-ng-click="postData()">Add a new publisher!</button>
+        <button class="btn btn-default" data-ng-click="postData()"><span class="glyphicon glyphicon-plus-sign"></span> Add a new publisher!</button>
     </div>
 </form>
 <div class="col-md-10">

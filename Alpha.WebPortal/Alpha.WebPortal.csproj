@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\components\details\gameDetails.html" />
+    <Content Include="app\components\details\publisherDetails.html" />
     <Content Include="app\components\Modals\AddNewGame.html" />
     <Content Include="Content\AlphaStylesheet.css" />
     <Content Include="Index.html" />
