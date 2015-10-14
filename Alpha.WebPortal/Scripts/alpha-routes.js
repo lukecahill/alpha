@@ -30,8 +30,8 @@ app.config(function ($routeProvider, $locationProvider) {
 
         // route for the publishers page
         .when('/games/:gameId', {
-        	templateUrl: '../app/components/details/gameDetails.html',
-        	controller: 'gameIdController'
+            templateUrl: '../app/components/details/gameDetails.html',
+            controller: 'gameIdController'
         })
 
         // route for the contact page
@@ -42,7 +42,7 @@ app.config(function ($routeProvider, $locationProvider) {
 
         // route for the publishers page
         .when('/publishers/:publisherId', {
-            templateUrl: 'app/components/pages/publishers.html',
+            templateUrl: 'app/components/details/publisherDetails.html',
             controller: 'publisherIdController'
         })
 

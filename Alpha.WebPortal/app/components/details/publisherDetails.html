@@ -1,0 +1,40 @@
+﻿<!-- about.html -->
+<!--<div class="jumbotron text-center">
+    <h1><i class="fa fa-gamepad"></i> {{ publisher.Name }}</h1>
+</div>-->
+<div class="jumbotron text-center">
+    <h1>
+        Details for {{ publisher.Name }}
+    </h1>
+</div>
+<div class="col-lg-6">
+    <a href="#/publishers/">
+        <small>
+            Back to publishers...
+        </small>
+    </a>
+</div>
+<div class="col-lg-6 text-right">
+    <button class="btn btn-default" data-ng-click="edit()">Edit this publishers details</button>
+</div>
+
+<div class="col-lg-12 clearLeft well-lg">
+    <table class="table table-striped">
+        <tr>
+            <td>
+                <strong>Publisher Name</strong>
+            </td>
+            <td>
+                {{ publisher.Name }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Location</strong>
+            </td>
+            <td>
+                {{ publisher.Location }}
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,20 +1,38 @@
 ﻿// create the controller and inject Angular's $scope
 app.controller('mainController', function ($scope, $http) {
+    $scope.message = "Welcome to Alpha game store!";
 });
 
-app.controller('gameIdController', function ($scope, $http, $routeParams) {
+app.controller('gameIdController', function ($scope, $http, $routeParams, $location) {
     $http.get('http://localhost:57369/api/games/' + $routeParams.gameId)
 	.success(function (response) {
 	    $scope.game = response;
+	    $scope.GameId = $routeParams.gameId;
 	    console.log(response);
 	})
 	.error(function (error) {
 	    console.log(error);
 	});
+
+    $scope.delete = function () {
+        var id = $routeParams.gameId;
+        console.log(id)
+        $http({
+            method: "DELETE",
+            url: "http://localhost:57369/api/games/" + id
+        })
+        .success(function (response) {
+            $location.path('/#/games');
+            // change this to redirect to the games summary - currently goes home
+        })
+        .error(function (error) {
+            console.log(error);
+        });
+    };
 });
 
 
-app.controller('gamesController', function ($scope, $http, $modal, $log) {
+app.controller('gamesController', function ($scope, $http, $modal, $log, $route) {
     $scope.sortType = 'Title'; // set the default sort type
     $scope.sortReverse = false;  // set the default sort order
     $scope.searchGame = '';     // set the default search/filter term
@@ -54,7 +72,6 @@ app.controller('gamesController', function ($scope, $http, $modal, $log) {
             "Title": $scope.Name,
             "ReleaseDate": $scope.ReleaseDate
         };
-        console.log($scope.Publisher);
 
         $http({
             method: "POST",
@@ -63,8 +80,7 @@ app.controller('gamesController', function ($scope, $http, $modal, $log) {
             contentType: "application/json"
         })
         .success(function () {
-            console.log("POST successful!")
-            $scope.GetPublishers();
+            $route.reload();
         })
         .error(function (error) {
             console.log(error);
@@ -74,10 +90,9 @@ app.controller('gamesController', function ($scope, $http, $modal, $log) {
     // Get the full list of games - this happens as soon as the page is loaded.
     $http.get("http://localhost:57369/api/games")
     .success(function (response) {
-    	$scope.games = response;
-    	console.log(response);
-    	$scope.show_table = true;
-    	$scope.totalGames = response.length;
+        $scope.games = response;
+        $scope.show_table = true;
+        $scope.totalGames = response.length;
     })
     .error(function (error) {
         console.log(error);
@@ -89,7 +104,7 @@ app.controller('gamesController', function ($scope, $http, $modal, $log) {
     })
     .error(function (error) {
         console.log(error);
-    })
+    });
 });
 
 app.controller('newGameController', function ($scope, $modalInstance, items) {
@@ -124,7 +139,7 @@ app.controller('publisherController', function ($scope, $http) {
             console.log(error);
         })
     };
-   
+
     $scope.postData = function () {
         var config = {
             "Name": $scope.Name,
@@ -132,16 +147,15 @@ app.controller('publisherController', function ($scope, $http) {
         };
 
         $http({
-                method: "POST",
-                url: "http://localhost:57369/api/publishers",
-                data: config,
-                contentType: "application/json"
-            })
+            method: "POST",
+            url: "http://localhost:57369/api/publishers",
+            data: config,
+            contentType: "application/json"
+        })
         .success(function () {
-            console.log("POST successful!")
             $scope.GetPublishers();
         })
-        .error(function(error) {
+        .error(function (error) {
             console.log(error);
         });
     };
@@ -155,8 +169,8 @@ app.controller('contactController', function ($scope) {
 app.controller('publisherIdController', function ($rootScope, $scope, $routeParams, $route, $http) {
     console.log($routeParams.publisherId);
     $http.get("http://localhost:57369/api/publishers/" + $routeParams.publisherId)
-    .success(function (success) {
-        console.log(success);
+    .success(function (response) {
+        $scope.publisher = response;
     })
     .error(function (error) {
         console.log(error);

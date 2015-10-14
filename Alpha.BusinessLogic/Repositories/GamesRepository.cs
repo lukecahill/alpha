@@ -17,10 +17,10 @@ namespace Alpha.BusinessLogic.Repositories {
             return entities.Select(e => new GameSummary(e)).ToList();
         }
 
-        public GameDetails GetById(int id) { 
+        public GameDetails GetById(int id) {
             var entity = db.Games.FirstOrDefault(g => g.GameId == id);
             if(entity != null) {
-			    return new GameDetails(entity);
+                return new GameDetails(entity);
             }
 
             return null;
@@ -45,7 +45,10 @@ namespace Alpha.BusinessLogic.Repositories {
         }
 
         public void Delete(DeleteGameBindingModel publisher) {
-            throw new NotImplementedException();
+            var entity = db.Games.FirstOrDefault(p => p.GameId == publisher.GameId);
+
+            db.Games.Remove(entity);
+            db.SaveChanges();
         }
 
         public void DeleteById(int id) {
