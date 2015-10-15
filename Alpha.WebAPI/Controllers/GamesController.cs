@@ -68,6 +68,10 @@ namespace Alpha.WebAPI.Controllers {
             if (games == null) {
                 return NotFound();
             }
+
+            var entity = new DeleteGameBindingModel { GameId = id };
+            _rep.Delete(entity);
+
             return Ok(games);
         }
     }

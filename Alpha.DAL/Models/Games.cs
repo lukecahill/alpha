@@ -10,7 +10,7 @@ namespace Alpha.DAL.Models {
 
         [Required, MaxLength(255)]
         public string Title { get; set; }
-
+        
         [Required]
         public DateTime ReleaseDate { get; set; }
 

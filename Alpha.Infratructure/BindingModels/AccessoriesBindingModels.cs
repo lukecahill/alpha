@@ -1,12 +1,11 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Alpha.Infratructure.BindingModels {
     public class CreateAccessoriesBindingModels {
         [Required, MaxLength(255)]
         public string Name { get; set; }
 
-        public DateTime ReleaseDate { get; set; }
+        public string ReleaseDate { get; set; }
     }
 
     public class UpdateAccessoriesBindingModels {
@@ -16,7 +15,7 @@ namespace Alpha.Infratructure.BindingModels {
         [Required, MaxLength(255)]
         public string Name { get; set; }
 
-        public DateTime ReleaseDate { get; set; }
+        public string ReleaseDate { get; set; }
     }
 
     public class DeleteAccessoriesBindingModels {

@@ -1,12 +1,11 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Alpha.Infratructure.BindingModels {
     public class CreateGameBindingModel {
         [Required, MaxLength(255)]
         public string Title { get; set; }
 
-        public DateTime ReleaseDate { get; set; }
+        public string ReleaseDate { get; set; }
 
         [Required]
         public int PublisherId { get; set; }
@@ -22,7 +21,7 @@ namespace Alpha.Infratructure.BindingModels {
         [Required]
         public int PublisherId { get; set; }
 
-        public DateTime ReleaseDate { get; set; }
+        public string ReleaseDate { get; set; }
     }
 
     public class DeleteGameBindingModel {

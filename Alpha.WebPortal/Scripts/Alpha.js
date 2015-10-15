@@ -23,6 +23,8 @@ app.controller('gameIdController', function ($scope, $http, $routeParams, $locat
         })
         .success(function (response) {
             $location.path('/#/games');
+            console.log("deleted");
+            console.log(response);
             // change this to redirect to the games summary - currently goes home
         })
         .error(function (error) {
