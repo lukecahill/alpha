@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Alpha.Infratructure.BindingModels {
     public class CreateAddonBindingModel {
@@ -9,7 +8,7 @@ namespace Alpha.Infratructure.BindingModels {
         [MaxLength(255)]
         public string Type { get; set; }
 
-        public DateTime ReleaseDate { get; set; }
+        public string ReleaseDate { get; set; }
     }
 
     public class UpdateAddonBindingModel {
@@ -22,7 +21,7 @@ namespace Alpha.Infratructure.BindingModels {
         [MaxLength(255)]
         public string Type { get; set; }
 
-        public DateTime ReleaseDate { get; set; }
+        public string ReleaseDate { get; set; }
     }
 
     public class DeleteAddonBindingModel {

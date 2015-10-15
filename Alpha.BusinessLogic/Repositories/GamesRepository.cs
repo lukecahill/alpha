@@ -6,6 +6,7 @@ using Alpha.Infrastructure.ViewModels;
 using Alpha.DAL.Context;
 using Alpha.Infratructure.BindingModels;
 using System.Data.Entity;
+using System.Globalization;
 
 namespace Alpha.BusinessLogic.Repositories {
     public class GamesRepository : IGamesRepository {
@@ -24,14 +25,20 @@ namespace Alpha.BusinessLogic.Repositories {
             }
 
             return null;
-            // TODO: this will of course fail; this is due to the return being a model of the game which does not contain a property for the publishers name. A fix? Use a viewmodel!
         }
 
         public CreateGameBindingModel Add(CreateGameBindingModel game) {
+            var pattern = "dd-MM-yy";
+            DateTime returnDate;
+
+            if(!DateTime.TryParseExact(game.ReleaseDate, pattern, null, DateTimeStyles.None, out returnDate)) {
+                returnDate = DateTime.UtcNow;
+            }
+
             var entity = new DAL.Models.Games {
                 Title = game.Title,
                 PublisherId = game.PublisherId,
-                ReleaseDate = game.ReleaseDate
+                ReleaseDate = returnDate
             };
 
             db.Games.Add(entity);
