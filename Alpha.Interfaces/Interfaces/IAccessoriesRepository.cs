@@ -1,14 +1,15 @@
 ﻿using Alpha.Infrastructure.ViewModels;
 using System.Collections.Generic;
+using Alpha.Infratructure.BindingModels;
 
 namespace Alpha.Interfaces.Interfaces {
     public interface IAccessoriesRepository {   //: IRespositoryBase<Accessories, int> {
 
 		IEnumerable<AccessoriesSummary> GetAll();
 		AccessoriesDetails GetById(int id);
-		int Add(AccessoriesDetails obj);
-		void Update(AccessoriesDetails obj);
-		void Delete(AccessoriesDetails obj);
+		CreateAccessoriesBindingModels Add(CreateAccessoriesBindingModels obj);
+		void Update(UpdateAccessoriesBindingModels obj);
+		void Delete(DeleteAccessoriesBindingModels obj);
 		void DeleteById(int id);
 	}
 }

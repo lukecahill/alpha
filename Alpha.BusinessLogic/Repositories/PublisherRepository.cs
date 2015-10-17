@@ -36,12 +36,15 @@ namespace Alpha.BusinessLogic.Repositories {
             return publisher;
         }
 
-        public void Update(PublisherDetails publisher) {
+        public void Update(UpdatePublisherBindingModel publisher) {
             throw new NotImplementedException();
         }
 
-        public void Delete(PublisherDetails publisher) {
-            throw new NotImplementedException();
+        public void Delete(DeletePublisherBindingModel publisher) {
+            var entity = db.Publishers.FirstOrDefault(p => p.PublisherId == publisher.PublisherId);
+
+            db.Publishers.Remove(entity);
+            db.SaveChanges();
         }
 
         public void DeleteById(int id) {

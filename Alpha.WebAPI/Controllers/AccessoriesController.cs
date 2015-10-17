@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Alpha.Infrastructure.ViewModels;
+using Alpha.Infratructure.BindingModels;
 using Alpha.Interfaces.Interfaces;
 
 namespace Alpha.WebAPI.Controllers {
@@ -53,14 +51,15 @@ namespace Alpha.WebAPI.Controllers {
 
         // POST: api/Accessories
         [ResponseType(typeof(AccessoriesDetails))]
-        public IHttpActionResult PostAccessories(AccessoriesDetails accessories) {
+        public IHttpActionResult PostAccessories(CreateAccessoriesBindingModels accessories) {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
-			return null;
+            _rep.Add(accessories);
+            
 			// TODO : this
-            //return CreatedAtRoute("DefaultApi", new { id = accessories.AccessoryId }, accessories);
+            return CreatedAtRoute("DefaultApi", new { id = accessories }, accessories);
         }
 
         // DELETE: api/Accessories/5
@@ -71,6 +70,9 @@ namespace Alpha.WebAPI.Controllers {
                 return NotFound();
             }
 
+            var entity = new DeleteAccessoriesBindingModels { AccessoryId = id };
+
+            _rep.Delete(entity);
             return Ok(accessories);
         }
     }

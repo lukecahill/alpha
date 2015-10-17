@@ -19,7 +19,6 @@ namespace Alpha.WebAPI.Controllers {
         }
 
         // GET: api/Publishers
-		//[Authorize]
         public IEnumerable<PublisherSummary> GetPublishers() {
             return _rep.GetAll();
         }
@@ -55,7 +54,6 @@ namespace Alpha.WebAPI.Controllers {
         }
 
         // POST: api/Publishers
-        //[HttpPost]
         [ResponseType(typeof(CreatePublisherBindingModel))]
         public IHttpActionResult PostPublisher(CreatePublisherBindingModel publisher) {
             if (!ModelState.IsValid) {
@@ -63,9 +61,6 @@ namespace Alpha.WebAPI.Controllers {
             }
 
             var saved = _rep.Add(publisher);
-
-			// return Ok();
-			// TODO : this
             return CreatedAtRoute("DefaultApi", new { id = saved }, saved);
         }
 
@@ -76,6 +71,10 @@ namespace Alpha.WebAPI.Controllers {
             if (publisher == null) {
                 return NotFound();
             }
+
+            var entity = new DeletePublisherBindingModel { PublisherId = id };
+            _rep.Delete(entity);
+
             return Ok(publisher);
         }
     }

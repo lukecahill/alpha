@@ -4,6 +4,7 @@ using System.Linq;
 using Alpha.Interfaces.Interfaces;
 using Alpha.DAL.Context;
 using Alpha.Infrastructure.ViewModels;
+using Alpha.Infratructure.BindingModels;
 
 namespace Alpha.BusinessLogic.Repositories {
     public class AccessoriesRepository : IAccessoriesRepository {
@@ -21,19 +22,28 @@ namespace Alpha.BusinessLogic.Repositories {
             }
 
             return null;
-            
         }
 
-        public int Add(AccessoriesDetails publisher) {
-            return 0;
+        public CreateAccessoriesBindingModels Add(CreateAccessoriesBindingModels accessory) {
+            var entity = new DAL.Models.Accessories {
+                Name = accessory.Name,
+                Type = accessory.Type
+            };
+
+            db.Accessories.Add(entity);
+            db.SaveChanges();
+            return accessory;
         }
 
-        public void Update(AccessoriesDetails publisher) {
+        public void Update(UpdateAccessoriesBindingModels accessory) {
             throw new NotImplementedException();
         }
 
-        public void Delete(AccessoriesDetails publisher) {
-            throw new NotImplementedException();
+        public void Delete(DeleteAccessoriesBindingModels accessory) {
+            var entity = db.Accessories.FirstOrDefault(a => a.AccessoryId == accessory.AccessoryId);
+
+            db.Accessories.Remove(entity);
+            db.SaveChanges();
         }
 
         public void DeleteById(int id) {

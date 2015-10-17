@@ -10,6 +10,9 @@
     </h3>
     <ul>
         <li>
+            Authentication using OWIN
+        </li>
+        <li>
             Styling for all pages
         </li>
         <li>
@@ -20,6 +23,12 @@
         </li>
         <li>
             Add more details for everything - price etc.
+        </li>
+        <li>
+            Split the controllers into different files
+        </li>
+        <li>
+            AngularJS in different files in general - only loaded when needed
         </li>
     </ul>
     <h3>

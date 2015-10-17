@@ -9,6 +9,9 @@ namespace Alpha.Infratructure.BindingModels {
         public string Type { get; set; }
 
         public string ReleaseDate { get; set; }
+
+        [Required]
+        public int GameId { get; set; }
     }
 
     public class UpdateAddonBindingModel {
@@ -22,6 +25,9 @@ namespace Alpha.Infratructure.BindingModels {
         public string Type { get; set; }
 
         public string ReleaseDate { get; set; }
+
+        [Required]
+        public int GameId { get; set; }
     }
 
     public class DeleteAddonBindingModel {
