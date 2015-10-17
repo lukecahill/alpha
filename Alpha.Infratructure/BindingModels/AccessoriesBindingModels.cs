@@ -5,7 +5,7 @@ namespace Alpha.Infratructure.BindingModels {
         [Required, MaxLength(255)]
         public string Name { get; set; }
 
-        public string ReleaseDate { get; set; }
+        public string Type { get; set; }
     }
 
     public class UpdateAccessoriesBindingModels {
@@ -15,7 +15,7 @@ namespace Alpha.Infratructure.BindingModels {
         [Required, MaxLength(255)]
         public string Name { get; set; }
 
-        public string ReleaseDate { get; set; }
+        public string Type { get; set; }
     }
 
     public class DeleteAccessoriesBindingModels {

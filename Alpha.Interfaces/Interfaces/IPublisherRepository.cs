@@ -7,8 +7,8 @@ namespace Alpha.Interfaces.Interfaces {
 		IEnumerable<PublisherSummary> GetAll();
 		PublisherDetails GetById(int id);
 		CreatePublisherBindingModel Add(CreatePublisherBindingModel obj);
-		void Update(PublisherDetails obj);
-		void Delete(PublisherDetails obj);
+		void Update(UpdatePublisherBindingModel obj);
+		void Delete(DeletePublisherBindingModel obj);
 		void DeleteById(int id);
 
 	}

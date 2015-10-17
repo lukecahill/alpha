@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Alpha.Infrastructure.ViewModels;
 using Alpha.Interfaces.Interfaces;
+using Alpha.Infratructure.BindingModels;
 
 namespace Alpha.WebAPI.Controllers {
     public class AddonsController : ApiController {
@@ -54,14 +52,13 @@ namespace Alpha.WebAPI.Controllers {
 
         // POST: api/Addons
         [ResponseType(typeof(AddonsDetails))]
-        public IHttpActionResult PostAddons(AddonsDetails addons) {
+        public IHttpActionResult PostAddons(CreateAddonBindingModel addons) {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
-			return null;
-			// TODO : this
-            //return CreatedAtRoute("DefaultApi", new { id = addons.AddonId }, addons);
+            _rep.Add(addons);
+            return CreatedAtRoute("DefaultApi", new { id = addons }, addons);
         }
 
         // DELETE: api/Addons/5
@@ -71,6 +68,9 @@ namespace Alpha.WebAPI.Controllers {
             if (addons == null) {
                 return NotFound();
             }
+
+            var entity = new DeleteAddonBindingModel { AddonId = id };
+            _rep.Delete(entity);
 
             return Ok(addons);
         }
