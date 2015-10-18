@@ -48,7 +48,10 @@ namespace Alpha.BusinessLogic.Repositories {
         }
 
         public void DeleteById(int id) {
-            throw new NotImplementedException();
+            var entity = db.Publishers.FirstOrDefault(p => p.PublisherId == id);
+
+            db.Publishers.Remove(entity);
+            db.SaveChanges();
         }
     }
 }

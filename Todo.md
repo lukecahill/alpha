@@ -30,6 +30,9 @@
         <li>
             AngularJS in different files in general - only loaded when needed
         </li>
+        <li>
+            Loading icons for all the pages
+        </li>
     </ul>
     <h3>
         Games:

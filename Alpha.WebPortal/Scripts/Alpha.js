@@ -22,8 +22,7 @@ app.controller('gameIdController', function ($scope, $http, $routeParams, $locat
             url: "http://localhost:57369/api/games/" + id
         })
         .success(function (response) {
-            $location.path('/#/games');
-            console.log("deleted");
+            $location.location.href('/#/games');
             console.log(response);
             // change this to redirect to the games summary - currently goes home
         })
@@ -38,34 +37,11 @@ app.controller('gamesController', function ($scope, $http, $modal, $log, $route)
     $scope.sortType = 'Title'; // set the default sort type
     $scope.sortReverse = false;  // set the default sort order
     $scope.searchGame = '';     // set the default search/filter term
+    $scope.loading = true;
+    $scope.showAddNew = false;
 
-    $scope.items = ['item1', 'item2', 'item3'];
-
-    $scope.animationsEnabled = true;
-
-    $scope.open = function (size) {
-
-        var modalInstance = $modal.open({
-            animation: $scope.animationsEnabled,
-            templateUrl: '/app/components/Modals/AddNewGame.html',
-            controller: 'newGameController',
-            size: size,
-            resolve: {
-                items: function () {
-                    return $scope.items;
-                }
-            }
-        });
-
-        modalInstance.result.then(function (selectedItem) {
-            $scope.selected = selectedItem;
-        }, function () {
-            $log.info('Modal dismissed at: ' + new Date());
-        });
-    };
-
-    $scope.toggleAnimation = function () {
-        $scope.animationsEnabled = !$scope.animationsEnabled;
+    $scope.showAddNewGame = function () {
+        $scope.showAddNew = true;
     };
 
     $scope.postData = function () {
@@ -95,6 +71,7 @@ app.controller('gamesController', function ($scope, $http, $modal, $log, $route)
         $scope.games = response;
         $scope.show_table = true;
         $scope.totalGames = response.length;
+        $scope.loading = false;
     })
     .error(function (error) {
         console.log(error);

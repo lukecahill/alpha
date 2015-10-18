@@ -14,7 +14,6 @@ namespace Alpha.BusinessLogic.Repositories {
         public IEnumerable<AddonsDetails> GetAll() {
             var entities = db.Addons.ToList();
             return entities.Select(e => new AddonsDetails(e)).ToList();
-            //return db.Addons;
         }
 
         public AddonsDetails GetById(int id) {
@@ -58,7 +57,10 @@ namespace Alpha.BusinessLogic.Repositories {
         }
 
         public void DeleteById(int id) {
-            throw new NotImplementedException();
+            var entity = db.Addons.FirstOrDefault(a => a.AddonId == id);
+
+            db.Addons.Remove(entity);
+            db.SaveChanges();
         }
     }
 }

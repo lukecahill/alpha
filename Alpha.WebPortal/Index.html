@@ -1,12 +1,10 @@
-﻿<!-- index.html -->
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html data-ng-app="alphaApp">
 <head>
     <title>Alpha Games</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <base href="/">
-    <!-- SCROLLS -->
-    <!-- load bootstrap and fontawesome via CDN -->
+
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
     <link rel="stylesheet" href="Content/AlphaStylesheet.css" />
@@ -15,7 +13,7 @@
 
     <!-- HEADER AND NAVBAR -->
     <header>
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default navbar-color">
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#/">Alpha Game Store</a>
@@ -46,13 +44,9 @@
         </nav>
     </header>
 
-    <!-- main container where the angular views will be placed-->
     <div class="container">
         <div id="main">
-
             <div data-ng-view></div>
-            <!-- this is where content will be located -->
-
         </div>
 
         <footer class="text-right">

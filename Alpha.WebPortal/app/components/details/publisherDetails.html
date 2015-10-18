@@ -38,3 +38,18 @@
         </tr>
     </table>
 </div>
+
+<div class="col-lg-12">
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Available games from this publisher
+            </th>
+        </tr>
+        <tr data-ng-repeat="item in publisher.Games">
+            <td>
+                {{ item.Title }}
+            </td>
+        </tr>
+    </table>
+</div>
