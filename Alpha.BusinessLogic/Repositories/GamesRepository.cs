@@ -48,7 +48,21 @@ namespace Alpha.BusinessLogic.Repositories {
         }
 
         public void Update(UpdateGameBindingModel publisher) {
-            throw new NotImplementedException();
+            var pattern = "dd-MM-yy";
+            DateTime returnDate;
+
+            if (!DateTime.TryParseExact(publisher.ReleaseDate, pattern, null, DateTimeStyles.None, out returnDate)) {
+                returnDate = DateTime.UtcNow;
+            }
+
+            var entity = db.Games.FirstOrDefault(g => g.GameId == publisher.GameId);
+
+            entity.Title = publisher.Title;
+            entity.ReleaseDate = returnDate;
+            entity.PublisherId = publisher.PublisherId;
+
+            db.Entry(entity).State = EntityState.Modified;
+            db.SaveChanges();
         }
 
         public void Delete(DeleteGameBindingModel publisher) {
@@ -59,7 +73,10 @@ namespace Alpha.BusinessLogic.Repositories {
         }
 
         public void DeleteById(int id) {
-            throw new NotImplementedException();
+            var entity = db.Games.FirstOrDefault(p => p.GameId == id);
+
+            db.Games.Remove(entity);
+            db.SaveChanges();
         }
     }
 }

@@ -63,3 +63,16 @@
         </tr>
     </table>
 </div>
+
+<div class="col-lg-12">
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Accessories available for this game:
+            </th>
+        </tr>
+        <tr data-ng-repeat="item in game.AccessoryList">
+            <td>{{ item.Name }}</td>
+        </tr>
+    </table>
+</div>
