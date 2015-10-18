@@ -4,7 +4,7 @@ using System.Linq;
 using Alpha.Interfaces.Interfaces;
 using Alpha.DAL.Context;
 using Alpha.Infrastructure.ViewModels;
-using Alpha.Infratructure.BindingModels;
+using Alpha.Infrastructure.BindingModels;
 using System.Globalization;
 
 namespace Alpha.BusinessLogic.Repositories {

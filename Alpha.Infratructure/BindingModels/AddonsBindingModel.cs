@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Alpha.Infratructure.BindingModels {
+namespace Alpha.Infrastructure.BindingModels {
     public class CreateAddonBindingModel {
         [Required, MaxLength(255)]
         public string Name { get; set; }

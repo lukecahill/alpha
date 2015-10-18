@@ -4,7 +4,7 @@ using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Alpha.Infrastructure.ViewModels;
-using Alpha.Infratructure.BindingModels;
+using Alpha.Infrastructure.BindingModels;
 using Alpha.Interfaces.Interfaces;
 
 namespace Alpha.WebAPI.Controllers {

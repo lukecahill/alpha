@@ -5,7 +5,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Alpha.Infrastructure.ViewModels;
 using Alpha.Interfaces.Interfaces;
-using Alpha.Infratructure.BindingModels;
+using Alpha.Infrastructure.BindingModels;
 
 namespace Alpha.WebAPI.Controllers {
     public class AddonsController : ApiController {
