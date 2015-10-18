@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Alpha.Infrastructure.ViewModels;
-using Alpha.Infratructure.BindingModels;
+using Alpha.Infrastructure.BindingModels;
 
 namespace Alpha.Interfaces.Interfaces {
     public interface IAddonsRepository {//: IRespositoryBase<Addons, int> {

@@ -1,5 +1,5 @@
 ﻿using Alpha.Infrastructure.ViewModels;
-using Alpha.Infratructure.BindingModels;
+using Alpha.Infrastructure.BindingModels;
 using System.Collections.Generic;
 
 namespace Alpha.Interfaces.Interfaces {

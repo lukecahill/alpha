@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Alpha.Infratructure.BindingModels {
+namespace Alpha.Infrastructure.BindingModels {
     public class CreateGameBindingModel {
         [Required, MaxLength(255)]
         public string Title { get; set; }
