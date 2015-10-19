@@ -126,7 +126,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\newGameController.js" />
+    <Content Include="Scripts\Scripts.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

@@ -5,6 +5,7 @@ using Alpha.Interfaces.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 
 namespace Alpha.BusinessLogic.Repositories {
     public class PublisherRepository : IPublisherRepository {
@@ -37,7 +38,14 @@ namespace Alpha.BusinessLogic.Repositories {
         }
 
         public void Update(UpdatePublisherBindingModel publisher) {
-            throw new NotImplementedException();
+
+            var entity = db.Publishers.FirstOrDefault(g => g.PublisherId == publisher.PublisherId);
+
+            entity.Name = publisher.Name;
+            entity.Location = publisher.Location;
+
+            db.Entry(entity).State = EntityState.Modified;
+            db.SaveChanges();
         }
 
         public void Delete(DeletePublisherBindingModel publisher) {

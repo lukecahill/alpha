@@ -36,18 +36,19 @@ namespace Alpha.WebAPI.Controllers {
 
         // PUT: api/Publishers/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPublisher(int id, PublisherDetails publisher) {
+        public IHttpActionResult PutPublisher(int id, UpdatePublisherBindingModel publisher) {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
-            //if (id != publisher.PublisherId) {
-            //    return BadRequest();
-            //}
+            if (id != publisher.PublisherId) {
+                return BadRequest();
+            }
 
             try {
+                _rep.Update(publisher);
             } catch (DbUpdateConcurrencyException) {
-                throw;
+                throw new Exception("Updated failed");
             }
 
             return StatusCode(HttpStatusCode.NoContent);

@@ -33,17 +33,15 @@ namespace Alpha.WebAPI.Controllers {
 
         // PUT: api/Games/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutGames(int id, GameDetails games) {
+        public IHttpActionResult PutGames(int id, UpdateGameBindingModel games) {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
-            //if (id != games.GameId) {
-            //    return BadRequest();
-            //}
-
             try {
+                _rep.Update(games);
             } catch (DbUpdateConcurrencyException) {
+                throw new System.Exception("Update failed!");
             }
 
             return StatusCode(HttpStatusCode.NoContent);

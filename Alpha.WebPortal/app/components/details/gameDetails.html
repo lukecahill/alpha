@@ -7,20 +7,25 @@
         Details for {{ game.Title }}
     </h1>
 </div>
-<div class="col-lg-6">
-    <a href="#/games/">
-        <small>
-            Back to games...
-        </small>
-    </a>
+
+<div class="row well">
+    <div class="col-lg-6">
+        <a href="#/games/">
+            <small>
+                Back to games...
+            </small>
+        </a>
+    </div>
+    <div class="col-lg-3 text-right">
+        <button class="btn btn-default" data-ng-click="updateGame()">Edit this games details</button>
+    </div>
+    <div class="col-lg-3 text-right">
+        <button class="btn btn-default" data-ng-click="delete()"><span class="glyphicon glyphicon-remove"></span> Delete this game</button>
+    </div>
+    <input type="hidden" data-ng-model="deleteId" name="gameId" value="{{ GameId }}" />
 </div>
-<div class="col-lg-3 text-right">
-    <button class="btn btn-default" data-ng-click="edit()">Edit this games details</button>
-</div>
-<div class="col-lg-3 text-right">
-    <button class="btn btn-default" data-ng-click="delete()"><span class="glyphicon glyphicon-remove"></span> Delete this game</button>
-</div>
-<input type="hidden" data-ng-model="deleteId" name="gameId" value="{{ GameId }}" />
+
+<p>The full details for {{ game.Title }} can be found below:</p>
 
 <div class="col-lg-12 clearLeft well-lg">
     <table class="table table-striped">
@@ -29,15 +34,15 @@
                 <strong>Title</strong>
             </td>
             <td>
-                {{ game.Title }}
+                <input class="form-control" value="{{ game.Title }}" />
             </td>
         </tr>
         <tr>
             <td>
-                <strong>Name</strong>
+                <strong>Publisher</strong>
             </td>
             <td>
-                {{ game.Publisher }}
+                <input class="form-control" value="{{ game.Publisher }}" />
             </td>
         </tr>
         <tr>
