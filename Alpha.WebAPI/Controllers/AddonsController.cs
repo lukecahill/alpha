@@ -33,18 +33,19 @@ namespace Alpha.WebAPI.Controllers {
 
         // PUT: api/Addons/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutAddons(int id, AddonsDetails addons) {
+        public IHttpActionResult PutAddons(int id, UpdateAddonBindingModel addons) {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
-            //if (id != addons.AddonId) {
-            //    return BadRequest();
-            //}
-            
+            if (id != addons.AddonId) {
+                return BadRequest();
+            }
 
             try {
+                _rep.Update(addons);
             } catch (DbUpdateConcurrencyException) {
+                throw new System.Exception("Update failed");
             }
 
             return StatusCode(HttpStatusCode.NoContent);

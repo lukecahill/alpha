@@ -30,6 +30,28 @@ app.controller('gameIdController', function ($scope, $http, $routeParams, $locat
             console.log(error);
         });
     };
+
+    $scope.updateGame = function () {
+        var id = $routeParams.gameId;
+
+        var data = {
+            GameId: $scope.deleteId,
+            PublisherId: $routeParams.publisherId,
+            Title: $scope.title
+        };
+        console.log(data);
+        $http({
+            method: 'PUT',
+            url: 'http://localhost:57369/api/games/' + id,
+            data: data
+        })
+        .success(function (response) {
+            console.log(response);
+        })
+        .error(function (error) {
+            console.log(error);
+        });
+    };
 });
 
 

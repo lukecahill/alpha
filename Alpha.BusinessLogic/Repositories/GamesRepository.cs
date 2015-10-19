@@ -47,26 +47,26 @@ namespace Alpha.BusinessLogic.Repositories {
             return game;
         }
 
-        public void Update(UpdateGameBindingModel publisher) {
+        public void Update(UpdateGameBindingModel game) {
             var pattern = "dd-MM-yy";
             DateTime returnDate;
 
-            if (!DateTime.TryParseExact(publisher.ReleaseDate, pattern, null, DateTimeStyles.None, out returnDate)) {
+            if (!DateTime.TryParseExact(game.ReleaseDate, pattern, null, DateTimeStyles.None, out returnDate)) {
                 returnDate = DateTime.UtcNow;
             }
 
-            var entity = db.Games.FirstOrDefault(g => g.GameId == publisher.GameId);
+            var entity = db.Games.FirstOrDefault(g => g.GameId == game.GameId);
 
-            entity.Title = publisher.Title;
+            entity.Title = game.Title;
             entity.ReleaseDate = returnDate;
-            entity.PublisherId = publisher.PublisherId;
+            entity.PublisherId = game.PublisherId;
 
             db.Entry(entity).State = EntityState.Modified;
             db.SaveChanges();
         }
 
-        public void Delete(DeleteGameBindingModel publisher) {
-            var entity = db.Games.FirstOrDefault(p => p.GameId == publisher.GameId);
+        public void Delete(DeleteGameBindingModel game) {
+            var entity = db.Games.FirstOrDefault(p => p.GameId == game.GameId);
 
             db.Games.Remove(entity);
             db.SaveChanges();
