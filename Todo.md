@@ -31,7 +31,7 @@
             AngularJS in different files in general - only loaded when needed
         </li>
         <li>
-            Loading icons for all the pages
+            Loading icons for all the pages -  summary pages all done
         </li>
     </ul>
     <h3>
@@ -42,35 +42,10 @@
             Updates for games
         </li>
         <li>
-            List updates and addons
+            <s>List accessories and addons</s>
         </li>
         <li>
             List of addons/accessories should be using view models rather than returning the full model
-        </li>
-    </ul>
-        <h3>
-        Addons:
-    </h3>
-    <ul>
-        <li>
-            <s>POST/DELETE</s>/PUT all need to be done
-        </li>
-        <li>
-            <s>GetById needs to be done</s>
-        </li>
-    </ul>
-        <h3>
-        Accessories:
-    </h3>
-    <ul>
-        <li>
-            POST/DELETE/PUT all need to be done
-        </li>
-        <li>
-            GetById needs to be done
-        </li>
-        <li>
-            <s>List of accessories under each game</s>
         </li>
     </ul>
         <h3>
@@ -85,6 +60,31 @@
         </li>
         <li>
             List of games should be using view models rather than returning the full model
+        </li>
+    </ul>
+        <h3>
+        Addons:
+    </h3>
+    <ul>
+        <li>
+            POST/DELETE/PUT all need to be done
+        </li>
+        <li>
+            <s>GetById needs to be done</s>
+        </li>
+    </ul>
+        <h3>
+        Accessories:
+    </h3>
+    <ul>
+        <li>
+            POST/DELETE/PUT all need to be done
+        </li>
+        <li>
+            <s>GetById needs to be done</s>
+        </li>
+        <li>
+            <s>List of accessories under each game</s>
         </li>
     </ul>
 </body>

@@ -8,8 +8,30 @@
     <p class="text-center" data-ng-show="loading"><i class="fa fa-spinner fa-spin fa-5x"></i></p>
 </div>
 
+<div class="row" data-ng-show="!showAddNew">
+    <div class="col-lg-12 pull-right">
+        <button class="btn btn-default" data-ng-click="showAddNewAccessory()"><span class="glyphicon glyphicon-plus-sign"></span>  Add a new accessory</button>
+    </div>
+</div>
+
 <div data-ng-show="!loading">
-    <table class="table table-striped">
+    <div class="row well" data-ng-show="showAddNew">
+        <form class="col-lg-12">
+            <div class="col-md-4">
+                <label for="Name">Enter a name: </label>
+                <input data-ng-model="Name" data-ng-required="true" class="form-control" name="Name" type="text" placeholder="Activison" />
+            </div>
+            <div class="col-md-4">
+                <label for="Location">Add a location: </label>
+                <input data-ng-model="Location" type="text" name="Location" class="form-control" placeholder="USA" />
+            </div>
+            <div class="col-md-4 top-buffer text-right">
+                <button class="btn btn-default" data-ng-click="postData()"><span class="glyphicon glyphicon-plus-sign"></span> Add a new accessory!</button>
+            </div>
+        </form>
+    </div>
+
+    <table class="table table-striped well top-buffer">
         <tr>
             <th>Name</th>
             <th>Game</th>
