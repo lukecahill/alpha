@@ -1,0 +1,61 @@
+﻿<div class="jumbotron text-center">
+    <h1>
+        Details for {{ addon.AddonName }}
+    </h1>
+</div>
+
+<div class="row well">
+    <div class="col-lg-6">
+        <a href="#/addons/">
+            <small>
+                Back to addons...
+            </small>
+        </a>
+    </div>
+    <div class="col-lg-3 text-right">
+        <button class="btn btn-default" data-ng-click="updateGame()">Edit this addon</button>
+    </div>
+    <div class="col-lg-3 text-right">
+        <button class="btn btn-default" data-ng-click="delete()"><span class="glyphicon glyphicon-remove"></span> Delete this addon</button>
+    </div>
+    <input type="hidden" data-ng-model="deleteId" name="addonId" value="{{ AddonId }}" />
+</div>
+
+<p>The full details for {{ addon.AddonName }} can be found below:</p>
+
+<div class="col-lg-12 clearLeft well-lg">
+    <table class="table table-striped">
+        <tr>
+            <td>
+                <strong>Name</strong>
+            </td>
+            <td>
+                {{ addon.AddonName }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Publisher</strong>
+            </td>
+            <td>
+               {{ addon.Publisher }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Game Title</strong>
+            </td>
+            <td>
+                {{ addon.GameTitle }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Description</strong>
+            </td>
+            <td>
+                {{ addon.Description }}
+            </td>
+        </tr>
+    </table>
+</div>

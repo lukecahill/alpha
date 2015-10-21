@@ -78,6 +78,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\components\details\accessoryDetails.html" />
+    <Content Include="app\components\details\addonDetails.html" />
     <Content Include="app\components\details\gameDetails.html" />
     <Content Include="app\components\details\publisherDetails.html" />
     <Content Include="app\components\Modals\AddNewGame.html" />

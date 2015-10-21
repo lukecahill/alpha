@@ -108,21 +108,6 @@ app.controller('gamesController', function ($scope, $http, $modal, $log, $route)
     });
 });
 
-app.controller('newGameController', function ($scope, $modalInstance, items) {
-    $scope.items = items;
-    $scope.selected = {
-        item: $scope.items[0]
-    };
-
-    $scope.ok = function () {
-        $modalInstance.close($scope.selected.item);
-    };
-
-    $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
-    };
-});
-
 app.controller('publisherController', function ($scope, $http) {
     $scope.show_table = false;
 
@@ -130,16 +115,20 @@ app.controller('publisherController', function ($scope, $http) {
     $scope.sortReverse = false;  // set the default sort order
     $scope.searchPublishers = '';     // set the default search/filter term
 
-    $scope.GetPublishers = function () {
-        $http.get("http://localhost:57369/api/publishers")
-        .success(function (response) {
-            $scope.publishers = response;
-            $scope.show_table = true;
-        })
-        .error(function (error) {
-            console.log(error);
-        })
+    $scope.showAddNew = false;
+
+    $scope.showAddNewGame = function () {
+        $scope.showAddNew = true;
     };
+
+    $http.get("http://localhost:57369/api/publishers")
+    .success(function (response) {
+        $scope.publishers = response;
+        $scope.show_table = true;
+    })
+    .error(function (error) {
+        console.log(error);
+    });
 
     $scope.postData = function () {
         var config = {
@@ -162,13 +151,7 @@ app.controller('publisherController', function ($scope, $http) {
     };
 });
 
-app.controller('contactController', function ($scope) {
-    $scope.message = 'Contact us! JK. This is just a demo.';
-});
-
-
 app.controller('publisherIdController', function ($rootScope, $scope, $routeParams, $route, $http) {
-    console.log($routeParams.publisherId);
     $http.get("http://localhost:57369/api/publishers/" + $routeParams.publisherId)
     .success(function (response) {
         $scope.publisher = response;
@@ -178,14 +161,12 @@ app.controller('publisherIdController', function ($rootScope, $scope, $routePara
     });
 });
 
-app.controller('aboutController', function ($scope) {
-    $scope.message = 'This is an about page.';
-});
-
 app.controller('addonsController', function ($scope, $http) {
+    $scope.loading = true;
     $http.get("http://localhost:57369/api/addons")
        .success(function (response) {
            $scope.addons = response;
+           $scope.loading = false;
        })
        .error(function (error) {
            console.log(error);
@@ -193,11 +174,42 @@ app.controller('addonsController', function ($scope, $http) {
 });
 
 app.controller('accessoriesController', function ($scope, $http) {
+    $scope.loading = true;
     $http.get("http://localhost:57369/api/accessories")
        .success(function (response) {
            $scope.accessories = response;
+           $scope.loading = false;
        })
        .error(function (error) {
            console.log(error);
        })
+});
+
+app.controller('addonIdController', function ($scope, $http, $routeParams) {
+    $http.get('http://localhost:57369/api/addons/' + $routeParams.addonId)
+   .success(function (response) {
+       $scope.addon = response;
+   })
+   .error(function (error) {
+       console.log(error);
+   })
+});
+
+app.controller('accessoryIdController', function ($scope, $http, $routeParams) {
+    $http.get('http://localhost:57369/api/accessories/' + $routeParams.accessoryId)
+   .success(function (response) {
+       $scope.accessory = response;
+       console.log(response);
+   })
+   .error(function (error) {
+       console.log(error);
+   })
+});
+
+app.controller('aboutController', function ($scope) {
+    $scope.message = 'This is an about page.';
+});
+
+app.controller('contactController', function ($scope) {
+    $scope.message = 'Contact us! JK. This is just a demo.';
 });

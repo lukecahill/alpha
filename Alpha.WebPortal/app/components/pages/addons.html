@@ -4,15 +4,21 @@
     <p>{{ message }}</p>
 </div>
 
-<table class="table table-striped">
-    <tr>
-        <th>Addon Name</th>
-        <th>Game</th>
-        <th>Publisher</th>
-    </tr>
-    <tr data-ng-repeat="item in addons">
-        <td>{{ item.AddonName }}</td>
-        <td>{{ item.GameTitle }}</td>
-        <td>{{ item.Publisher }}</td>
-    </tr>
-</table>
+<div>
+    <p class="text-center" data-ng-show="loading"><i class="fa fa-spinner fa-spin fa-5x"></i></p>
+</div>
+
+<div data-ng-show="!loading">
+    <table class="table table-striped">
+        <tr>
+            <th>Addon Name</th>
+            <th>Game</th>
+            <th>Publisher</th>
+        </tr>
+        <tr data-ng-repeat="item in addons">
+            <td><a href="#/addons/{{ item.AddonId }}">{{ item.AddonName }}</a></td>
+            <td>{{ item.GameTitle }}</td>
+            <td>{{ item.Publisher }}</td>
+        </tr>
+    </table>
+</div>
