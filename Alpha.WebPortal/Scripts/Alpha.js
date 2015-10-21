@@ -109,12 +109,10 @@ app.controller('gamesController', function ($scope, $http, $modal, $log, $route)
 });
 
 app.controller('publisherController', function ($scope, $http) {
-    $scope.show_table = false;
-
     $scope.sortType = 'Name'; // set the default sort type
     $scope.sortReverse = false;  // set the default sort order
     $scope.searchPublishers = '';     // set the default search/filter term
-
+    $scope.loading = true;
     $scope.showAddNew = false;
 
     $scope.showAddNewGame = function () {
@@ -124,7 +122,7 @@ app.controller('publisherController', function ($scope, $http) {
     $http.get("http://localhost:57369/api/publishers")
     .success(function (response) {
         $scope.publishers = response;
-        $scope.show_table = true;
+        $scope.loading = false;
     })
     .error(function (error) {
         console.log(error);

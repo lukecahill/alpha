@@ -44,16 +44,19 @@
         <li>
             List updates and addons
         </li>
+        <li>
+            List of addons/accessories should be using view models rather than returning the full model
+        </li>
     </ul>
         <h3>
         Addons:
     </h3>
     <ul>
         <li>
-            POST/DELETE/PUT all need to be done
+            <s>POST/DELETE</s>/PUT all need to be done
         </li>
         <li>
-            GetById needs to be done
+            <s>GetById needs to be done</s>
         </li>
     </ul>
         <h3>
@@ -67,7 +70,7 @@
             GetById needs to be done
         </li>
         <li>
-            List of accessories under each game
+            <s>List of accessories under each game</s>
         </li>
     </ul>
         <h3>
@@ -78,7 +81,10 @@
             Finish publisher methods
         </li>
         <li>
-            List the games for each publisher on the publisher details page
+           <s>List the games for each publisher on the publisher details page</s>
+        </li>
+        <li>
+            List of games should be using view models rather than returning the full model
         </li>
     </ul>
 </body>

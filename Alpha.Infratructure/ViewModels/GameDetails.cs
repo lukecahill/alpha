@@ -23,7 +23,7 @@ namespace Alpha.Infrastructure.ViewModels {
             }
 
             // return the list of accessories associated with the games ID, if any
-            if (game.Accessories.Any(g => g.GameId ==- game.GameId)) {
+            if (game.Accessories.Any(g => g.GameId == game.GameId)) {
                 this.AccessoryList = game.Accessories.ToList().Where(g => g.GameId == game.GameId);
             }
         }

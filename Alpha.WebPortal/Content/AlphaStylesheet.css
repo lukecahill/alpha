@@ -16,11 +16,3 @@
 .navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand {
     color: white;
 }
-
-#clock { color: white; }
-
-.fa-clock-o {
-    color:white;
-    padding-top: 15px;
-    padding-bottom: 15px;
-}

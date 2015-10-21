@@ -4,6 +4,10 @@
     <p>All the publishers!</p>
 </div>
 
+<div>
+    <p class="text-center" data-ng-show="loading"><i class="fa fa-spinner fa-spin fa-5x"></i></p>
+</div>
+
 <div class="row" data-ng-show="!showAddNew">
     <div class="col-lg-12 pull-right">
         <button class="btn btn-default" data-ng-click="showAddNewGame()">Add a new publisher</button>
@@ -42,7 +46,7 @@
         </div>
     </div>
 
-    <table data-ng-show="show_table" class="table table-striped well">
+    <table class="table table-striped well">
         <tr>
             <th>
                 <a href="" data-ng-click="sortType = 'Name'; sortReverse = !sortReverse">
