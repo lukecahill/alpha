@@ -28,7 +28,8 @@ namespace Alpha.BusinessLogic.Repositories {
             var entity = new DAL.Models.Accessories {
                 Name = accessory.Name,
                 Type = accessory.Type,
-                Description = accessory.Description
+                Description = accessory.Description,
+                GameId = accessory.GameId
             };
 
             db.Accessories.Add(entity);
