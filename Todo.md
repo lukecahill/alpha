@@ -13,22 +13,28 @@
             Authentication using OWIN
         </li>
         <li>
+            Unit tests
+        </li>
+        <li>
+            App factories for common Angular functions (such as get, post, delete etc.)
+        </li>
+        <li>
             Styling for all pages
         </li>
         <li>
             Logging - use log4net?
         </li>
         <li>
-            Email and notifications - how will these be done?
+            Email and notifications - how will these be done? Are these actually needed?
         </li>
         <li>
             Add more details for everything - price etc.
         </li>
         <li>
-            Split the controllers into different files
+            <b>Split the controllers into different files</b>
         </li>
         <li>
-            AngularJS in different files in general - only loaded when needed
+            <b>AngularJS in different files in general - only loaded when needed - seriously need to do these two things</b>
         </li>
         <li>
             Loading icons for all the pages -  summary pages all done

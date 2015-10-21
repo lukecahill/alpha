@@ -304,7 +304,7 @@ app.controller('accessoryIdController', function ($scope, $http, $routeParams, $
 
     $scope.delete = function () {
         var id = $routeParams.accessoryId;
-        console.log(id)
+
         $http({
             method: "DELETE",
             url: "http://localhost:57369/api/accessories/" + id
@@ -325,3 +325,30 @@ app.controller('aboutController', function ($scope) {
 app.controller('contactController', function ($scope) {
     $scope.message = 'Contact us! JK. This is just a demo.';
 });
+
+//function PostData(url, config) {
+//    $http({
+//        method: "POST",
+//        url: url,
+//        data: config,
+//        contentType: "application/json"
+//    })
+//    .success(function () {
+//        $route.reload();
+//    })
+//    .error(function (error) {
+//        console.log(error);
+//    });
+//};
+
+//function DeleteItem(url, id) {
+//    $http({
+//        method: 'DELETE',
+//        url: url + id
+//    })
+//    .success(function (response) {
+//    })
+//    .error(function (error) {
+//        console.log(error)
+//    });
+//};

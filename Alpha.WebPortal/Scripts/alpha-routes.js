@@ -1,10 +1,7 @@
-﻿// script.js
+﻿var app = angular.module('alphaApp', ['ngRoute', 'ui.bootstrap']);
 
-// create the module and name it scotchApp
-// also include ngRoute for all our routing needs
-var app = angular.module('alphaApp', ['ngRoute', 'ui.bootstrap']);
-
-// configure our routes
+// configure 
+routes
 app.config(function ($routeProvider, $locationProvider) {
 
     //$locationProvider.html5Mode(true);
