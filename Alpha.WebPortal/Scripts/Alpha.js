@@ -22,7 +22,7 @@ app.controller('gameIdController', function ($scope, $http, $routeParams, $locat
             url: "http://localhost:57369/api/games/" + id
         })
         .success(function (response) {
-            $location.location.href('/#/games');
+            //$location.location.href('/#/games');
             console.log(response);
             // change this to redirect to the games summary - currently goes home
         })
@@ -157,10 +157,30 @@ app.controller('publisherIdController', function ($rootScope, $scope, $routePara
     .error(function (error) {
         console.log(error);
     });
+
+    $scope.delete = function () {
+        var id = $routeParams.publisherId;
+        $http({
+            method: "DELETE",
+            url: "http://localhost:57369/api/publishers/" + id
+        })
+        .success(function (response) {
+            //$location.location.href('/#/publishers');
+        })
+        .error(function (error) {
+            console.log(error);
+        });
+    };
 });
 
 app.controller('addonsController', function ($scope, $http) {
     $scope.loading = true;
+    $scope.showAddNew = false;
+
+    $scope.showAddNewAddon = function () {
+        $scope.showAddNew = true;
+    };
+
     $http.get("http://localhost:57369/api/addons")
        .success(function (response) {
            $scope.addons = response;
@@ -173,6 +193,12 @@ app.controller('addonsController', function ($scope, $http) {
 
 app.controller('accessoriesController', function ($scope, $http) {
     $scope.loading = true;
+    $scope.showAddNew = false;
+
+    $scope.showAddNewAccessory = function () {
+        $scope.showAddNew = true;
+    };
+
     $http.get("http://localhost:57369/api/accessories")
        .success(function (response) {
            $scope.accessories = response;
@@ -183,25 +209,87 @@ app.controller('accessoriesController', function ($scope, $http) {
        })
 });
 
-app.controller('addonIdController', function ($scope, $http, $routeParams) {
+app.controller('addonIdController', function ($scope, $http, $routeParams, $route, $location) {
     $http.get('http://localhost:57369/api/addons/' + $routeParams.addonId)
-   .success(function (response) {
-       $scope.addon = response;
-   })
-   .error(function (error) {
-       console.log(error);
-   })
+       .success(function (response) {
+           $scope.addon = response;
+       })
+       .error(function (error) {
+           console.log(error);
+       });
+
+    $scope.delete = function () {
+        var id = $routeParams.addonId;
+        $http({
+            method: "DELETE",
+            url: "http://localhost:57369/api/addons/" + id
+        })
+        .success(function (response) {
+           // $location.location.href('/#/addons');
+        })
+        .error(function (error) {
+            console.log(error);
+        });
+    };
+
+    $scope.postData = function () {
+        var config = {};
+
+        $http({
+            method: "POST",
+            url: "http://localhost:57369/api/addons",
+            data: config,
+            contentType: "application/json"
+        })
+        .success(function () {
+            $route.reload();
+        })
+        .error(function (error) {
+            console.log(error);
+        });
+    };
 });
 
-app.controller('accessoryIdController', function ($scope, $http, $routeParams) {
+app.controller('accessoryIdController', function ($scope, $http, $routeParams, $route, $location) {
     $http.get('http://localhost:57369/api/accessories/' + $routeParams.accessoryId)
-   .success(function (response) {
-       $scope.accessory = response;
-       console.log(response);
-   })
-   .error(function (error) {
-       console.log(error);
-   })
+       .success(function (response) {
+           $scope.accessory = response;
+       })
+       .error(function (error) {
+           console.log(error);
+       });
+
+    $scope.delete = function () {
+        var id = $routeParams.accessoryId;
+        console.log(id)
+        $http({
+            method: "DELETE",
+            url: "http://localhost:57369/api/accessories/" + id
+        })
+        .success(function (response) {
+            //$location.href('/#/accessories');
+        })
+        .error(function (error) {
+            console.log(error);
+        });
+    };
+
+    $scope.postData = function () {
+        var config = {};
+
+        $http({
+            method: "POST",
+            url: "http://localhost:57369/api/accessories",
+            data: config,
+            contentType: "application/json"
+        })
+        .success(function () {
+            $route.reload();
+        })
+        .error(function (error) {
+            console.log(error);
+        });
+    };
 });
 
 app.controller('aboutController', function ($scope) {

@@ -11,7 +11,7 @@ namespace Alpha.BusinessLogic.Repositories {
         private AlphaContext db = new AlphaContext();
 
         public IEnumerable<AccessoriesSummary> GetAll() {
-			var entities = db.Accessories.ToList();
+			var entities = db.Accessories.ToList().Where(a => a.IsDeleted == false);
 			return entities.Select(e => new AccessoriesSummary(e)).ToList();
 		}
 

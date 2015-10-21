@@ -100,7 +100,6 @@
     <Content Include="packages.config" />
     <Content Include="Scripts\Alpha.js" />
     <Content Include="Scripts\alpha-routes.js" />
-    <Content Include="Scripts\angular-loading-spinner.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />

@@ -12,7 +12,7 @@ namespace Alpha.BusinessLogic.Repositories {
         private AlphaContext db = new AlphaContext();
 
         public IEnumerable<AddonsDetails> GetAll() {
-            var entities = db.Addons.ToList();
+            var entities = db.Addons.ToList().Where(a => a.IsDeleted == false);
             return entities.Select(e => new AddonsDetails(e)).ToList();
         }
 
