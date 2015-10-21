@@ -67,7 +67,7 @@
     </h3>
     <ul>
         <li>
-            POST/DELETE/PUT all need to be done
+            <s>POST/DELETE/</s>PUT all need to be done
         </li>
         <li>
             <s>GetById needs to be done</s>
@@ -78,7 +78,7 @@
     </h3>
     <ul>
         <li>
-            POST/DELETE/PUT all need to be done
+            <s>POST/DELETE/</s>PUT all need to be done
         </li>
         <li>
             <s>GetById needs to be done</s>

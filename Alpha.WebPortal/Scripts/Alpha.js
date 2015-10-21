@@ -173,7 +173,7 @@ app.controller('publisherIdController', function ($rootScope, $scope, $routePara
     };
 });
 
-app.controller('addonsController', function ($scope, $http) {
+app.controller('addonsController', function ($scope, $http, $route) {
     $scope.loading = true;
     $scope.showAddNew = false;
 
@@ -188,10 +188,40 @@ app.controller('addonsController', function ($scope, $http) {
        })
        .error(function (error) {
            console.log(error);
-       })
+       });
+
+    $scope.postData = function () {
+        var config = {
+            Name: $scope.title,
+            GameId: $scope.gameId,
+            ReleaseDate: $scope.releaseDate,
+            Description: $scope.description
+        };
+
+        $http({
+            method: "POST",
+            url: "http://localhost:57369/api/addons",
+            data: config,
+            contentType: "application/json"
+        })
+        .success(function () {
+            $route.reload();
+        })
+        .error(function (error) {
+            console.log(error);
+        });
+    };
+
+    $http.get("http://localhost:57369/api/games")
+    .success(function (response) {
+        $scope.games = response;
+    })
+    .error(function (error) {
+        console.log(error);
+    });
 });
 
-app.controller('accessoriesController', function ($scope, $http) {
+app.controller('accessoriesController', function ($scope, $http, $route) {
     $scope.loading = true;
     $scope.showAddNew = false;
 
@@ -206,7 +236,37 @@ app.controller('accessoriesController', function ($scope, $http) {
        })
        .error(function (error) {
            console.log(error);
-       })
+       });
+
+    $scope.postData = function () {
+        var config = {
+            Name: $scope.name,
+            Type: $scope.type,
+            Description: $scope.description,
+            GameId: $scope.gameId
+        };
+
+        $http({
+            method: "POST",
+            url: "http://localhost:57369/api/accessories",
+            data: config,
+            contentType: "application/json"
+        })
+        .success(function () {
+            $route.reload();
+        })
+        .error(function (error) {
+            console.log(error);
+        });
+    };
+
+    $http.get("http://localhost:57369/api/games")
+    .success(function (response) {
+        $scope.games = response;
+    })
+    .error(function (error) {
+        console.log(error);
+    });
 });
 
 app.controller('addonIdController', function ($scope, $http, $routeParams, $route, $location) {
@@ -226,23 +286,6 @@ app.controller('addonIdController', function ($scope, $http, $routeParams, $rout
         })
         .success(function (response) {
            // $location.location.href('/#/addons');
-        })
-        .error(function (error) {
-            console.log(error);
-        });
-    };
-
-    $scope.postData = function () {
-        var config = {};
-
-        $http({
-            method: "POST",
-            url: "http://localhost:57369/api/addons",
-            data: config,
-            contentType: "application/json"
-        })
-        .success(function () {
-            $route.reload();
         })
         .error(function (error) {
             console.log(error);
@@ -268,23 +311,6 @@ app.controller('accessoryIdController', function ($scope, $http, $routeParams, $
         })
         .success(function (response) {
             //$location.href('/#/accessories');
-        })
-        .error(function (error) {
-            console.log(error);
-        });
-    };
-
-    $scope.postData = function () {
-        var config = {};
-
-        $http({
-            method: "POST",
-            url: "http://localhost:57369/api/accessories",
-            data: config,
-            contentType: "application/json"
-        })
-        .success(function () {
-            $route.reload();
         })
         .error(function (error) {
             console.log(error);
