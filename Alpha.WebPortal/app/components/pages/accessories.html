@@ -4,13 +4,19 @@
     <p>{{ message }}</p>
 </div>
 
-<table class="table table-striped">
-    <tr>
-        <th>Name</th>
-        <th>Game</th>
-    </tr>
-    <tr data-ng-repeat="item in accessories">
-        <td>{{ item.Name }}</td>
-        <td>{{ item.GameTitle }}</td>
-    </tr>
-</table>
+<div>
+    <p class="text-center" data-ng-show="loading"><i class="fa fa-spinner fa-spin fa-5x"></i></p>
+</div>
+
+<div data-ng-show="!loading">
+    <table class="table table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Game</th>
+        </tr>
+        <tr data-ng-repeat="item in accessories">
+            <td><a href="#/accessories/{{ item.AccessoryId }}">{{ item.Name }}</a></td>
+            <td>{{ item.GameTitle }}</td>
+        </tr>
+    </table>
+</div>

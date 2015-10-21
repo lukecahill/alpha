@@ -51,6 +51,7 @@
     <Compile Include="ViewModels\AccessoriesDetails.cs" />
     <Compile Include="ViewModels\AccessoriesSummary.cs" />
     <Compile Include="ViewModels\AddonsDetails.cs" />
+    <Compile Include="ViewModels\AddonSummary.cs" />
     <Compile Include="ViewModels\GameDetails.cs" />
     <Compile Include="ViewModels\GameSummary.cs" />
     <Compile Include="ViewModels\PublisherDetails.cs" />

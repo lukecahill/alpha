@@ -27,7 +27,8 @@ namespace Alpha.BusinessLogic.Repositories {
         public CreateAccessoriesBindingModels Add(CreateAccessoriesBindingModels accessory) {
             var entity = new DAL.Models.Accessories {
                 Name = accessory.Name,
-                Type = accessory.Type
+                Type = accessory.Type,
+                Description = accessory.Description
             };
 
             db.Accessories.Add(entity);

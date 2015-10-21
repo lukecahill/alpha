@@ -4,15 +4,14 @@
     <p>All the publishers!</p>
 </div>
 
-<div class="row col-md-12">
-    <p>To see all the publishers we have in stock click the button below: </p>
-    <p>
-        <button data-ng-click="GetPublishers()" class="btn btn-primary">Get list!</button>
-    </p>
+<div class="row" data-ng-show="!showAddNew">
+    <div class="col-lg-12 pull-right">
+        <button class="btn btn-default" data-ng-click="showAddNewGame()">Add a new publisher</button>
+    </div>
 </div>
 
 <div class="row" data-ng-show="!loading">
-    <div class="row well">
+    <div class="row well" data-ng-show="showAddNew">
         <form class="col-lg-12">
             <div class="col-md-4">
                 <label for="Name">Enter a name: </label>

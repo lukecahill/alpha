@@ -12,6 +12,8 @@ namespace Alpha.DAL.Models {
         [MaxLength(255)]
         public string Type { get; set; }
 
+        public string Description { get; set; }
+
         // Relationships
         [ForeignKey("GameId")]
         public virtual Games Game { get; set; }

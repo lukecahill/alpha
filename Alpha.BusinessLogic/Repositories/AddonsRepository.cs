@@ -36,7 +36,8 @@ namespace Alpha.BusinessLogic.Repositories {
             var entity = new DAL.Models.Addons {
                 Title = addon.Name,
                 GameId = addon.GameId,
-                ReleaseDate = returnDate
+                ReleaseDate = returnDate,
+                Description = addon.Description
             };
 
             db.Addons.Add(entity);
