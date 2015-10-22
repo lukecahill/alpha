@@ -19,7 +19,9 @@
         <form class="col-lg-12" name="publisherForm" data-ng-submit="submitForm(publisherForm.$valid)" novalidate>
             <div class="col-md-4">
                 <label for="Name">Enter a name: </label>
-                <input data-ng-model="Name" data-ng-required="true" data-ng-maxlength="255" class="form-control" name="Name" type="text" placeholder="Activison" /><p data-ng-show="publisherForm.Name.$invalid && !publisherForm.Name.$pristine" class="help-block">Game name is required.</p>
+                <input data-ng-model="Name" data-ng-required="true" data-ng-maxlength="255" class="form-control" name="Name" type="text" placeholder="Activison" />
+                <p data-ng-show="publisherForm.Name.$invalid && !publisherForm.Name.$pristine" class="help-block">Game name is required.</p>
+                <p data-ng-show="publisherForm.Name.$error.maxlength" class="help-block">Name is too long (maximum 255 characters!).</p>
             </div>
             <div class="col-md-4">
                 <label for="Location">Add a location: </label>

@@ -19,8 +19,9 @@
             <div class="col-lg-12 row">
                 <div class="col-md-3">
                     <label for="title">Enter addon title: </label>
-                    <input data-ng-model="title" data-ng-required="true" class="form-control" name="title" type="text" placeholder="Activison" />
+                    <input data-ng-model="title" data-ng-required="true" data-ng-maxlength="255" class="form-control" name="title" type="text" placeholder="Activison" />
                     <p data-ng-show="addonForm.title.$invalid && !addonForm.title.$pristine" class="help-block">Addon title is required.</p>
+                    <p data-ng-show="addonForm.title.$error.maxlength" class="help-block">Title is too long (maximum 255 characters!).</p>
                 </div>
                 <div class="col-md-3">
                     <label for="game">Choose a game: </label>

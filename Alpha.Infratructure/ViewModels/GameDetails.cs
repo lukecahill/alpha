@@ -19,12 +19,12 @@ namespace Alpha.Infrastructure.ViewModels {
 
             // return the list of addons associated with the games ID, if any
             if (game.Addons.Any(g => g.GameId == game.GameId)) {
-                this.AddonList = game.Addons.ToList().Where(g => g.GameId == game.GameId);
+                this.AddonList = game.Addons.ToList().Where(g => g.GameId == game.GameId && g.IsDeleted == false);
             }
 
             // return the list of accessories associated with the games ID, if any
             if (game.Accessories.Any(g => g.GameId == game.GameId)) {
-                this.AccessoryList = game.Accessories.ToList().Where(g => g.GameId == game.GameId);
+                this.AccessoryList = game.Accessories.ToList().Where(g => g.GameId == game.GameId && g.IsDeleted == false);
             }
         }
     }

@@ -21,6 +21,7 @@
                 <label for="publisher">Enter a title: </label>
                 <input data-ng-model="Name" data-ng-required="true" data-ng-maxlength="255" class="form-control" name="Name" type="text" value="White Label" placeholder="Call of Duty 2" />
                 <p data-ng-show="gameForm.Name.$invalid && !gameForm.Name.$pristine" class="help-block">Game name is required.</p>
+                <p data-ng-show="gameForm.Name.$error.maxlength" class="help-block">Name is too long (maximum 255 characters!).</p>
             </div>
             <div class="col-md-3">
                 <label for="Publisher">Choose a publisher: </label>

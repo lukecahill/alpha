@@ -22,7 +22,7 @@ app.controller('gameIdController', function ($scope, $http, $routeParams, $locat
             url: "http://localhost:57369/api/games/" + id
         })
         .success(function (response) {
-            //$location.location.href('/#/games');
+            $location.path('/#/games');
             console.log(response);
             // change this to redirect to the games summary - currently goes home
         })
@@ -89,7 +89,7 @@ app.controller('gamesController', function ($scope, $http, $modal, $log, $route)
 
     $scope.submitForm = function (isValid) {
         if (isValid) {
-            postData();
+            PostData();
         }
     };
 
@@ -114,7 +114,7 @@ app.controller('gamesController', function ($scope, $http, $modal, $log, $route)
     });
 });
 
-app.controller('publisherController', function ($scope, $http) {
+app.controller('publisherController', function ($scope, $http, $route) {
     $scope.sortType = 'Name'; // set the default sort type
     $scope.sortReverse = false;  // set the default sort order
     $scope.searchPublishers = '';     // set the default search/filter term
@@ -147,7 +147,7 @@ app.controller('publisherController', function ($scope, $http) {
             contentType: "application/json"
         })
         .success(function () {
-            $scope.GetPublishers();
+            $route.reload();
         })
         .error(function (error) {
             console.log(error);
@@ -156,7 +156,7 @@ app.controller('publisherController', function ($scope, $http) {
 
     $scope.submitForm = function (isValid) {
         if (isValid) {
-            postData();
+            PostData();
         }
     };
 });
@@ -177,7 +177,7 @@ app.controller('publisherIdController', function ($rootScope, $scope, $routePara
             url: "http://localhost:57369/api/publishers/" + id
         })
         .success(function (response) {
-            //$location.location.href('/#/publishers');
+            $location.path('#/publishers');
         })
         .error(function (error) {
             console.log(error);
@@ -226,7 +226,7 @@ app.controller('addonsController', function ($scope, $http, $route) {
 
     $scope.submitForm = function (isValid) {
         if (isValid) {
-            postData();
+            PostData();
         }
     };
 
@@ -280,7 +280,7 @@ app.controller('accessoriesController', function ($scope, $http, $route) {
 
     $scope.submitForm = function (isValid) {
         if (isValid) {
-            postData();
+            PostData();
         }
     };
 

@@ -15,7 +15,7 @@ namespace Alpha.Infrastructure.ViewModels {
 
             //return the list of addons associated with the publishers ID, if there are any
             if (publisher.Games.Any(g => g.PublisherId == publisher.PublisherId)) {
-                this.GameList = publisher.Games.ToList().Where(g => g.PublisherId == publisher.PublisherId);
+                this.GameList = publisher.Games.ToList().Where(g => g.PublisherId == publisher.PublisherId && g.IsDeleted == false);
             }
 		}
 
