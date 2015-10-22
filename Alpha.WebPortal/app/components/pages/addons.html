@@ -15,17 +15,19 @@
         </div>
     </div>
     <div class="row well" data-ng-show="showAddNew">
-        <form class="col-lg-12">
+        <form class="col-lg-12" name="addonForm" novalidate data-ng-submit="submitForm(addonForm.$valid)">
             <div class="col-lg-12 row">
                 <div class="col-md-3">
                     <label for="title">Enter addon title: </label>
                     <input data-ng-model="title" data-ng-required="true" class="form-control" name="title" type="text" placeholder="Activison" />
+                    <p data-ng-show="addonForm.title.$invalid && !addonForm.title.$pristine" class="help-block">Addon title is required.</p>
                 </div>
                 <div class="col-md-3">
                     <label for="game">Choose a game: </label>
                     <select name="game" data-ng-required="true" data-ng-model="gameId" class="form-control">
                         <option data-ng-repeat="item in games | orderBy: 'Title' " value="{{ item.GameId }}">{{ item.Title }}</option>
                     </select>
+                    <p data-ng-show="addonForm.game.$invalid class=" help-block">Game is required.</p>
                 </div>
                 <div class="col-md-3">
                     <label for="description">Add a description: </label>
@@ -37,7 +39,7 @@
                 </div>
             </div>
             <div class="row col-lg-12 text-right">
-                <button class="btn btn-default top-buffer" data-ng-click="postData()"><span class="glyphicon glyphicon-plus-sign"></span> Add a new Addon!</button>
+                <button class="btn btn-default top-buffer" data-ng-disabled="addonForm.$invalid" type="submit"><span class="glyphicon glyphicon-plus-sign"></span> Add a new Addon!</button>
             </div>
         </form>
     </div>

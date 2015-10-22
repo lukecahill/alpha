@@ -66,7 +66,7 @@ app.controller('gamesController', function ($scope, $http, $modal, $log, $route)
         $scope.showAddNew = true;
     };
 
-    $scope.postData = function () {
+    var PostData = function () {
         var config = {
             "PublisherId": $scope.Publisher,
             "Title": $scope.Name,
@@ -85,6 +85,12 @@ app.controller('gamesController', function ($scope, $http, $modal, $log, $route)
         .error(function (error) {
             console.log(error);
         });
+    };
+
+    $scope.submitForm = function (isValid) {
+        if (isValid) {
+            postData();
+        }
     };
 
     // Get the full list of games - this happens as soon as the page is loaded.
@@ -128,7 +134,7 @@ app.controller('publisherController', function ($scope, $http) {
         console.log(error);
     });
 
-    $scope.postData = function () {
+    var PostData = function () {
         var config = {
             "Name": $scope.Name,
             "Location": $scope.Location
@@ -146,6 +152,12 @@ app.controller('publisherController', function ($scope, $http) {
         .error(function (error) {
             console.log(error);
         });
+    };
+
+    $scope.submitForm = function (isValid) {
+        if (isValid) {
+            postData();
+        }
     };
 });
 
@@ -190,7 +202,7 @@ app.controller('addonsController', function ($scope, $http, $route) {
            console.log(error);
        });
 
-    $scope.postData = function () {
+    var PostData = function () {
         var config = {
             Name: $scope.title,
             GameId: $scope.gameId,
@@ -210,6 +222,12 @@ app.controller('addonsController', function ($scope, $http, $route) {
         .error(function (error) {
             console.log(error);
         });
+    };
+
+    $scope.submitForm = function (isValid) {
+        if (isValid) {
+            postData();
+        }
     };
 
     $http.get("http://localhost:57369/api/games")
@@ -238,7 +256,7 @@ app.controller('accessoriesController', function ($scope, $http, $route) {
            console.log(error);
        });
 
-    $scope.postData = function () {
+    var PostData = function () {
         var config = {
             Name: $scope.name,
             Type: $scope.type,
@@ -258,6 +276,12 @@ app.controller('accessoriesController', function ($scope, $http, $route) {
         .error(function (error) {
             console.log(error);
         });
+    };
+
+    $scope.submitForm = function (isValid) {
+        if (isValid) {
+            postData();
+        }
     };
 
     $http.get("http://localhost:57369/api/games")

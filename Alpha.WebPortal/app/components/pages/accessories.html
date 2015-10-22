@@ -16,17 +16,19 @@
     </div>
 
     <div class="row well" data-ng-show="showAddNew">
-        <form>
+        <form name="accessoryForm" data-ng-submit="submitForm(accessoryForm.$valid)" novalidate>
             <div class="col-lg-12 row">
                 <div class="col-md-3">
                     <label for="name">Enter a name: </label>
                     <input data-ng-model="name" data-ng-required="true" class="form-control" name="name" type="text" placeholder="Activison" />
+                    <p data-ng-show="accessoryForm.name.$invalid && !accessoryForm.name.$pristine" class="help-block">Accessory name is required.</p>
                 </div>
                 <div class="col-md-3">
                     <label for="game">Choose a game: </label>
                     <select name="game" data-ng-required="true" data-ng-model="gameId" class="form-control">
                         <option data-ng-repeat="item in games | orderBy: 'Title' " value="{{ item.GameId }}">{{ item.Title }}</option>
                     </select>
+                    <p data-ng-show="accessoryForm.game.$invalid" class="help-block">Game is required.</p>
                 </div>
                 <div class="col-md-3">
                     <label for="Type">Enter a type: </label>
@@ -38,7 +40,7 @@
                 </div>
             </div>
             <div class="row col-lg-12 top-buffer text-right">
-                <button class="btn btn-default top-buffer" data-ng-click="postData()"><span class="glyphicon glyphicon-plus-sign"></span> Add a new accessory!</button>
+                <button class="btn btn-default top-buffer" data-ng-disabled="accessoryForm.$invalid" type="submit"><span class="glyphicon glyphicon-plus-sign"></span> Add a new accessory!</button>
             </div>
         </form>
     </div>

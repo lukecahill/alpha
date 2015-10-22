@@ -4,7 +4,7 @@
     <p>All the games!</p>
 </div>
 
-<div class="row"  data-ng-show="!showAddNew">
+<div class="row" data-ng-show="!showAddNew">
     <div class="col-lg-12 pull-right">
         <button class="btn btn-default" data-ng-click="showAddNewGame()"><span class="glyphicon glyphicon-plus-sign"></span>  Add a new game</button>
     </div>
@@ -16,23 +16,25 @@
 
 <div data-ng-show="!loading">
     <div class="row well" data-ng-show="showAddNew">
-        <form class="col-lg-12">
+        <form class="col-lg-12" name="gameForm" data-ng-submit="submitForm(gameForm.$valid)" novalidate>
             <div class="col-md-3">
                 <label for="publisher">Enter a title: </label>
-                <input data-ng-model="Name" data-ng-required="true" class="form-control" name="Name" type="text" value="White Label" placeholder="Call of Duty 2" />
+                <input data-ng-model="Name" data-ng-required="true" data-ng-maxlength="255" class="form-control" name="Name" type="text" value="White Label" placeholder="Call of Duty 2" />
+                <p data-ng-show="gameForm.Name.$invalid && !gameForm.Name.$pristine" class="help-block">Game name is required.</p>
             </div>
             <div class="col-md-3">
                 <label for="Publisher">Choose a publisher: </label>
                 <select name="Publisher" data-ng-required="true" data-ng-model="Publisher" class="form-control">
                     <option data-ng-repeat="item in publishers | orderBy: 'Name' " value="{{ item.PublisherId }}">{{ item.Name }}</option>
                 </select>
+                <p data-ng-show="gameForm.Publisher.$invalid" class="help-block">Publisher name is required.</p>
             </div>
             <div class="col-md-3">
                 <label for="release">Enter the release date: </label>
                 <input data-ng-model="ReleaseDate" class="form-control" name="release" type="text" placeholder="dd-MM-yy e.g. 31-10-15" />
             </div>
             <div class="col-md-3 top-buffer text-right">
-                <button class="btn btn-default" data-ng-click="postData()"><span class="glyphicon glyphicon-plus-sign"></span> Add a new Game!</button>
+                <button class="btn btn-default" data-ng-disabled="gameForm.$invalid" type="submit"><span class="glyphicon glyphicon-plus-sign"></span> Add a new Game!</button>
             </div>
         </form>
     </div>
@@ -53,7 +55,7 @@
             </div>
         </form>
     </div>
-    
+
     <table class="table table-striped well" data-ng-show="!loading">
         <tr>
             <th>
