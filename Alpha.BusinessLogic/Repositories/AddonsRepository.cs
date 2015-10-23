@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using Alpha.Interfaces.Interfaces;
 using Alpha.DAL.Context;
@@ -12,12 +13,18 @@ namespace Alpha.BusinessLogic.Repositories {
         private AlphaContext db = new AlphaContext();
 
         public IEnumerable<AddonsDetails> GetAll() {
-            var entities = db.Addons.ToList().Where(a => a.IsDeleted == false);
+            var entities = db.Addons
+                .Include(g => g.Game)
+                .ToList()
+                .Where(a => a.IsDeleted == false);
+
             return entities.Select(e => new AddonsDetails(e)).ToList();
         }
 
         public AddonsDetails GetById(int id) {
-			var entity = db.Addons.FirstOrDefault(p => p.AddonId == id);
+			var entity = db.Addons
+                .Include(g => g.Game)
+                .FirstOrDefault(p => p.AddonId == id);
             if(entity != null) {
                 return new AddonsDetails(entity);
             }
