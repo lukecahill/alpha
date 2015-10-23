@@ -14,12 +14,17 @@ namespace Alpha.BusinessLogic.Repositories {
         private AlphaContext db = new AlphaContext();
 
         public IEnumerable<GameSummary> GetAll() {
-            var entities = db.Games.ToList().Where(g => g.IsDeleted == false);
+            var entities = db.Games.Include(p => p.Publisher).ToList().Where(g => g.IsDeleted == false);
             return entities.Select(e => new GameSummary(e)).ToList();
         }
 
         public GameDetails GetById(int id) {
-            var entity = db.Games.FirstOrDefault(g => g.GameId == id);
+            var entity = db.Games.Include(p => p.Publisher)
+                .Include(a => a.Accessories)
+                .Include(a => a.Addons)
+                .FirstOrDefault(g => g.GameId == id);
+            // TODO : The rest of the repostitories.
+
             if(entity != null) {
                 return new GameDetails(entity);
             }

@@ -54,7 +54,6 @@ app.controller('gameIdController', function ($scope, $http, $routeParams, $locat
     };
 });
 
-
 app.controller('gamesController', function ($scope, $http, $modal, $log, $route) {
     $scope.sortType = 'Title'; // set the default sort type
     $scope.sortReverse = false;  // set the default sort order
@@ -162,9 +161,14 @@ app.controller('publisherController', function ($scope, $http, $route) {
 });
 
 app.controller('publisherIdController', function ($rootScope, $scope, $routeParams, $route, $http) {
+    console.log($routeParams.publisherId)
     $http.get("http://localhost:57369/api/publishers/" + $routeParams.publisherId)
     .success(function (response) {
         $scope.publisher = response;
+        console.log(response);
+        $scope.PublisherId = $routeParams.publisherId;
+        var i = $routeParams.publisherId;
+        console.log(i)
     })
     .error(function (error) {
         console.log(error);
