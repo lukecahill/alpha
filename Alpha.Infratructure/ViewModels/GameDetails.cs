@@ -20,9 +20,21 @@ namespace Alpha.Infrastructure.ViewModels {
             // return the list of addons associated with the games ID, if any
             if (game.Addons.Any(g => g.GameId == game.GameId)) {
                 this.AddonList = game.Addons.ToList().Where(g => g.GameId == game.GameId && g.IsDeleted == false);
+                //var ListOfAddons= game.Addons.ToList().Where(g => g.GameId == game.GameId && g.IsDeleted == false);
+
+                //foreach(var item in ListOfAddons) {
+                //    var addon = new AddonSummary {
+                //        Title = item.Title,
+                //        AddonId = item.AddonId,
+                //        GameTitle = item.Game.Title,
+                //        Publisher = item.Game.Publisher.Name
+                //    };
+
+                //    this.AddonList.Add(addon);
+                //}
             }
 
-            // return the list of accessories associated with the games ID, if any
+            // return the list of accessories associated with the games ID, if any 
             if (game.Accessories.Any(g => g.GameId == game.GameId)) {
                 this.AccessoryList = game.Accessories.ToList().Where(g => g.GameId == game.GameId && g.IsDeleted == false);
             }

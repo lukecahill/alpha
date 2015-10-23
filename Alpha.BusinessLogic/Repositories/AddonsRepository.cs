@@ -12,13 +12,13 @@ namespace Alpha.BusinessLogic.Repositories {
     public class AddonsRepository : IAddonsRepository {
         private AlphaContext db = new AlphaContext();
 
-        public IEnumerable<AddonsDetails> GetAll() {
+        public IEnumerable<AddonSummary> GetAll() {
             var entities = db.Addons
                 .Include(g => g.Game)
                 .ToList()
                 .Where(a => a.IsDeleted == false);
 
-            return entities.Select(e => new AddonsDetails(e)).ToList();
+            return entities.Select(e => new AddonSummary(e)).ToList();
         }
 
         public AddonsDetails GetById(int id) {

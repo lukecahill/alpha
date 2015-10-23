@@ -16,7 +16,7 @@ namespace Alpha.WebAPI.Controllers {
         }
 
         // GET: api/Addons
-        public IEnumerable<AddonsDetails> GetAddons() {
+        public IEnumerable<AddonSummary> GetAddons() {
             return _rep.GetAll();
         }
 

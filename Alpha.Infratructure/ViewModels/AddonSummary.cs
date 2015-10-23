@@ -14,5 +14,7 @@ namespace Alpha.Infrastructure.ViewModels {
             this.GameTitle = addon.Game.Title;
             this.Publisher = addon.Game.Publisher.Name;
         }
+
+        public AddonSummary() { }
     }
 }

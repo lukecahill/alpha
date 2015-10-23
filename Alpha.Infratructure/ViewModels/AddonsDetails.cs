@@ -18,5 +18,7 @@ namespace Alpha.Infrastructure.ViewModels {
             this.Description = addon.Description;
             this.ReleaseDate = addon.ReleaseDate;
         }
+
+        public AddonsDetails() { }
     }
 }

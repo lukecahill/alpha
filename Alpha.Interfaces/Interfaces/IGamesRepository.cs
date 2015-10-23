@@ -2,6 +2,6 @@
 using Alpha.Infrastructure.BindingModels;
 
 namespace Alpha.Interfaces.Interfaces {
-    public interface IGamesRepository : IRespositoryBase<GameSummary, AddonsDetails, CreateGameBindingModel, UpdateGameBindingModel, DeleteGameBindingModel, int> {
+    public interface IGamesRepository : IRespositoryBase<GameSummary, GameDetails, CreateGameBindingModel, UpdateGameBindingModel, DeleteGameBindingModel, int> {
     }
 }
