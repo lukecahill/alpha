@@ -1,11 +1,10 @@
 ﻿using Alpha.DAL.Context;
-using Alpha.Infrastructure.ViewModels;
 using Alpha.Infrastructure.BindingModels;
+using Alpha.Infrastructure.ViewModels;
 using Alpha.Interfaces.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Data.Entity;
+using System.Linq;
 
 namespace Alpha.BusinessLogic.Repositories {
     public class PublisherRepository : IPublisherRepository {
@@ -13,12 +12,18 @@ namespace Alpha.BusinessLogic.Repositories {
         private AlphaContext db = new AlphaContext();
 
         public IEnumerable<PublisherSummary> GetAll() {
-            var entities = db.Publishers.ToList().Where(p => p.IsDeleted == false);
+            var entities = db.Publishers
+                .Include(g => g.Games)
+                .ToList()
+                .Where(p => p.IsDeleted == false);
+
 			return entities.Select(e => new PublisherSummary(e)).ToList();
         }
 
         public PublisherDetails GetById(int id) {
-			var entity = db.Publishers.FirstOrDefault(p => p.PublisherId == 1);
+			var entity = db.Publishers
+                .Include(g => g.Games)
+                .FirstOrDefault(p => p.PublisherId == 1);
             if(entity != null) {
 			    return new PublisherDetails(entity);
             }

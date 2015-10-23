@@ -6,7 +6,7 @@ namespace Alpha.DAL.Context {
     public class AlphaContext : DbContext {
         public AlphaContext() : base("name=AlphaContext") {
             Database.SetInitializer<AlphaContext>(null);
-            //Configuration.LazyLoadingEnabled = false;
+            Configuration.LazyLoadingEnabled = false;
 
             this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
         }
