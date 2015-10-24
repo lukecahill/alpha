@@ -15,6 +15,7 @@ namespace Alpha.BusinessLogic.Repositories {
         public IEnumerable<AddonSummary> GetAll() {
             var entities = db.Addons
                 .Include(g => g.Game)
+                .Include(a => a.Game.Publisher)
                 .ToList()
                 .Where(a => a.IsDeleted == false);
 
@@ -24,6 +25,7 @@ namespace Alpha.BusinessLogic.Repositories {
         public AddonsDetails GetById(int id) {
 			var entity = db.Addons
                 .Include(g => g.Game)
+                .Include(g => g.Game.Publisher)
                 .FirstOrDefault(p => p.AddonId == id);
             if(entity != null) {
                 return new AddonsDetails(entity);
