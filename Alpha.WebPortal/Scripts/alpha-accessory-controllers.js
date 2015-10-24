@@ -42,7 +42,7 @@
         }
     };
 
-    GetAll.all('http://localhost:57369/api/addons', function (response) {
+    GetAll.all('http://localhost:57369/api/games', function (response) {
         $scope.games = response;
     });
 }]);

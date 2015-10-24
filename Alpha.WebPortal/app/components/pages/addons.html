@@ -28,7 +28,7 @@
                     <select name="game" data-ng-required="true" data-ng-model="gameId" class="form-control">
                         <option data-ng-repeat="item in games | orderBy: 'Title' " value="{{ item.GameId }}">{{ item.Title }}</option>
                     </select>
-                    <p data-ng-show="addonForm.game.$invalid class=" help-block">Game is required.</p>
+                    <p data-ng-show="addonForm.game.$invalid && !addonForm.game.$pristine" class="help-block">Game is required.</p>
                 </div>
                 <div class="col-md-3">
                     <label for="description">Add a description: </label>
