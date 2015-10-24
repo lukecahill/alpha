@@ -5,9 +5,9 @@ app.controller('mainController', function ($scope, $http) {
 
 app.controller('gameIdController', function ($scope, $http, $routeParams, $location) {
 
-    var gameApiUrl = 'http://localhost:57369/api/games';
+    var gameIdApiUrl = 'http://localhost:57369/api/games';
 
-    $http.get(gameApiUrl + $routeParams.gameId)
+    $http.get(gameIdApiUrl + $routeParams.gameId)
 	.success(function (response) {
 	    $scope.game = response;
 	    $scope.GameId = $routeParams.gameId;
@@ -22,7 +22,7 @@ app.controller('gameIdController', function ($scope, $http, $routeParams, $locat
         console.log(id)
         $http({
             method: 'DELETE',
-            url: gameApiUrl + id
+            url: gameIdApiUrl + id
         })
         .success(function (response) {
             $location.path('/#/games');
@@ -45,7 +45,7 @@ app.controller('gameIdController', function ($scope, $http, $routeParams, $locat
         console.log(data);
         $http({
             method: 'PUT',
-            url: gameApiUrl + id,
+            url: gameIdApiUrl + id,
             data: data
         })
         .success(function (response) {
@@ -58,8 +58,9 @@ app.controller('gameIdController', function ($scope, $http, $routeParams, $locat
 });
 
 app.controller('gamesController', function ($scope, $http, $modal, $log, $route, GetAll) {
-
+    
     var gameApiUrl = 'http://localhost:57369/api/games';
+
     $scope.sortType = 'Title'; // set the default sort type
     $scope.sortReverse = false;  // set the default sort order
     $scope.searchGame = '';     // set the default search/filter term
@@ -109,6 +110,9 @@ app.controller('gamesController', function ($scope, $http, $modal, $log, $route,
 });
 
 app.controller('publisherController', function ($scope, $http, $route, GetAll) {
+
+    var publisherApi = 'http://localhost:57369/api/publishers/';
+
     $scope.sortType = 'Name'; // set the default sort type
     $scope.sortReverse = false;  // set the default sort order
     $scope.searchPublishers = '';     // set the default search/filter term
@@ -119,7 +123,7 @@ app.controller('publisherController', function ($scope, $http, $route, GetAll) {
         $scope.showAddNew = true;
     };
 
-    GetAll.all('http://localhost:57369/api/publishers', function (response) {
+    GetAll.all(publisherApi, function (response) {
         $scope.publishers = response;
         $scope.loading = false;
     })
@@ -132,7 +136,7 @@ app.controller('publisherController', function ($scope, $http, $route, GetAll) {
 
         $http({
             method: "POST",
-            url: "http://localhost:57369/api/publishers",
+            url: publisherApi,
             data: config,
             contentType: "application/json"
         })
@@ -153,7 +157,9 @@ app.controller('publisherController', function ($scope, $http, $route, GetAll) {
 
 app.controller('publisherIdController', function ($rootScope, $scope, $routeParams, $route, $http, GetAll) {
 
-    GetAll.all('http://localhost:57369/api/publishers/' + $routeParams.publisherId, function (response) {
+    var publisherIdApi = 'http://localhost:57369/api/publishers/';
+
+    GetAll.all(publisherIdApi + $routeParams.publisherId, function (response) {
         $scope.publisher = response;
         $scope.PublisherId = $routeParams.publisherId;
         var i = $routeParams.publisherId;
@@ -163,7 +169,7 @@ app.controller('publisherIdController', function ($rootScope, $scope, $routePara
         var id = $routeParams.publisherId;
         $http({
             method: "DELETE",
-            url: "http://localhost:57369/api/publishers/" + id
+            url: publisherIdApi + id
         })
         .success(function (response) {
             $location.path('#/publishers');
@@ -175,6 +181,9 @@ app.controller('publisherIdController', function ($rootScope, $scope, $routePara
 });
 
 app.controller('addonsController', function ($scope, $http, $route, GetAll) {
+
+    var addonApi = 'http://localhost:57369/api/addons/';
+
     $scope.loading = true;
     $scope.showAddNew = false;
 
@@ -182,7 +191,7 @@ app.controller('addonsController', function ($scope, $http, $route, GetAll) {
         $scope.showAddNew = true;
     };
 
-    GetAll.all('http://localhost:57369/api/addons', function (response) {
+    GetAll.all(addonApi, function (response) {
         $scope.addons = response;
         $scope.loading = false;
     });
@@ -197,7 +206,7 @@ app.controller('addonsController', function ($scope, $http, $route, GetAll) {
 
         $http({
             method: "POST",
-            url: "http://localhost:57369/api/addons",
+            url: addonApi,
             data: config,
             contentType: "application/json"
         })
@@ -221,6 +230,9 @@ app.controller('addonsController', function ($scope, $http, $route, GetAll) {
 });
 
 app.controller('accessoriesController', function ($scope, $http, $route, GetAll) {
+
+    var accessoryApi = 'http://localhost:57369/api/accessories';
+
     $scope.loading = true;
     $scope.showAddNew = false;
 
@@ -228,7 +240,7 @@ app.controller('accessoriesController', function ($scope, $http, $route, GetAll)
         $scope.showAddNew = true;
     };
 
-    GetAll.all('http://localhost:57369/api/accessories', function (response) {
+    GetAll.all(accessoryApi, function (response) {
         $scope.accessories = response;
         $scope.loading = false;
     })
@@ -243,7 +255,7 @@ app.controller('accessoriesController', function ($scope, $http, $route, GetAll)
 
         $http({
             method: "POST",
-            url: "http://localhost:57369/api/accessories",
+            url: accessoryApi,
             data: config,
             contentType: "application/json"
         })
@@ -268,7 +280,9 @@ app.controller('accessoriesController', function ($scope, $http, $route, GetAll)
 
 app.controller('addonIdController', function ($scope, $http, $routeParams, $route, $location, GetAll) {
 
-    GetAll.all('http://localhost:57369/api/addons/' + $routeParams.addonId, function (response) {
+    var addonIdApi = 'http://localhost:57369/api/addons/'
+
+    GetAll.all(addonIdApi + $routeParams.addonId, function (response) {
         $scope.addon = response;
     });
 
@@ -276,7 +290,7 @@ app.controller('addonIdController', function ($scope, $http, $routeParams, $rout
         var id = $routeParams.addonId;
         $http({
             method: "DELETE",
-            url: "http://localhost:57369/api/addons/" + id
+            url: addonIdApi + id
         })
         .success(function (response) {
             // $location.location.href('/#/addons');
@@ -289,7 +303,9 @@ app.controller('addonIdController', function ($scope, $http, $routeParams, $rout
 
 app.controller('accessoryIdController', function ($scope, $http, $routeParams, $route, $location, GetAll) {
 
-    GetAll.all('http://localhost:57369/api/accessories/' + $routeParams.accessoryId, function (response) {
+    var accessoryIdApi = 'http://localhost:57369/api/accessories/';
+
+    GetAll.all(accessoryIdApi + $routeParams.accessoryId, function (response) {
         $scope.accessory = response;
     });
 
@@ -298,7 +314,7 @@ app.controller('accessoryIdController', function ($scope, $http, $routeParams, $
 
         $http({
             method: "DELETE",
-            url: "http://localhost:57369/api/accessories/" + id
+            url: accessoryIdApi + id
         })
         .success(function (response) {
             //$location.href('/#/accessories');
