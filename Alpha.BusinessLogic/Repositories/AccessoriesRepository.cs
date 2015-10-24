@@ -14,6 +14,7 @@ namespace Alpha.BusinessLogic.Repositories {
         public IEnumerable<AccessoriesSummary> GetAll() {
 			var entities = db.Accessories
                 .Include(g => g.Game)
+                .Include(a => a.Game.Publisher)
                 .ToList()
                 .Where(a => a.IsDeleted == false);
 
@@ -23,6 +24,7 @@ namespace Alpha.BusinessLogic.Repositories {
         public AccessoriesDetails GetById(int id) {
             var entity = db.Accessories
                 .Include(g => g.Game)
+                .Include(g => g.Game.Publisher)
                 .FirstOrDefault(p => p.AccessoryId == id);
             if(entity != null) {
                 return new AccessoriesDetails(entity);
