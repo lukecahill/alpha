@@ -1,4 +1,4 @@
-﻿app.controller('addonsController', function ($scope, $http, $route, GetAll) {
+﻿app.controller('addonsController', ['$scope', '$http', '$route', 'GetAll', function ($scope, $http, $route, GetAll) {
 
     var addonApi = 'http://localhost:57369/api/addons/';
 
@@ -45,9 +45,9 @@
     GetAll.all('http://localhost:57369/api/games', function (response) {
         $scope.games = response;
     });
-});
+}]);
 
-app.controller('addonIdController', function ($scope, $http, $routeParams, $route, $location, GetAll) {
+app.controller('addonIdController', ['$scope', '$http', '$routeParams', '$route', '$location', 'GetAll', function ($scope, $http, $routeParams, $route, $location, GetAll) {
 
     var addonIdApi = 'http://localhost:57369/api/addons/'
 
@@ -61,4 +61,4 @@ app.controller('addonIdController', function ($scope, $http, $routeParams, $rout
             console.log(response);
         });
     };
-});
+}]);
