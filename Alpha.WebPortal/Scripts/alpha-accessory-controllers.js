@@ -56,17 +56,9 @@ app.controller('accessoryIdController', function ($scope, $http, $routeParams, $
     });
 
     $scope.delete = function () {
-        var id = $routeParams.accessoryId;
-
-        $http({
-            method: "DELETE",
-            url: accessoryIdApi + id
-        })
-        .success(function (response) {
-            //$location.href('/#/accessories');
-        })
-        .error(function (error) {
-            console.log(error);
+        DeleteItem.deleteItem(accessoryIdApi, $routeParams.accessoryId, function (response) {
+            $location.path('#/accessories');
+            console.log(response);
         });
     };
 });

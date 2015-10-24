@@ -56,16 +56,9 @@ app.controller('addonIdController', function ($scope, $http, $routeParams, $rout
     });
 
     $scope.delete = function () {
-        var id = $routeParams.addonId;
-        $http({
-            method: "DELETE",
-            url: addonIdApi + id
-        })
-        .success(function (response) {
-            // $location.location.href('/#/addons');
-        })
-        .error(function (error) {
-            console.log(error);
+        DeleteItem.deleteItem(addonIdApi, $routeParams.addonId, function (response) {
+            $location.path('#/addons');
+            console.log(response);
         });
     };
 });
