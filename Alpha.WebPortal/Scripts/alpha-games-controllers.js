@@ -1,4 +1,4 @@
-﻿app.controller('gameIdController', function ($scope, $http, $routeParams, $location) {
+﻿app.controller('gameIdController', function ($scope, $http, $routeParams, $location, PostItem, DeleteItem, GetAll) {
 
     var gameIdApiUrl = 'http://localhost:57369/api/games/';
 
@@ -13,19 +13,8 @@
 	});
 
     $scope.delete = function () {
-        var id = $routeParams.gameId;
-        console.log(id)
-        $http({
-            method: 'DELETE',
-            url: gameIdApiUrl + id
-        })
-        .success(function (response) {
-            $location.path('/#/games');
+        DeleteItem.deleteItem(gameIdApiUrl, $routeParams.gameId, function (response) {
             console.log(response);
-            // change this to redirect to the games summary - currently goes home
-        })
-        .error(function (error) {
-            console.log(error);
         });
     };
 

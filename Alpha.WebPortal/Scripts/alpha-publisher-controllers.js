@@ -52,19 +52,12 @@ app.controller('publisherIdController', function ($rootScope, $scope, $routePara
         $scope.publisher = response;
         $scope.PublisherId = $routeParams.publisherId;
         var i = $routeParams.publisherId;
-    })
+    });
 
     $scope.delete = function () {
-        var id = $routeParams.publisherId;
-        $http({
-            method: "DELETE",
-            url: publisherIdApi + id
-        })
-        .success(function (response) {
+        DeleteItem.deleteItem(publisherIdApi, $routeParams.publisherId, function (response) {
+            console.log(response);
             $location.path('#/publishers');
-        })
-        .error(function (error) {
-            console.log(error);
         });
     };
 });
