@@ -16,7 +16,7 @@
             Unit tests
         </li>
         <li>
-            App factories for common Angular functions (such as get, post, delete etc.)
+            App factories for common Angular functions (such as <s>get</s>, post, delete etc.)
         </li>
         <li>
             Styling for all pages
@@ -31,7 +31,7 @@
             Add more details for everything - price etc.
         </li>
         <li>
-            <b>Split the controllers into different files</b>
+            <s>Split the controllers into different files</s>
         </li>
         <li>
             <b>AngularJS in different files in general - only loaded when needed - seriously need to do these two things</b>

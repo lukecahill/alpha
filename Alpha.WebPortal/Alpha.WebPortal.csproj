@@ -98,6 +98,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\alpha-accessory-controllers.js" />
+    <Content Include="Scripts\alpha-addon-controllers.js" />
+    <Content Include="Scripts\alpha-games-controllers.js" />
+    <Content Include="Scripts\alpha-publisher-controllers.js" />
     <Content Include="Scripts\alpha-services.js" />
     <Content Include="Scripts\Alpha.js" />
     <Content Include="Scripts\alpha-routes.js" />
