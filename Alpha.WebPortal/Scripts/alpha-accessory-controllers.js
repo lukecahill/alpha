@@ -1,4 +1,4 @@
-﻿app.controller('accessoriesController', function ($scope, $http, $route, GetAll) {
+﻿app.controller('accessoriesController', ['$scope', '$http', '$route', 'GetAll', function ($scope, $http, $route, GetAll) {
 
     var accessoryApi = 'http://localhost:57369/api/accessories';
 
@@ -45,9 +45,9 @@
     GetAll.all('http://localhost:57369/api/addons', function (response) {
         $scope.games = response;
     });
-});
+}]);
 
-app.controller('accessoryIdController', function ($scope, $http, $routeParams, $route, $location, GetAll) {
+app.controller('accessoryIdController', ['$scope', '$http', '$routeParams', '$route', '$location', 'GetAll', function ($scope, $http, $routeParams, $route, $location, GetAll) {
 
     var accessoryIdApi = 'http://localhost:57369/api/accessories/';
 
@@ -61,4 +61,4 @@ app.controller('accessoryIdController', function ($scope, $http, $routeParams, $
             console.log(response);
         });
     };
-});
+}]);

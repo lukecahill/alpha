@@ -1,4 +1,4 @@
-﻿app.controller('gameIdController', function ($scope, $http, $routeParams, $location, PostItem, DeleteItem, GetAll) {
+﻿app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$location', 'PostItem', 'DeleteItem', 'GetAll', function ($scope, $http, $routeParams, $location, PostItem, DeleteItem, GetAll) {
 
     var gameIdApiUrl = 'http://localhost:57369/api/games/';
 
@@ -39,9 +39,9 @@
             console.log(error);
         });
     };
-});
+}]);
 
-app.controller('gamesController', function ($scope, $http, $modal, $log, $route, GetAll) {
+app.controller('gamesController', ['$scope', '$http', '$modal', '$log', '$route', 'GetAll', function ($scope, $http, $modal, $log, $route, GetAll) {
 
     var gameApiUrl = 'http://localhost:57369/api/games';
 
@@ -91,4 +91,4 @@ app.controller('gamesController', function ($scope, $http, $modal, $log, $route,
     GetAll.all('http://localhost:57369/api/publishers', function (response) {
         $scope.publishers = response;
     })
-});
+}]);

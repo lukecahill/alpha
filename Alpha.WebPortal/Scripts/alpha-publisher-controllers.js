@@ -1,4 +1,4 @@
-﻿app.controller('publisherController', function ($scope, $http, $route, GetAll) {
+﻿app.controller('publisherController', ['$scope', '$http', '$route', 'GetAll', function ($scope, $http, $route, GetAll) {
 
     var publisherApi = 'http://localhost:57369/api/publishers/';
 
@@ -42,9 +42,9 @@
             PostData();
         }
     };
-});
+}]);
 
-app.controller('publisherIdController', function ($rootScope, $scope, $routeParams, $route, $http, GetAll) {
+app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams', '$route', '$http', 'GetAll', function ($rootScope, $scope, $routeParams, $route, $http, GetAll) {
 
     var publisherIdApi = 'http://localhost:57369/api/publishers/';
 
@@ -60,4 +60,4 @@ app.controller('publisherIdController', function ($rootScope, $scope, $routePara
             $location.path('#/publishers');
         });
     };
-});
+}]);
