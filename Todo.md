@@ -39,6 +39,9 @@
         <li>
             Loading icons for all the pages -  summary pages all done
         </li>
+        <li>
+            Details can still be accessed using /api/games/4 after 'deletion'.
+        </li>
     </ul>
     <h3>
         Games:

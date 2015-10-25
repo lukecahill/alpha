@@ -13,12 +13,11 @@
         </a>
     </div>
     <div class="col-lg-3 text-right">
-        <button class="btn btn-default" data-ng-click="updateGame()">Edit this addon</button>
+        <button class="btn btn-default" data-ng-click="updateAddon()">Edit this addon</button>
     </div>
     <div class="col-lg-3 text-right">
         <button class="btn btn-default" data-ng-click="delete()"><span class="glyphicon glyphicon-remove"></span> Delete this addon</button>
     </div>
-    <input type="hidden" data-ng-model="deleteId" name="addonId" value="{{ AddonId }}" />
 </div>
 
 <p>The full details for {{ addon.AddonName }} can be found below:</p>

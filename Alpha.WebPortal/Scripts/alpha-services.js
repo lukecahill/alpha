@@ -38,7 +38,7 @@ app.factory('DeleteItem', ['$http', function ($http) {
                 .success(callback)
                 .error(function (error) {
                     console.log(error);
-                });
+            });
         }
     };
 }]);

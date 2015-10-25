@@ -1,4 +1,4 @@
-﻿app.controller('addonsController', ['$scope', '$http', '$route', 'GetAll', function ($scope, $http, $route, GetAll) {
+﻿app.controller('addonsController', ['$scope', '$http', '$route', 'GetAll', 'PostItem', function ($scope, $http, $route, GetAll, PostItem) {
 
     var addonApi = 'http://localhost:57369/api/addons/';
 
@@ -22,17 +22,8 @@
             Description: $scope.description
         };
 
-        $http({
-            method: "POST",
-            url: addonApi,
-            data: config,
-            contentType: "application/json"
-        })
-        .success(function () {
+        PostItem.post(addonApi, config, function () {
             $route.reload();
-        })
-        .error(function (error) {
-            console.log(error);
         });
     };
 
@@ -47,13 +38,17 @@
     });
 }]);
 
-app.controller('addonIdController', ['$scope', '$http', '$routeParams', '$route', '$location', 'GetAll', function ($scope, $http, $routeParams, $route, $location, GetAll) {
+app.controller('addonIdController', ['$scope', '$http', '$routeParams', '$route', '$location', 'GetAll', 'DeleteItem', function ($scope, $http, $routeParams, $route, $location, GetAll, DeleteItem) {
 
     var addonIdApi = 'http://localhost:57369/api/addons/'
 
     GetAll.all(addonIdApi + $routeParams.addonId, function (response) {
         $scope.addon = response;
     });
+
+    $scope.updateAddon = function () {
+        console.log("Nothing currently");
+    };
 
     $scope.delete = function () {
         DeleteItem.deleteItem(addonIdApi, $routeParams.addonId, function (response) {

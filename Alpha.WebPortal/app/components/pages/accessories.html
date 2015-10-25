@@ -20,7 +20,7 @@
             <div class="col-lg-12 row">
                 <div class="col-md-3">
                     <label for="name">Enter a name: </label>
-                    <input data-ng-model="name" data-ng-required="true" data-ng-maxlength="255" class="form-control" name="name" type="text" placeholder="Activison" />
+                    <input data-ng-model="name" data-ng-required="true" data-ng-maxlength="255" class="form-control" name="name" type="text" placeholder="Controller" />
                     <p data-ng-show="accessoryForm.name.$invalid && !accessoryForm.name.$pristine" class="help-block">Accessory name is required.</p>
                     <p data-ng-show="accessoryForm.name.$error.maxlength" class="help-block">Name is too long (maximum 255 characters!).</p>
                 </div>
@@ -33,11 +33,11 @@
                 </div>
                 <div class="col-md-3">
                     <label for="Type">Enter a type: </label>
-                    <input data-ng-model="type" type="text" name="Type" class="form-control" placeholder="USA" />
+                    <input data-ng-model="type" type="text" name="Type" class="form-control" placeholder="Controller" />
                 </div>
                 <div class="col-md-3">
                     <label for="Description">Add a description: </label>
-                    <input data-ng-model="description" type="text" name="Description" class="form-control" placeholder="USA" />
+                    <input data-ng-model="description" type="text" name="Description" class="form-control" placeholder="New way to play!" />
                 </div>
             </div>
             <div class="row col-lg-12 top-buffer text-right">
