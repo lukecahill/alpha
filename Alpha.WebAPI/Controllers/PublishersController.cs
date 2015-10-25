@@ -36,14 +36,14 @@ namespace Alpha.WebAPI.Controllers {
 
         // PUT: api/Publishers/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPublisher(int id, UpdatePublisherBindingModel publisher) {
+        public IHttpActionResult PutPublisher(UpdatePublisherBindingModel publisher) {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
-            if (id != publisher.PublisherId) {
-                return BadRequest();
-            }
+            //if (id != publisher.PublisherId) {
+            //    return BadRequest();
+            //}
 
             try {
                 _rep.Update(publisher);

@@ -41,7 +41,7 @@
     });
 }]);
 
-app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$location', 'PostItem', 'DeleteItem', 'GetAll', function ($scope, $http, $routeParams, $location, PostItem, DeleteItem, GetAll) {
+app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$location', 'PostItem', 'DeleteItem', 'GetAll', '$route', function ($scope, $http, $routeParams, $location, PostItem, DeleteItem, GetAll, $route) {
 
     var gameIdApiUrl = 'http://localhost:57369/api/games/';
     var gameId = $routeParams.gameId;
@@ -73,6 +73,7 @@ app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$locatio
             data: data
         })
         .success(function (response) {
+            $route.reload();
             console.log(response);
         })
         .error(function (error) {

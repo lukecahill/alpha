@@ -35,7 +35,7 @@
     };
 }]);
 
-app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams', '$location', '$route', '$http', 'GetAll', 'DeleteItem', function ($rootScope, $scope, $routeParams, $route, $location, $http, GetAll, DeleteItem) {
+app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams', '$location', '$route', '$http', 'GetAll', 'DeleteItem', 'UpdateItem', function ($rootScope, $scope, $routeParams, $route, $location, $http, GetAll, DeleteItem, UpdateItem) {
 
     var publisherIdApi = 'http://localhost:57369/api/publishers/';
     var publisherId;
@@ -47,8 +47,17 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
     });
 
     $scope.updatePublisher = function () {
-        console.log("Nothing currently");
-    }
+        var config = {
+            PublisherId: publisherId,
+            Name: 'test-change',
+            Location: 'UK'
+        };
+
+        UpdateItem.put(publisherIdApi + publisherId, config, function (response) {
+            console.log(response);
+
+        });
+    };
 
     $scope.delete = function () {
         DeleteItem.deleteItem(publisherIdApi, publisherId, function (response) {
