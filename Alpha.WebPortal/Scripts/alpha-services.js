@@ -42,3 +42,20 @@ app.factory('DeleteItem', ['$http', function ($http) {
         }
     };
 }]);
+
+app.factory('UpdateItem', ['$http', function ($http) {
+    return {
+        put: function (url, config, callback) {
+            $http({
+                method: 'PUT',
+                url: url,
+                data: config,
+                contentType: 'application/json'
+            })
+                .success(callback)
+                .error(function (error) {
+                    console.log(error);
+            });
+        }
+    };
+}]);
