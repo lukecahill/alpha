@@ -23,7 +23,7 @@ namespace Alpha.BusinessLogic.Repositories {
         public PublisherDetails GetById(int id) {
 			var entity = db.Publishers
                 .Include(g => g.Games)
-                .FirstOrDefault(p => p.PublisherId == 1);
+                .FirstOrDefault(p => p.PublisherId == id);
             if(entity != null) {
 			    return new PublisherDetails(entity);
             }
