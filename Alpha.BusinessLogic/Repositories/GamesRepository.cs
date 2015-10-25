@@ -24,10 +24,10 @@ namespace Alpha.BusinessLogic.Repositories {
 
         public GameDetails GetById(int id) {
             var entity = db.Games.Include(p => p.Publisher)
-                .Include(a => a.Accessories)
-                .Include(a => a.Addons)
+                .Include(a => a.Accessories).Where(a => a.IsDeleted == false)
+                .Include(a => a.Addons).Where(a => a.IsDeleted == false)
+                .Where(g => g.IsDeleted == false)
                 .FirstOrDefault(g => g.GameId == id);
-            // TODO : The rest of the repostitories.
 
             if(entity != null) {
                 return new GameDetails(entity);

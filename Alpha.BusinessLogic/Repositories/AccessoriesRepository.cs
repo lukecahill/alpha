@@ -22,9 +22,11 @@ namespace Alpha.BusinessLogic.Repositories {
 
         public AccessoriesDetails GetById(int id) {
             var entity = db.Accessories
-                .Include(g => g.Game)
-                .Include(g => g.Game.Publisher)
-                .FirstOrDefault(p => p.AccessoryId == id);
+                .Include(g => g.Game).Where(g => g.IsDeleted == false)
+                .Include(g => g.Game.Publisher).Where(g => g.IsDeleted == false)
+                .Where(a => a.IsDeleted == false)
+                .FirstOrDefault(a => a.AccessoryId == id);
+
             if(entity != null) {
                 return new AccessoriesDetails(entity);
             }

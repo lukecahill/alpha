@@ -22,8 +22,10 @@ namespace Alpha.BusinessLogic.Repositories {
 
         public PublisherDetails GetById(int id) {
 			var entity = db.Publishers
-                .Include(g => g.Games)
+                .Include(g => g.Games).Where(g => g.IsDeleted == false)
+                .Where(p => p.IsDeleted == false)
                 .FirstOrDefault(p => p.PublisherId == id);
+
             if(entity != null) {
 			    return new PublisherDetails(entity);
             }

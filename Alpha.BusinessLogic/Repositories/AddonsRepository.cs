@@ -24,9 +24,11 @@ namespace Alpha.BusinessLogic.Repositories {
 
         public AddonsDetails GetById(int id) {
 			var entity = db.Addons
-                .Include(g => g.Game)
-                .Include(g => g.Game.Publisher)
+                .Include(g => g.Game).Where(g => g.IsDeleted == false)
+                .Include(g => g.Game.Publisher).Where(g => g.IsDeleted == false)
+                .Where(a => a.IsDeleted == false)
                 .FirstOrDefault(p => p.AddonId == id);
+
             if(entity != null) {
                 return new AddonsDetails(entity);
             }
