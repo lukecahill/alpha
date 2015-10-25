@@ -1,4 +1,4 @@
-﻿app.controller('publisherController', ['$scope', '$http', '$route', 'GetAll', function ($scope, $http, $route, GetAll) {
+﻿app.controller('publisherController', ['$scope', '$http', '$route', 'GetAll', 'PostItem', function ($scope, $http, $route, GetAll, PostItem) {
 
     var publisherApi = 'http://localhost:57369/api/publishers/';
 
@@ -23,17 +23,8 @@
             "Location": $scope.Location
         };
 
-        $http({
-            method: "POST",
-            url: publisherApi,
-            data: config,
-            contentType: "application/json"
-        })
-        .success(function () {
+        PostItem.post(publisherApi, config, function () {
             $route.reload();
-        })
-        .error(function (error) {
-            console.log(error);
         });
     };
 
@@ -44,20 +35,25 @@
     };
 }]);
 
-app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams', '$route', '$http', 'GetAll', function ($rootScope, $scope, $routeParams, $route, $http, GetAll) {
+app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams', '$location', '$route', '$http', 'GetAll', 'DeleteItem', function ($rootScope, $scope, $routeParams, $route, $location, $http, GetAll, DeleteItem) {
 
     var publisherIdApi = 'http://localhost:57369/api/publishers/';
+    var publisherId;
 
     GetAll.all(publisherIdApi + $routeParams.publisherId, function (response) {
         $scope.publisher = response;
-        $scope.PublisherId = $routeParams.publisherId;
-        var i = $routeParams.publisherId;
+        publisherId = $routeParams.publisherId;
+        $scope.PublisherId = publisherId
     });
 
+    $scope.updatePublisher = function () {
+        console.log("Nothing currently");
+    }
+
     $scope.delete = function () {
-        DeleteItem.deleteItem(publisherIdApi, $routeParams.publisherId, function (response) {
+        DeleteItem.deleteItem(publisherIdApi, publisherId, function (response) {
             console.log(response);
-            $location.path('#/publishers');
+            $location.href.path('#/publishers');
         });
     };
 }]);

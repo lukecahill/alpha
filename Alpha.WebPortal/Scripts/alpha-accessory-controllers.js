@@ -1,4 +1,4 @@
-﻿app.controller('accessoriesController', ['$scope', '$http', '$route', 'GetAll', function ($scope, $http, $route, GetAll) {
+﻿app.controller('accessoriesController', ['$scope', '$http', '$route', 'GetAll', 'PostItem', function ($scope, $http, $route, GetAll, PostItem) {
 
     var accessoryApi = 'http://localhost:57369/api/accessories';
 
@@ -22,17 +22,8 @@
             GameId: $scope.gameId
         };
 
-        $http({
-            method: "POST",
-            url: accessoryApi,
-            data: config,
-            contentType: "application/json"
-        })
-        .success(function () {
+        PostItem.post(accessoryApi, config, function () {
             $route.reload();
-        })
-        .error(function (error) {
-            console.log(error);
         });
     };
 
@@ -47,13 +38,17 @@
     });
 }]);
 
-app.controller('accessoryIdController', ['$scope', '$http', '$routeParams', '$route', '$location', 'GetAll', function ($scope, $http, $routeParams, $route, $location, GetAll) {
+app.controller('accessoryIdController', ['$scope', '$http', '$routeParams', '$route', '$location', 'GetAll', 'DeleteItem', function ($scope, $http, $routeParams, $route, $location, GetAll, DeleteItem) {
 
     var accessoryIdApi = 'http://localhost:57369/api/accessories/';
 
     GetAll.all(accessoryIdApi + $routeParams.accessoryId, function (response) {
         $scope.accessory = response;
     });
+
+    $scope.updateAccessory = function () {
+        console.log("Nothing currently");
+    }
 
     $scope.delete = function () {
         DeleteItem.deleteItem(accessoryIdApi, $routeParams.accessoryId, function (response) {
