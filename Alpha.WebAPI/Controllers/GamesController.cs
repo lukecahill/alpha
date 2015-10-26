@@ -33,7 +33,7 @@ namespace Alpha.WebAPI.Controllers {
 
         // PUT: api/Games/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutGames(int id, UpdateGameBindingModel games) {
+        public IHttpActionResult PutGames(UpdateGameBindingModel games) {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
