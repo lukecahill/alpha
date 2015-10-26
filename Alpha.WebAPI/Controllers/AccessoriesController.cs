@@ -33,14 +33,14 @@ namespace Alpha.WebAPI.Controllers {
 
         // PUT: api/Accessories/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutAccessories(int id, UpdateAccessoriesBindingModels accessories) {
+        public IHttpActionResult PutAccessories(UpdateAccessoriesBindingModels accessories) {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
-            if (id != accessories.AccessoryId) {
-                return BadRequest();
-            }
+            //if (id != accessories.AccessoryId) {
+            //    return BadRequest();
+            //}
 
             try {
                 _rep.Update(accessories);

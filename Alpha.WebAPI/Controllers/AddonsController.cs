@@ -33,14 +33,14 @@ namespace Alpha.WebAPI.Controllers {
 
         // PUT: api/Addons/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutAddons(int id, UpdateAddonBindingModel addons) {
+        public IHttpActionResult PutAddons(UpdateAddonBindingModel addons) {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
-            if (id != addons.AddonId) {
-                return BadRequest();
-            }
+            //if (id != addons.AddonId) {
+            //    return BadRequest();
+            //}
 
             try {
                 _rep.Update(addons);
