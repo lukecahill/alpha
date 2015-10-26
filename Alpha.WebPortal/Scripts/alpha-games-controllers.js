@@ -59,25 +59,17 @@ app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$locatio
     };
 
     $scope.updateGame = function () {
-        var id = $routeParams.gameId;
 
-        var data = {
-            GameId: $scope.deleteId,
-            PublisherId: $routeParams.publisherId,
-            Title: $scope.title
+        var config = {
+            GameId: gameId,
+            ReleaseDate: $scope.ReleaseDate,
+            Title: $scope.Title,
+            PublisherId: $scope.PublisherId
         };
-        console.log(data);
-        $http({
-            method: 'PUT',
-            url: gameIdApiUrl + id,
-            data: data
-        })
-        .success(function (response) {
-            $route.reload();
+
+        UpdateItem.put(gameIdApiUrl + gameId, config, function (response) {
             console.log(response);
-        })
-        .error(function (error) {
-            console.log(error);
+
         });
     };
 }]);

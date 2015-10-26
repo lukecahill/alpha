@@ -8,13 +8,14 @@
     <p class="text-center" data-ng-show="loading"><i class="fa fa-spinner fa-spin fa-5x"></i></p>
 </div>
 
-<div class="row" data-ng-show="!showAddNew">
-    <div class="col-lg-12 pull-right">
-        <button class="btn btn-default" data-ng-click="showAddNewGame()"><span class="glyphicon glyphicon-plus-sign"></span>    Add a new publisher</button>
-    </div>
-</div>
-
 <div class="row" data-ng-show="!loading">
+
+    <div class="row" data-ng-show="!showAddNew">
+        <div class="col-lg-12 pull-right">
+            <button class="btn btn-default" data-ng-click="showAddNewGame()"><span class="glyphicon glyphicon-plus-sign"></span>    Add a new publisher</button>
+        </div>
+    </div>
+
     <div class="row well" data-ng-show="showAddNew">
         <form class="col-lg-12" name="publisherForm" data-ng-submit="submitForm(publisherForm.$valid)" novalidate>
             <div class="col-md-4">

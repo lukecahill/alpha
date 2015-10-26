@@ -41,12 +41,27 @@
 app.controller('addonIdController', ['$scope', '$http', '$routeParams', '$route', '$location', 'GetAll', 'DeleteItem', function ($scope, $http, $routeParams, $route, $location, GetAll, DeleteItem) {
 
     var addonIdApi = 'http://localhost:57369/api/addons/'
+    var addonId = $routeParams.addonId;
 
-    GetAll.all(addonIdApi + $routeParams.addonId, function (response) {
+    GetAll.all(addonIdApi + addonId, function (response) {
         $scope.addon = response;
     });
 
     $scope.updateAddon = function () {
+
+        var config = {
+            AddonId: addonId,
+            Name: $scope.Name,
+            ReleaseDate: $scope.ReleaseDate,
+            Description: $scope.Description,
+            GameId: $scope.GameId
+        };
+
+        UpdateItem.put(addonIdApi + addonId, config, function (response) {
+            console.log(response);
+
+        });
+
         console.log("Nothing currently");
     };
 
