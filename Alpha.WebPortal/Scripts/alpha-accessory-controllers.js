@@ -41,17 +41,30 @@
 app.controller('accessoryIdController', ['$scope', '$http', '$routeParams', '$route', '$location', 'GetAll', 'DeleteItem', function ($scope, $http, $routeParams, $route, $location, GetAll, DeleteItem) {
 
     var accessoryIdApi = 'http://localhost:57369/api/accessories/';
+    var accessoryId = $routeParams.accessoryId;
 
-    GetAll.all(accessoryIdApi + $routeParams.accessoryId, function (response) {
+    GetAll.all(accessoryIdApi + accessoryId, function (response) {
         $scope.accessory = response;
     });
 
     $scope.updateAccessory = function () {
+
+        var config = {
+            AccessoryId: accessoryId,
+            Name: $scope.Name,
+            Type: $scope.Type,
+            Description: $scope.Description
+        };
+
+        UpdateItem.put(accessoryIdApi + accessoryId, config, function (response) {
+            console.log(response);
+        });
+
         console.log("Nothing currently");
     }
 
     $scope.delete = function () {
-        DeleteItem.deleteItem(accessoryIdApi, $routeParams.accessoryId, function (response) {
+        DeleteItem.deleteItem(accessoryIdApi, accessoryId, function (response) {
             $location.path('#/accessories');
             console.log(response);
         });

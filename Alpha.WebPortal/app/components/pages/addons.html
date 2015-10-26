@@ -9,11 +9,13 @@
 </div>
 
 <div data-ng-show="!loading">
+
     <div class="row" data-ng-show="!showAddNew">
         <div class="col-lg-12 pull-right">
             <button class="btn btn-default" data-ng-click="showAddNewAddon()"><span class="glyphicon glyphicon-plus-sign"></span>    Add a new addon</button>
         </div>
     </div>
+
     <div class="row well" data-ng-show="showAddNew">
         <form class="col-lg-12" name="addonForm" novalidate data-ng-submit="submitForm(addonForm.$valid)">
             <div class="col-lg-12 row">
