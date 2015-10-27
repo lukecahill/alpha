@@ -2,81 +2,89 @@
 <!--<div class="jumbotron text-center">
     <h1><i class="fa fa-gamepad"></i> {{ game.Title }}</h1>
 </div>-->
-<div class="jumbotron text-center">
-    <h1>
-        Details for {{ game.Title }}
-    </h1>
+<div data-ng-show="loading">
+    <p class="text-center"><i class="fa fa-spinner fa-spin fa-5x"></i></p>
 </div>
 
-<div class="row well">
-    <div class="col-lg-6">
-        <a href="#/games/">
-            <small>
-                Back to games...
-            </small>
-        </a>
+<div data-ng-show="!loading">
+
+    <div class="jumbotron text-center">
+        <h1>
+            Details for {{ game.Title }}
+        </h1>
     </div>
-    <div class="col-lg-3 text-right">
-        <button class="btn btn-default" data-ng-click="updateGame()">Edit this games details</button>
+
+    <div class="row well">
+        <div class="col-lg-6">
+            <a href="#/games/">
+                <small>
+                    Back to games...
+                </small>
+            </a>
+        </div>
+        <div class="col-lg-3 text-right">
+            <button class="btn btn-default" data-ng-click="updateGame()">Edit this games details</button>
+        </div>
+        <div class="col-lg-3 text-right">
+            <button class="btn btn-default" data-ng-click="delete()"><span class="glyphicon glyphicon-remove"></span> Delete this game</button>
+        </div>
     </div>
-    <div class="col-lg-3 text-right">
-        <button class="btn btn-default" data-ng-click="delete()"><span class="glyphicon glyphicon-remove"></span> Delete this game</button>
+
+    <p>The full details for {{ game.Title }} can be found below:</p>
+
+    <div class="col-lg-12 clearLeft well-lg">
+        <table class="table table-striped">
+            <tr>
+                <td>
+                    <strong>Title</strong>
+                </td>
+                <td>
+                    <input class="form-control" value="{{ game.Title }}" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Publisher</strong>
+                </td>
+                <td>
+                    <input class="form-control" value="{{ game.Publisher }}" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Release date for this game</strong>
+                </td>
+                <td>
+                    {{ game.ReleaseDate | date:"dd/MM/yyyy 'at' h:mma" }}
+                </td>
+            </tr>
+        </table>
     </div>
-</div>
 
-<p>The full details for {{ game.Title }} can be found below:</p>
+    <div class="col-lg-12">
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    Add-ons available for this game:
+                </th>
+            </tr>
+            <tr data-ng-repeat="item in game.AddonList">
+                <td>{{ item.Title }}</td>
+            </tr>
+        </table>
+    </div>
 
-<div class="col-lg-12 clearLeft well-lg">
-    <table class="table table-striped">
-        <tr>
-            <td>
-                <strong>Title</strong>
-            </td>
-            <td>
-                <input class="form-control" value="{{ game.Title }}" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <strong>Publisher</strong>
-            </td>
-            <td>
-                <input class="form-control" value="{{ game.Publisher }}" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <strong>Release date for this game</strong>
-            </td>
-            <td>
-                {{ game.ReleaseDate | date:"dd/MM/yyyy 'at' h:mma" }}
-            </td>
-        </tr>
-    </table>
-</div>
+    <div class="col-lg-12">
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    Accessories available for this game:
+                </th>
+            </tr>
+            <tr data-ng-repeat="item in game.AccessoryList">
+                <td>{{ item.Name }}</td>
+            </tr>
+        </table>
+    </div>
 
-<div class="col-lg-12">
-    <table class="table table-striped">
-        <tr>
-            <th>
-                Add-ons available for this game:
-            </th>
-        </tr>
-        <tr data-ng-repeat="item in game.AddonList">
-            <td>{{ item.Title }}</td>
-        </tr>
-    </table>
-</div>
-
-<div class="col-lg-12">
-    <table class="table table-striped">
-        <tr>
-            <th>
-                Accessories available for this game:
-            </th>
-        </tr>
-        <tr data-ng-repeat="item in game.AccessoryList">
-            <td>{{ item.Name }}</td>
-        </tr>
-    </table>
 </div>

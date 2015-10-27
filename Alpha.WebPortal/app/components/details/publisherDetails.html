@@ -1,57 +1,65 @@
-﻿<div class="jumbotron text-center">
-    <h1>
-        Details for {{ publisher.Name }}
-    </h1>
+﻿<div data-ng-show="loading">
+    <p class="text-center"><i class="fa fa-spinner fa-spin fa-5x"></i></p>
 </div>
 
-<div class="row well">
-    <div class="col-lg-6">
-        <a href="#/publishers/">
-            <small>
-                Back to publishers...
-            </small>
-        </a>
-    </div>
-    <div class="col-lg-3 text-right">
-        <button class="btn btn-default" data-ng-click="updatePublisher()">Edit this publishers details</button>
-    </div>
-    <div class="col-lg-3 text-right">
-        <button class="btn btn-default" data-ng-click="delete()"><span class="glyphicon glyphicon-remove"></span> Delete this publisher</button>
-    </div>
-</div>
+<div data-ng-show="!loading">
 
-<div class="col-lg-12 clearLeft well-lg">
-    <table class="table table-striped">
-        <tr>
-            <td>
-                <strong>Publisher Name</strong>
-            </td>
-            <td>
-                {{ publisher.Name }}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <strong>Location</strong>
-            </td>
-            <td>
-                {{ publisher.Location }}
-            </td>
-        </tr>
-    </table>
-</div>
+    <div class="jumbotron text-center">
+        <h1>
+            Details for {{ publisher.Name }}
+        </h1>
+    </div>
 
-<div class="col-lg-12">
-    <table class="table table-striped">
-        <tr>
-            <th>
-                Available games from this publisher
-            </th>
-        </tr>
-        <tr data-ng-repeat="item in publisher.GameList">
-            <td>
-                {{ item.Title }}
-            </td>
-        </tr>
-    </table>
+    <div class="row well">
+        <div class="col-lg-6">
+            <a href="#/publishers/">
+                <small>
+                    Back to publishers...
+                </small>
+            </a>
+        </div>
+        <div class="col-lg-3 text-right">
+            <button class="btn btn-default" data-ng-click="updatePublisher()">Edit this publishers details</button>
+        </div>
+        <div class="col-lg-3 text-right">
+            <button class="btn btn-default" data-ng-click="delete()"><span class="glyphicon glyphicon-remove"></span> Delete this publisher</button>
+        </div>
+    </div>
+
+    <div class="col-lg-12 clearLeft well-lg">
+        <table class="table table-striped">
+            <tr>
+                <td>
+                    <strong>Publisher Name</strong>
+                </td>
+                <td>
+                    {{ publisher.Name }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Location</strong>
+                </td>
+                <td>
+                    {{ publisher.Location }}
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="col-lg-12">
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    Available games from this publisher
+                </th>
+            </tr>
+            <tr data-ng-repeat="item in publisher.GameList">
+                <td>
+                    {{ item.Title }}
+                </td>
+            </tr>
+        </table>
+    </div>
+
 </div>

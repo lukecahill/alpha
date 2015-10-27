@@ -42,9 +42,11 @@ app.controller('accessoryIdController', ['$scope', '$http', '$routeParams', '$ro
 
     var accessoryIdApi = 'http://localhost:57369/api/accessories/';
     var accessoryId = $routeParams.accessoryId;
+    $scope.loading = true;
 
     GetAll.all(accessoryIdApi + accessoryId, function (response) {
         $scope.accessory = response;
+        $scope.loading = false;
     });
 
     $scope.updateAccessory = function () {

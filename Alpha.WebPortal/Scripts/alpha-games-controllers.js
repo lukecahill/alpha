@@ -45,11 +45,12 @@ app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$locatio
 
     var gameIdApiUrl = 'http://localhost:57369/api/games/';
     var gameId = $routeParams.gameId;
+    $scope.loading = true;
 
 
     GetAll.all(gameIdApiUrl + gameId, function (response) {
         $scope.game = response;
-        $scope.GameId = gameId;
+        $scope.loading = false;
     });
 
     $scope.delete = function () {
