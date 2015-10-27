@@ -7,7 +7,7 @@ namespace Alpha.Infrastructure.ViewModels {
         public string Name { get; set; }
         public string Location { get; set; }
 
-        public IEnumerable<Games> GameList { get; set; }
+        public IEnumerable<GameDetails> GameList { get; set; }
 
         public PublisherDetails(Publisher publisher) {
 			this.Name = publisher.Name;
@@ -15,7 +15,17 @@ namespace Alpha.Infrastructure.ViewModels {
 
             //return the list of addons associated with the publishers ID, if there are any
             if (publisher.Games.Any(g => g.PublisherId == publisher.PublisherId)) {
-                this.GameList = publisher.Games.ToList().Where(g => g.PublisherId == publisher.PublisherId && g.IsDeleted == false);
+                var list = new List<GameDetails>();
+
+                var listOfGames = publisher.Games.ToList().Where(g => g.PublisherId == publisher.PublisherId && g.IsDeleted == false);
+
+                foreach (var item in listOfGames) {
+                    var entity = new GameDetails {
+                        Publisher = this.Name,
+                        Title = item.Title,
+                        ReleaseDate = item.ReleaseDate
+                    };
+                }
             }
 		}
 

@@ -9,8 +9,8 @@ namespace Alpha.Infrastructure.ViewModels {
         public string Publisher { get; set; }
         public DateTime ReleaseDate { get; set; }
         
-        public IEnumerable<Addons> AddonList { get; set; }
-        public IEnumerable<Accessories> AccessoryList { get; set; }
+        public IEnumerable<AddonsDetails> AddonList { get; set; }
+        public IEnumerable<AccessoriesDetails> AccessoryList { get; set; }
 
         public GameDetails(Games game) {
             this.Title = game.Title;
@@ -19,13 +19,46 @@ namespace Alpha.Infrastructure.ViewModels {
 
             // return the list of addons associated with the games ID, if any
             if (game.Addons.Any(g => g.GameId == game.GameId)) {
-                this.AddonList = game.Addons.ToList().Where(g => g.GameId == game.GameId && g.IsDeleted == false);
+
+                // there is probably a better ay of doing the below, but I do not know it yet
+                var list = new List<AddonsDetails>();
+                var ListofAddons = game.Addons.ToList().Where(g => g.GameId == game.GameId && g.IsDeleted == false);
+
+                foreach (var item in ListofAddons) {
+                    var entity = new AddonsDetails {
+                        AddonId = item.AddonId,
+                        GameTitle = this.Title,
+                        AddonName = item.Title,
+                        Description = item.Description,
+                        Publisher = this.Publisher,
+                        ReleaseDate = item.ReleaseDate
+                    };
+
+                    list.Add(entity);
+                    this.AddonList = list;
+                }
             }
 
             // return the list of accessories associated with the games ID, if any 
             if (game.Accessories.Any(g => g.GameId == game.GameId)) {
-                this.AccessoryList = game.Accessories.ToList().Where(g => g.GameId == game.GameId && g.IsDeleted == false);
+                var list = new List<AccessoriesDetails>();
+                var ListOfAccessories = game.Accessories.ToList().Where(g => g.GameId == game.GameId && g.IsDeleted == false);
+
+                foreach (var item in ListOfAccessories) {
+                    var entity = new AccessoriesDetails {
+                        AccessoryId = item.AccessoryId,
+                        Description = item.Description,
+                        Name = item.Name,
+                        GameTitle = this.Title,
+                        Publisher = this.Publisher
+                    };
+
+                    list.Add(entity);
+                    this.AccessoryList = list;
+                }
             }
         }
+
+        public GameDetails() { }
     }
 }
