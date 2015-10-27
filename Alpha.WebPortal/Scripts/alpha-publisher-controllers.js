@@ -39,11 +39,13 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
 
     var publisherIdApi = 'http://localhost:57369/api/publishers/';
     var publisherId;
+    $scope.loading = true;
 
     GetAll.all(publisherIdApi + $routeParams.publisherId, function (response) {
         $scope.publisher = response;
         publisherId = $routeParams.publisherId;
         $scope.PublisherId = publisherId
+        $scope.loading = false;
     });
 
     $scope.updatePublisher = function () {

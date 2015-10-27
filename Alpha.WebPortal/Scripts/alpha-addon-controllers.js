@@ -42,9 +42,11 @@ app.controller('addonIdController', ['$scope', '$http', '$routeParams', '$route'
 
     var addonIdApi = 'http://localhost:57369/api/addons/'
     var addonId = $routeParams.addonId;
+    $scope.loading = true;
 
     GetAll.all(addonIdApi + addonId, function (response) {
         $scope.addon = response;
+        $scope.loading = false;
     });
 
     $scope.updateAddon = function () {

@@ -16,7 +16,7 @@
             Unit tests
         </li>
         <li>
-            App factories for common Angular functions (such as <s>get</s>, post, delete etc.)
+            <s>App factories for common Angular functions (such as get, post, delete etc.)</s>
         </li>
         <li>
             Styling for all pages
@@ -37,10 +37,13 @@
             <s>AngularJS in different files in general </s>
         </li>
         <li>
-            Loading icons for all the details pages -  summary pages all done
+            <s>Loading icons for all the details pages -  summary pages all done</s>
         </li>
         <li>
             <s>Details can still be accessed using /api/games/4 after 'deletion'.</s>
+        </li>
+        <li>
+            Use Angular data-ng-if if the ID is not found
         </li>
     </ul>
     <h3>
