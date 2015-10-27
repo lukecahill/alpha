@@ -34,10 +34,10 @@
             <s>Split the controllers into different files</s>
         </li>
         <li>
-            <b>AngularJS in different files in general - only loaded when needed - seriously need to do these two things</b>
+            <s>AngularJS in different files in general </s>
         </li>
         <li>
-            Loading icons for all the pages -  summary pages all done
+            Loading icons for all the details pages -  summary pages all done
         </li>
         <li>
             <s>Details can still be accessed using /api/games/4 after 'deletion'.</s>
@@ -54,7 +54,7 @@
             <s>List accessories and addons</s>
         </li>
         <li>
-            List of addons/accessories should be using view models rather than returning the full model
+            <s>List of addons/accessories should be using view models rather than returning the full model</s>
         </li>
     </ul>
         <h3>
@@ -68,7 +68,7 @@
            <s>List the games for each publisher on the publisher details page</s>
         </li>
         <li>
-            List of games should be using view models rather than returning the full model
+            <s>List of games should be using view models rather than returning the full model</s>
         </li>
     </ul>
         <h3>
@@ -76,7 +76,7 @@
     </h3>
     <ul>
         <li>
-            <s>POST/DELETE/</s>PUT all need to be done
+            <s>POST/DELETE/PUT all need to be done</s>
         </li>
         <li>
             <s>GetById needs to be done</s>
@@ -87,7 +87,7 @@
     </h3>
     <ul>
         <li>
-            <s>POST/DELETE/</s>PUT all need to be done
+            <s>POST/DELETE/PUT all need to be done</s>
         </li>
         <li>
             <s>GetById needs to be done</s>

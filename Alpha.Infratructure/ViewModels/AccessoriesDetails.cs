@@ -16,5 +16,7 @@ namespace Alpha.Infrastructure.ViewModels {
 			this.GameTitle = accessories.Game.Title;
             this.Description = accessories.Description;
 		}
+
+        public AccessoriesDetails() { }
 	}
 }
