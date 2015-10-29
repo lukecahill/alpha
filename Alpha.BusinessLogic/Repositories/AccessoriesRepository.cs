@@ -25,7 +25,7 @@ namespace Alpha.BusinessLogic.Repositories {
                 .Include(g => g.Game).Where(g => g.IsDeleted == false)
                 .Include(g => g.Game.Publisher).Where(g => g.IsDeleted == false)
                 .Where(a => a.IsDeleted == false)
-                .FirstOrDefault(a => a.AccessoryId == id);
+                .FirstOrDefault(a => a.ExtraId == id);
 
             if(entity != null) {
                 return new AccessoriesDetails(entity);
@@ -52,14 +52,14 @@ namespace Alpha.BusinessLogic.Repositories {
         }
 
         public void Delete(DeleteAccessoriesBindingModels accessory) {
-            var entity = db.Accessories.FirstOrDefault(a => a.AccessoryId == accessory.AccessoryId);
+            var entity = db.Accessories.FirstOrDefault(a => a.ExtraId == accessory.AccessoryId);
 
             db.Accessories.Remove(entity);
             db.SaveChanges();
         }
 
         public void DeleteById(int id) {
-            var entity = db.Accessories.FirstOrDefault(a => a.AccessoryId == id);
+            var entity = db.Accessories.FirstOrDefault(a => a.ExtraId == id);
 
             db.Accessories.Remove(entity);
             db.SaveChanges();

@@ -7,7 +7,7 @@ namespace Alpha.Infrastructure.ViewModels {
 		public string GameTitle { get; set; }
 
 		public AccessoriesSummary(Accessories accessories) {
-            this.AccessoryId = accessories.AccessoryId;
+            this.AccessoryId = accessories.ExtraId;
 			this.Name = accessories.Name;
 			this.GameTitle = accessories.Game.Title;
 		}

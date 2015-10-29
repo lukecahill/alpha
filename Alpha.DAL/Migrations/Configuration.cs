@@ -41,9 +41,9 @@ namespace Alpha.DAL.Migrations {
         private IList<Addons> GetAddons {
             get {
                 return new List<Addons> {
-                    new Addons { AddonId = 1, GameId = 1, ReleaseDate = DateTime.UtcNow, Title = "Map Pack 1", Description = "Play the game as it should have been released!" },
-                    new Addons { AddonId = 2, GameId = 3, ReleaseDate = DateTime.UtcNow, Title = "Map Pack 2", Description = "Explore new places with the map pack" },
-                    new Addons { AddonId = 3, GameId = 4, ReleaseDate = DateTime.UtcNow, Title = "The Art of Conquest", Description = "Expand to a new frontier: space!" }
+                    new Addons { ExtraId = 1, GameId = 1, ReleaseDate = DateTime.UtcNow, Name = "Map Pack 1", Description = "Play the game as it should have been released!" },
+                    new Addons { ExtraId = 2, GameId = 3, ReleaseDate = DateTime.UtcNow, Name = "Map Pack 2", Description = "Explore new places with the map pack" },
+                    new Addons { ExtraId = 3, GameId = 4, ReleaseDate = DateTime.UtcNow, Name = "The Art of Conquest", Description = "Expand to a new frontier: space!" }
                 };
             }
         }
@@ -51,8 +51,8 @@ namespace Alpha.DAL.Migrations {
         private IList<Accessories> GetAccessories {
             get {
                 return new List<Accessories> {
-                    new Accessories { AccessoryId = 1, GameId = 1, Name = "Gun", Type = "WWII themed gun.", Description = "It is not real." },
-                    new Accessories { AccessoryId = 2, GameId = 2, Name = "Funny hat", Type = "Clothing", Description = "Has absolutly nothing to do with the game." }
+                    new Accessories { ExtraId = 1, GameId = 1, Name = "Gun", Type = "WWII themed gun.", Description = "It is not real." },
+                    new Accessories { ExtraId = 2, GameId = 2, Name = "Funny hat", Type = "Clothing", Description = "Has absolutly nothing to do with the game." }
                 };
             }
         }

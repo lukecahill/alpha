@@ -120,10 +120,19 @@
     <Compile Include="Migrations\201510211348304_Addon_Description_Added.Designer.cs">
       <DependentUpon>201510211348304_Addon_Description_Added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201510291912326_inheritance_addons_and_accessories.cs" />
+    <Compile Include="Migrations\201510291912326_inheritance_addons_and_accessories.Designer.cs">
+      <DependentUpon>201510291912326_inheritance_addons_and_accessories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510291919557_add_price_to_models.cs" />
+    <Compile Include="Migrations\201510291919557_add_price_to_models.Designer.cs">
+      <DependentUpon>201510291919557_add_price_to_models.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Accessories.cs" />
     <Compile Include="Models\Addons.cs" />
     <Compile Include="Models\EntityBase.cs" />
+    <Compile Include="Models\Extras.cs" />
     <Compile Include="Models\Games.cs" />
     <Compile Include="Models\Publisher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,6 +156,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510211348304_Addon_Description_Added.resx">
       <DependentUpon>201510211348304_Addon_Description_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510291912326_inheritance_addons_and_accessories.resx">
+      <DependentUpon>201510291912326_inheritance_addons_and_accessories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510291919557_add_price_to_models.resx">
+      <DependentUpon>201510291919557_add_price_to_models.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

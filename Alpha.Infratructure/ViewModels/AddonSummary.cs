@@ -9,8 +9,8 @@ namespace Alpha.Infrastructure.ViewModels {
         public string Publisher { get; set; }
 
         public AddonSummary(Addons addon) {
-            this.AddonId = addon.AddonId;
-            this.Title = addon.Title;
+            this.AddonId = addon.ExtraId;
+            this.Title = addon.Name;
             this.GameTitle = addon.Game.Title;
             this.Publisher = addon.Game.Publisher.Name;
         }
