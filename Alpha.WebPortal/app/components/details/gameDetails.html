@@ -1,9 +1,11 @@
-﻿<!-- about.html -->
-<!--<div class="jumbotron text-center">
-    <h1><i class="fa fa-gamepad"></i> {{ game.Title }}</h1>
-</div>-->
-<div data-ng-show="loading">
+﻿<div data-ng-show="loading">
     <p class="text-center"><i class="fa fa-spinner fa-spin fa-5x"></i></p>
+</div>
+
+<div data-ng-if="!game || game.Title.length === 0">
+    <h1 class="text-center">
+        The game with that ID could not be found!
+    </h1>
 </div>
 
 <div data-ng-show="!loading">
