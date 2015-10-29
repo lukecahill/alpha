@@ -26,9 +26,9 @@ namespace Alpha.Infrastructure.ViewModels {
 
                 foreach (var item in ListofAddons) {
                     var entity = new AddonsDetails {
-                        AddonId = item.AddonId,
+                        AddonId = item.ExtraId,
                         GameTitle = this.Title,
-                        AddonName = item.Title,
+                        AddonName = item.Name,
                         Description = item.Description,
                         Publisher = this.Publisher,
                         ReleaseDate = item.ReleaseDate
@@ -46,7 +46,7 @@ namespace Alpha.Infrastructure.ViewModels {
 
                 foreach (var item in ListOfAccessories) {
                     var entity = new AccessoriesDetails {
-                        AccessoryId = item.AccessoryId,
+                        AccessoryId = item.ExtraId,
                         Description = item.Description,
                         Name = item.Name,
                         GameTitle = this.Title,

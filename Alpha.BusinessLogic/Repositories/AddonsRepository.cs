@@ -27,7 +27,7 @@ namespace Alpha.BusinessLogic.Repositories {
                 .Include(g => g.Game).Where(g => g.IsDeleted == false)
                 .Include(g => g.Game.Publisher).Where(g => g.IsDeleted == false)
                 .Where(a => a.IsDeleted == false)
-                .FirstOrDefault(p => p.AddonId == id);
+                .FirstOrDefault(p => p.ExtraId == id);
 
             if(entity != null) {
                 return new AddonsDetails(entity);
@@ -45,7 +45,7 @@ namespace Alpha.BusinessLogic.Repositories {
             }
 
             var entity = new DAL.Models.Addons {
-                Title = addon.Name,
+                Name = addon.Name,
                 GameId = addon.GameId,
                 ReleaseDate = returnDate,
                 Description = addon.Description
@@ -62,14 +62,14 @@ namespace Alpha.BusinessLogic.Repositories {
         }
 
         public void Delete(DeleteAddonBindingModel addon) {
-            var entity = db.Addons.FirstOrDefault(a => a.AddonId == addon.AddonId);
+            var entity = db.Addons.FirstOrDefault(a => a.ExtraId == addon.AddonId);
 
             db.Addons.Remove(entity);
             db.SaveChanges();
         }
 
         public void DeleteById(int id) {
-            var entity = db.Addons.FirstOrDefault(a => a.AddonId == id);
+            var entity = db.Addons.FirstOrDefault(a => a.ExtraId == id);
 
             db.Addons.Remove(entity);
             db.SaveChanges();

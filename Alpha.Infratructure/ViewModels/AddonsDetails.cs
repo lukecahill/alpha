@@ -11,8 +11,8 @@ namespace Alpha.Infrastructure.ViewModels {
         public DateTime ReleaseDate { get; set; }
 
         public AddonsDetails(DAL.Models.Addons addon) {
-            this.AddonId = addon.AddonId;
-            this.AddonName = addon.Title;
+            this.AddonId = addon.ExtraId;
+            this.AddonName = addon.Name;
             this.GameTitle = addon.Game.Title;
             this.Publisher = addon.Game.Publisher.Name;
             this.Description = addon.Description;

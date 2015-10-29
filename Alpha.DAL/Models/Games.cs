@@ -14,6 +14,8 @@ namespace Alpha.DAL.Models {
         [Required]
         public DateTime ReleaseDate { get; set; }
 
+        public decimal Price { get; set; }
+
         // Relationships
         [ForeignKey("PublisherId")]
         public virtual Publisher Publisher { get; set; }
@@ -31,6 +33,7 @@ namespace Alpha.DAL.Models {
             this.PublisherId = game.PublisherId;
             this.ReleaseDate = game.ReleaseDate;
             this.GameId = game.GameId;
+            this.Price = game.Price;
         }
     }
 }
