@@ -51,20 +51,28 @@ app.controller('addonIdController', ['$scope', '$http', '$routeParams', '$route'
 
     $scope.updateAddon = function () {
 
-        var config = {
-            AddonId: addonId,
-            Name: $scope.Name,
-            ReleaseDate: $scope.ReleaseDate,
-            Description: $scope.Description,
-            GameId: $scope.GameId
-        };
-
-        UpdateItem.put(addonIdApi + addonId, config, function (response) {
-            console.log(response);
-
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: '../app/modals/editAddon.html',
+            controller: 'editAddonController'
         });
 
-        console.log("Nothing currently");
+        modalInstance.result.then(function (result) {
+            var config = {
+                AddonId: addonId,
+                Name: result.Name,
+                ReleaseDate: result.ReleaseDate,
+                Description: result.Description,
+                GameId: result.GameId
+            };
+
+            UpdateItem.put(addonIdApi + addonId, config, function (response) {
+                $route.reload();
+            });
+
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
     };
 
     $scope.delete = function () {
@@ -72,5 +80,20 @@ app.controller('addonIdController', ['$scope', '$http', '$routeParams', '$route'
             $location.path('#/addons');
             console.log(response);
         });
+    };
+}]);
+
+app.controller('editAddonController', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+    $scope.ok = function () {
+        $uibModalInstance.close({
+            Name: $scope.name,
+            ReleaseDate: $scope.releaseDate,
+            Description: $scope.description,
+            GameId: $scope.gameId
+        });
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
     };
 }]);

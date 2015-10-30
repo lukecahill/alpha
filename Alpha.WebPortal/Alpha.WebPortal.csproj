@@ -86,6 +86,9 @@
     <Content Include="app\components\pages\addons.html" />
     <Content Include="app\components\pages\games.html" />
     <Content Include="app\components\pages\publishers.html" />
+    <Content Include="app\modals\editAccessory.html" />
+    <Content Include="app\modals\editAddon.html" />
+    <Content Include="app\modals\editGame.html" />
     <Content Include="app\modals\editPublisher.html" />
     <Content Include="Content\AlphaStylesheet.css" />
     <Content Include="Index.html" />

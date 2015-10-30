@@ -61,16 +61,40 @@ app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$locatio
 
     $scope.updateGame = function () {
 
-        var config = {
-            GameId: gameId,
-            ReleaseDate: $scope.ReleaseDate,
-            Title: $scope.Title,
-            PublisherId: $scope.PublisherId
-        };
-
-        UpdateItem.put(gameIdApiUrl + gameId, config, function (response) {
-            console.log(response);
-
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: '../app/modals/editGame.html',
+            controller: 'editGameController'
         });
+
+        modalInstance.result.then(function (result) {
+            var config = {
+                GameId: gameId,
+                Title: result.Title,
+                PublisherId: result.PublisherId,
+                ReleaseDate: result.releaseDate
+            };
+
+            UpdateItem.put(gameIdApiUrl + gameId, config, function (response) {
+                $route.reload();
+            });
+
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+}]);
+
+app.controller('editGameController', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+    $scope.ok = function () {
+        $uibModalInstance.close({
+            Title: $scope.title,
+            Publisher: $scope.publisher,
+            ReleaseDate: $scope.releaseDate
+        });
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
     };
 }]);
