@@ -38,6 +38,7 @@
 app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams', '$location', '$route', '$http', 'GetAll', 'DeleteItem', 'UpdateItem', '$uibModal', '$log', function ($rootScope, $scope, $routeParams, $location, $route, $http, GetAll, DeleteItem, UpdateItem, $uibModal, $log) {
 
     $scope.animationsEnabled = true;
+    var name, location;
 
     $scope.items = {
         publisherId: $routeParams.publisherId
@@ -58,6 +59,15 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
         });
 
         modalInstance.result.then(function (result) {
+            // Find a better way to do this!
+            if (result.Name == undefined) {
+                result.Name = name
+            }
+
+            if (result.Location == undefined) {
+                result.Location = location
+            }
+
             var config = {
                 PublisherId: $routeParams.publisherId,
                 Name: result.Name,
@@ -88,8 +98,11 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
         $scope.PublisherId = publisherId
         $scope.loading = false;
 
-        $scope.items.name = response.Name;
-        $scope.items.location = response.Location;
+        name = response.Name;
+        location = response.Location;
+
+        $scope.items.name = name;
+        $scope.items.location = location;
     });
 
     $scope.delete = function () {
