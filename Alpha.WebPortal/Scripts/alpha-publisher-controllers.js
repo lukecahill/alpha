@@ -40,22 +40,12 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
     $scope.animationsEnabled = true;
     var name, location;
 
-    $scope.items = {
-        publisherId: $routeParams.publisherId
-    };
-
-    $scope.updatePublisher = function (size) {
+    $scope.updatePublisher = function () {
 
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: '../app/modals/editPublisher.html',
-            controller: 'newPublisherController',
-            size: size,
-            resolve: {
-                items: function () {
-                    return $scope.items;
-                }
-            }
+            controller: 'newPublisherController'
         });
 
         modalInstance.result.then(function (result) {
@@ -75,7 +65,6 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
             };
 
             UpdateItem.put(publisherIdApi + publisherId, config, function (response) {
-                console.log(response);
                 $route.reload();
             });
 
@@ -100,9 +89,6 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
 
         name = response.Name;
         location = response.Location;
-
-        $scope.items.name = name;
-        $scope.items.location = location;
     });
 
     $scope.delete = function () {
@@ -113,13 +99,7 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
     };
 }]);
 
-app.controller('newPublisherController', ['$scope', '$uibModalInstance', 'items', function ($scope, $uibModalInstance, items) {
-
-    $scope.items = items;
-    $scope.selected = {
-        item: $scope.items[0]
-    };
-
+app.controller('newPublisherController', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
     $scope.ok = function () {
         $uibModalInstance.close({ Name: $scope.name, Location: $scope.location });
     };
