@@ -43,7 +43,7 @@
             <s>Details can still be accessed using /api/games/4 after 'deletion'.</s>
         </li>
         <li>
-            Use Angular data-ng-if if the ID is not found
+            <s>Use Angular data-ng-if if the ID is not found</s>
         </li>
     </ul>
     <h3>
