@@ -33,10 +33,10 @@ namespace Alpha.Infrastructure.ViewModels {
                         Publisher = this.Publisher,
                         ReleaseDate = item.ReleaseDate
                     };
-
                     list.Add(entity);
-                    this.AddonList = list;
                 }
+
+                this.AddonList = list;
             }
 
             // return the list of accessories associated with the games ID, if any 

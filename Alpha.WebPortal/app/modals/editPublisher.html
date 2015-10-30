@@ -1,17 +1,18 @@
 ﻿<div>
     <div class="modal-header">
-        <h3 class="modal-title">I'm a modal!</h3>
+        <h3 class="modal-title">Edit this item</h3>
     </div>
     <div class="modal-body">
         <p>
-            <input class="form-control" type="text" data-ng-model="name" value="{{ items.Name }}" />
+            <label for="editName">Name</label>
+            <input class="form-control" type="text" data-ng-model="name" name="editName" />
+            <span data-ng-bind="name"></span>
         </p>
-        <ul>
-            <li ng-repeat="item in items">
-                <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-            </li>
-        </ul>
-        Selected: <b>{{ selected.item }}</b>
+        <p>
+            <label for="editLocation">Location</label>
+            <input class="form-control" type="text" data-ng-model="location" name="editLocation"/>
+            <span data-ng-bind="location"></span>
+        </p>
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
