@@ -9,13 +9,13 @@
             </p>
             <p>
                 <label for="editName">Name</label>
-                <input class="form-control" data-ng-required="true" data-ng-maxlength="255" type="text" data-ng-model="name" name="editName" />
+                <input class="form-control" data-ng-required="true" data-ng-maxlength="255" type="text" name="editName"  data-ng-model="name" />
                 <p data-ng-show="editPublisher.editName.$invalid && !editPublisher.editName.$pristine" class="help-block">Publisher name is required.</p>
                 <span data-ng-bind="name"></span>
             </p>
             <p>
                 <label for="editLocation">Location</label>
-                <input class="form-control" type="text" data-ng-model="location" name="editLocation" />
+                <input class="form-control" data-ng-model="location" type="text" name="editLocation" />
                 <span data-ng-bind="location"></span>
             </p>
         </div>
