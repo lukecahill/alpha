@@ -51,24 +51,49 @@ app.controller('accessoryIdController', ['$scope', '$http', '$routeParams', '$ro
 
     $scope.updateAccessory = function () {
 
-        var config = {
-            AccessoryId: accessoryId,
-            Name: $scope.Name,
-            Type: $scope.Type,
-            Description: $scope.Description
-        };
-
-        UpdateItem.put(accessoryIdApi + accessoryId, config, function (response) {
-            console.log(response);
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: '../app/modals/editAccessory.html',
+            controller: 'editAccessoryController'
         });
 
-        console.log("Nothing currently");
-    }
+        modalInstance.result.then(function (result) {
+            var config = {
+                AccessoryId: accessoryId,
+                Name: response.Name,
+                Type: response.Type,
+                Description: response.Description,
+                GameId: response.gameId
+            };
+
+            UpdateItem.put(accessoryIdApi + accessoryId, config, function (response) {
+                $route.reload();
+            });
+
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
 
     $scope.delete = function () {
         DeleteItem.deleteItem(accessoryIdApi, accessoryId, function (response) {
             $location.path('#/accessories');
             console.log(response);
         });
+    };
+}]);
+
+app.controller('editAccessoryController', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+    $scope.ok = function () {
+        $uibModalInstance.close({
+            Name: $scope.name,
+            Type: $scope.type,
+            Description: $scope.description,
+            GameId: $scope.gameId
+        });
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
     };
 }]);

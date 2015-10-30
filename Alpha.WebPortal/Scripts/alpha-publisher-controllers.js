@@ -39,13 +39,16 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
 
     $scope.animationsEnabled = true;
     var name, location;
+    var publisherId = $routeParams.publisherId;
+    var publisherIdApi = 'http://localhost:57369/api/publishers/';
+    $scope.loading = true;
 
     $scope.updatePublisher = function () {
 
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: '../app/modals/editPublisher.html',
-            controller: 'newPublisherController'
+            controller: 'editPublisherController'
         });
 
         modalInstance.result.then(function (result) {
@@ -59,7 +62,7 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
             }
 
             var config = {
-                PublisherId: $routeParams.publisherId,
+                PublisherId: publisherId,
                 Name: result.Name,
                 Location: result.Location
             };
@@ -73,17 +76,9 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
         });
     };
 
-    $scope.toggleAnimation = function () {
-        $scope.animationsEnabled = !$scope.animationsEnabled;
-    };
-
-    var publisherIdApi = 'http://localhost:57369/api/publishers/';
-    var publisherId;
-    $scope.loading = true;
-
-    GetAll.all(publisherIdApi + $routeParams.publisherId, function (response) {
+    GetAll.all(publisherIdApi + publisherId, function (response) {
         $scope.publisher = response;
-        publisherId = $routeParams.publisherId;
+        publisherId = publisherId;
         $scope.PublisherId = publisherId
         $scope.loading = false;
 
@@ -99,7 +94,7 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
     };
 }]);
 
-app.controller('newPublisherController', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+app.controller('editPublisherController', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
     $scope.ok = function () {
         $uibModalInstance.close({ Name: $scope.name, Location: $scope.location });
     };
