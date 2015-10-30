@@ -55,7 +55,37 @@ app.factory('UpdateItem', ['$http', function ($http) {
                 .success(callback)
                 .error(function (error) {
                     console.log(error);
-            });
+                });
+        }
+    };
+}]);
+
+app.factory('OpenModal', ['$uibModal', '$scope', '$log', '$scope', function ($uibModal, $scope, $log, $scope) {
+    return {
+        openModal: function (items, templateUrl, controller) {
+            $scope.animationsEnabled = true;
+
+            $scope.items = items;
+
+            $scope.open = function () {
+
+                var modalInstance = $uibModal.open({
+                    animation: $scope.animationsEnabled,
+                    templateUrl: templateUrl,
+                    controller: controller,
+                    resolve: {
+                        items: function () {
+                            return $scope.items;
+                        }
+                    }
+                });
+
+                modalInstance.result.then(function (success) {
+                    console.log(success);
+                }, function () {
+                    $log.info('Modal dismissed at: ' + new Date());
+                });
+            };
         }
     };
 }]);

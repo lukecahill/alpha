@@ -17,12 +17,15 @@
     </div>
 
     <div class="row well">
-        <div class="col-lg-6">
+        <div class="col-lg-3">
             <a href="#/publishers/">
                 <small>
                     Back to publishers...
                 </small>
             </a>
+        </div>
+        <div class="col-lg-3 text-right">
+            <button class="btn btn-default" data-ng-click="open()">Edit this publishers details</button>
         </div>
         <div class="col-lg-3 text-right">
             <button class="btn btn-default" data-ng-click="updatePublisher()">Edit this publishers details</button>
@@ -39,7 +42,7 @@
                     <strong>Publisher Name</strong>
                 </td>
                 <td>
-                    {{ publisher.Name }}
+                    <span data-ng-model="name">{{ publisher.Name }}</span>
                 </td>
             </tr>
             <tr>
@@ -47,8 +50,8 @@
                     <strong>Location</strong>
                 </td>
                 <td>
-                    {{ publisher.Location }}
-                </td>
+                    <span data-ng-model="location">{{ publisher.Location }}</span>
+</td>
             </tr>
         </table>
     </div>

@@ -1,4 +1,4 @@
-﻿var app = angular.module('alphaApp', ['ngRoute', 'ui.bootstrap']);
+﻿var app = angular.module('alphaApp', ['ngRoute', 'ngAnimate','ui.bootstrap']);
 
 // configure routes
 app.config(function ($routeProvider, $locationProvider) {

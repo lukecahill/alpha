@@ -35,7 +35,54 @@
     };
 }]);
 
-app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams', '$location', '$route', '$http', 'GetAll', 'DeleteItem', 'UpdateItem', function ($rootScope, $scope, $routeParams, $route, $location, $http, GetAll, DeleteItem, UpdateItem) {
+app.controller('newPublisherController', '$scope', '$uibModalInstance', 'items', function ($scope, $uibModalInstance, items) {
+
+    $scope.items = items;
+    $scope.selected = {
+        item: $scope.items[0]
+    };
+
+    $scope.ok = function () {
+        $uibModalInstance.close($scope.selected.item);
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+});
+
+app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams', '$location', '$route', '$http', 'GetAll', 'DeleteItem', 'UpdateItem', '$uibModal', '$log', function ($rootScope, $scope, $routeParams, $route, $location, $http, GetAll, DeleteItem, UpdateItem, $uibModal, $log) {
+
+    $scope.animationsEnabled = true;
+
+    $scope.items = {
+        publisherId: $routeParams.publisherId
+    };
+
+    $scope.open = function (size) {
+
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: '../app/modals/editPublisher.html',
+            controller: 'newPublisherController',
+            size: size,
+            resolve: {
+                items: function () {
+                    return $scope.items;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+            console.log(selectedItem);
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+
+    $scope.toggleAnimation = function () {
+        $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
 
     var publisherIdApi = 'http://localhost:57369/api/publishers/';
     var publisherId;
@@ -46,6 +93,9 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
         publisherId = $routeParams.publisherId;
         $scope.PublisherId = publisherId
         $scope.loading = false;
+
+        $scope.items.name = response.Name;
+        $scope.items.location = response.Location;
     });
 
     $scope.updatePublisher = function () {
