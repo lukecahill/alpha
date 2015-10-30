@@ -35,23 +35,7 @@
     };
 }]);
 
-app.controller('newPublisherController', '$scope', '$uibModalInstance', 'items', function ($scope, $uibModalInstance, items) {
-
-    $scope.items = items;
-    $scope.selected = {
-        item: $scope.items[0]
-    };
-
-    $scope.ok = function () {
-        $uibModalInstance.close($scope.selected.item);
-    };
-
-    $scope.cancel = function () {
-        $uibModalInstance.dismiss('cancel');
-    };
-});
-
-app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams', '$location', '$route', '$http', 'GetAll', 'DeleteItem', 'UpdateItem', '$uibModal', '$log', function ($rootScope, $scope, $routeParams, $route, $location, $http, GetAll, DeleteItem, UpdateItem, $uibModal, $log) {
+app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams', '$location', '$route', '$http', 'GetAll', 'DeleteItem', 'UpdateItem', '$uibModal', '$log', function ($rootScope, $scope, $routeParams, $location, $route, $http, GetAll, DeleteItem, UpdateItem, $uibModal, $log) {
 
     $scope.animationsEnabled = true;
 
@@ -59,7 +43,7 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
         publisherId: $routeParams.publisherId
     };
 
-    $scope.open = function (size) {
+    $scope.updatePublisher = function (size) {
 
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
@@ -73,8 +57,18 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
             }
         });
 
-        modalInstance.result.then(function (selectedItem) {
-            console.log(selectedItem);
+        modalInstance.result.then(function (result) {
+            var config = {
+                PublisherId: $routeParams.publisherId,
+                Name: result.Name,
+                Location: result.Location
+            };
+
+            UpdateItem.put(publisherIdApi + publisherId, config, function (response) {
+                console.log(response);
+                $route.reload();
+            });
+
         }, function () {
             $log.info('Modal dismissed at: ' + new Date());
         });
@@ -98,23 +92,26 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
         $scope.items.location = response.Location;
     });
 
-    $scope.updatePublisher = function () {
-        var config = {
-            PublisherId: publisherId,
-            Name: 'test-change',
-            Location: 'UK'
-        };
-
-        UpdateItem.put(publisherIdApi + publisherId, config, function (response) {
-            console.log(response);
-
-        });
-    };
-
     $scope.delete = function () {
         DeleteItem.deleteItem(publisherIdApi, publisherId, function (response) {
             console.log(response);
             $location.href.path('#/publishers');
         });
+    };
+}]);
+
+app.controller('newPublisherController', ['$scope', '$uibModalInstance', 'items', function ($scope, $uibModalInstance, items) {
+
+    $scope.items = items;
+    $scope.selected = {
+        item: $scope.items[0]
+    };
+
+    $scope.ok = function () {
+        $uibModalInstance.close({ Name: $scope.name, Location: $scope.location });
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
     };
 }]);
