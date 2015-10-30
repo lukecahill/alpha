@@ -25,7 +25,10 @@ namespace Alpha.Infrastructure.ViewModels {
                         Title = item.Title,
                         ReleaseDate = item.ReleaseDate
                     };
+                    list.Add(entity);
                 }
+
+                GameList = list;
             }
 		}
 

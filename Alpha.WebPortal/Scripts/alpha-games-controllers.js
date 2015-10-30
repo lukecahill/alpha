@@ -51,6 +51,7 @@ app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$locatio
     GetAll.all(gameIdApiUrl + gameId, function (response) {
         $scope.game = response;
         $scope.loading = false;
+        console.log(response)
     });
 
     $scope.delete = function () {

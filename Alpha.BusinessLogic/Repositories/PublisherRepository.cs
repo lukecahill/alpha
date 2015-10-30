@@ -13,7 +13,6 @@ namespace Alpha.BusinessLogic.Repositories {
 
         public IEnumerable<PublisherSummary> GetAll() {
             var entities = db.Publishers
-                .Include(g => g.Games)
                 .ToList()
                 .Where(p => p.IsDeleted == false);
 
