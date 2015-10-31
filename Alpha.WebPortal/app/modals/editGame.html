@@ -2,25 +2,34 @@
     <div class="modal-header">
         <h3 class="modal-title">Edit this item</h3>
     </div>
-    <form novalidate name="editPublisher">
+    <form novalidate name="editGame">
         <div class="modal-body">
             <p>
                 Leave blank to keep the item as it is.
             </p>
             <p>
-                <label for="editName">Name</label>
-                <input class="form-control" data-ng-required="true" data-ng-maxlength="255" type="text" name="editName" data-ng-model="name" />
-            <p data-ng-show="editPublisher.editName.$invalid && !editPublisher.editName.$pristine" class="help-block">Publisher name is required.</p>
-            <span data-ng-bind="name"></span>
+                <label for="editTitle">Title</label>
+                <input class="form-control" data-ng-required="true" data-ng-maxlength="255" type="text" name="editTitle" data-ng-model="name" />
+                <p data-ng-show="editGame.editTitle.$invalid && !editGame.editTitle.$pristine" class="help-block">Game name is required.</p>
+                <span data-ng-bind="name"></span>
             </p>
             <p>
-                <label for="editLocation">Location</label>
-                <input class="form-control" data-ng-model="location" type="text" name="editLocation" />
-                <span data-ng-bind="location"></span>
+                <label for="editDate">Release Date</label>
+                <input class="form-control" data-ng-model="date" type="text" name="editDate" />
+                <span data-ng-bind="date"></span>
+            </p>
+            <p>
+                <label for="editPublisher">Games publisher</label>
+                <select name="editPublisher">
+                    <option data-ng-repeat="item in publishers">
+                        {{ item.Name }}
+                    </option>
+                </select>
+                <p data-ng-show="editGame.editPublisher.$invalid && !editGame.editPublisher.$pristine" class="help-block">Publisher is required.</p>
             </p>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary" type="button" data-ng-click="ok()" data-ng-disabled="editPublisher.$invalid"><span class="fa fa-save"></span>  Save</button>
+            <button class="btn btn-primary" type="button" data-ng-click="ok()" data-ng-disabled="editGame.$invalid"><span class="fa fa-save"></span>  Save</button>
             <button class="btn btn-warning" type="button" data-ng-click="cancel()">Cancel</button>
         </div>
     </form>
