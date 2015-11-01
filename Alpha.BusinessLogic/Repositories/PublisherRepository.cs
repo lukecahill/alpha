@@ -46,7 +46,7 @@ namespace Alpha.BusinessLogic.Repositories {
         public void Update(UpdatePublisherBindingModel publisher) {
 
             var entity = db.Publishers.FirstOrDefault(g => g.PublisherId == publisher.PublisherId);
-
+            
             entity.Name = publisher.Name;
             entity.Location = publisher.Location;
 

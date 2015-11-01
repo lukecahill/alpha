@@ -37,18 +37,24 @@
 
 app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams', '$location', '$route', '$http', 'GetAll', 'DeleteItem', 'UpdateItem', '$uibModal', '$log', function ($rootScope, $scope, $routeParams, $location, $route, $http, GetAll, DeleteItem, UpdateItem, $uibModal, $log) {
 
-    $scope.animationsEnabled = true;
     var name, location;
     var publisherId = $routeParams.publisherId;
     var publisherIdApi = 'http://localhost:57369/api/publishers/';
+    var items;
     $scope.loading = true;
+    $scope.animationsEnabled = true;
 
     $scope.updatePublisher = function () {
 
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: '../app/modals/editPublisher.html',
-            controller: 'editPublisherController'
+            controller: 'editPublisherController',
+            resolve: {
+                items: function () {
+                    return items;
+                }
+            }
         });
 
         modalInstance.result.then(function (result) {
@@ -81,6 +87,7 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
         publisherId = publisherId;
         $scope.PublisherId = publisherId
         $scope.loading = false;
+        items = response;
 
         name = response.Name;
         location = response.Location;
@@ -94,7 +101,9 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
     };
 }]);
 
-app.controller('editPublisherController', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+app.controller('editPublisherController', ['$scope', '$uibModalInstance', 'items', function ($scope, $uibModalInstance, items) {
+    console.log(items)
+    $scope.publisher = items;
     $scope.ok = function () {
         $uibModalInstance.close({ Name: $scope.name, Location: $scope.location });
     };
