@@ -45,12 +45,13 @@ app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$locatio
 
     var gameIdApiUrl = 'http://localhost:57369/api/games/';
     var gameId = $routeParams.gameId;
+    var items;
     $scope.loading = true;
-
 
     GetAll.all(gameIdApiUrl + gameId, function (response) {
         $scope.game = response;
         $scope.loading = false;
+        items = response;
     });
 
     $scope.delete = function () {
@@ -60,11 +61,15 @@ app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$locatio
     };
 
     $scope.updateGame = function () {
-
         var modalInstance = $uibModal.open({
-            animation: $scope.animationsEnabled,
+            animation: true,
             templateUrl: '../app/modals/editGame.html',
-            controller: 'editGameController'
+            controller: 'editGameController',
+            resolve: {
+                items: function () {
+                    return items;
+                }
+            }
         });
 
         modalInstance.result.then(function (result) {
@@ -85,7 +90,14 @@ app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$locatio
     };
 }]);
 
-app.controller('editGameController', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+app.controller('editGameController', ['$scope', '$uibModalInstance', 'GetAll', 'items', function ($scope, $uibModalInstance, GetAll, items) {
+    $scope.game = items;
+
+    GetAll.all('http://localhost:57369/api/publishers/', function (response) {
+        $scope.publishers = response;
+        console.log(response)
+    });
+
     $scope.ok = function () {
         $uibModalInstance.close({
             Title: $scope.title,

@@ -1,27 +1,24 @@
 ﻿<div>
     <div class="modal-header">
-        <h3 class="modal-title">Edit this item</h3>
+        <h3 class="modal-title">Edit {{ game.Title }}</h3>
     </div>
     <form novalidate name="editGame">
         <div class="modal-body">
             <p>
-                Leave blank to keep the item as it is.
-            </p>
-            <p>
                 <label for="editTitle">Title</label>
-                <input class="form-control" data-ng-required="true" data-ng-maxlength="255" type="text" name="editTitle" data-ng-model="name" />
+                <input class="form-control" data-ng-required="true" data-ng-maxlength="255" type="text" name="editTitle" data-ng-model="game.Title" value="{{ game.Title }}" />
                 <p data-ng-show="editGame.editTitle.$invalid && !editGame.editTitle.$pristine" class="help-block">Game name is required.</p>
                 <span data-ng-bind="name"></span>
             </p>
             <p>
                 <label for="editDate">Release Date</label>
-                <input class="form-control" data-ng-model="date" type="text" name="editDate" />
+                <input class="form-control" data-ng-model="game.ReleaseDate" type="text" name="editDate" value="{{ game.ReleaseDate }}"/>
                 <span data-ng-bind="date"></span>
             </p>
             <p>
-                <label for="editPublisher">Games publisher</label>
-                <select name="editPublisher">
-                    <option data-ng-repeat="item in publishers">
+                <label for="editPublisher">Game publisher</label>
+                <select name="editPublisher" class="form-control" data-ng-required="true">
+                    <option data-ng-repeat="item in publishers track by item.PublisherId">
                         {{ item.Name }}
                     </option>
                 </select>

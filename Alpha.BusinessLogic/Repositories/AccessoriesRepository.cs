@@ -9,7 +9,7 @@ using Alpha.Infrastructure.BindingModels;
 
 namespace Alpha.BusinessLogic.Repositories {
     public class AccessoriesRepository : IAccessoriesRepository {
-        private AlphaContext db = new AlphaContext();
+        private readonly AlphaContext db = new AlphaContext();
 
         public IEnumerable<AccessoriesSummary> GetAll() {
 			var entities = db.Accessories

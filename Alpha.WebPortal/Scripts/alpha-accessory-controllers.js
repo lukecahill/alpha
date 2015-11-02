@@ -42,11 +42,13 @@ app.controller('accessoryIdController', ['$scope', '$http', '$routeParams', '$ro
 
     var accessoryIdApi = 'http://localhost:57369/api/accessories/';
     var accessoryId = $routeParams.accessoryId;
+    var items;
     $scope.loading = true;
 
     GetAll.all(accessoryIdApi + accessoryId, function (response) {
         $scope.accessory = response;
         $scope.loading = false;
+        items = response;
     });
 
     $scope.updateAccessory = function () {
@@ -54,7 +56,12 @@ app.controller('accessoryIdController', ['$scope', '$http', '$routeParams', '$ro
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: '../app/modals/editAccessory.html',
-            controller: 'editAccessoryController'
+            controller: 'editAccessoryController',
+            resolve: {
+                items: function() {
+                    return items;
+                }
+            }
         });
 
         modalInstance.result.then(function (result) {
@@ -83,7 +90,9 @@ app.controller('accessoryIdController', ['$scope', '$http', '$routeParams', '$ro
     };
 }]);
 
-app.controller('editAccessoryController', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+app.controller('editAccessoryController', ['$scope', '$uibModalInstance', 'items', function ($scope, $uibModalInstance, items) {
+    $scope.accessory = items;
+
     $scope.ok = function () {
         $uibModalInstance.close({
             Name: $scope.name,
