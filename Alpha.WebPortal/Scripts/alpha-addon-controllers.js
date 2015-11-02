@@ -42,19 +42,25 @@ app.controller('addonIdController', ['$scope', '$http', '$routeParams', '$route'
 
     var addonIdApi = 'http://localhost:57369/api/addons/'
     var addonId = $routeParams.addonId;
+    var items;
     $scope.loading = true;
 
     GetAll.all(addonIdApi + addonId, function (response) {
         $scope.addon = response;
         $scope.loading = false;
+        items = response;
     });
 
     $scope.updateAddon = function () {
-
         var modalInstance = $uibModal.open({
-            animation: $scope.animationsEnabled,
+            animation: true,
             templateUrl: '../app/modals/editAddon.html',
-            controller: 'editAddonController'
+            controller: 'editAddonController',
+            resolve: {
+                items: function () {
+                    return items;
+                }
+            }
         });
 
         modalInstance.result.then(function (result) {
@@ -78,12 +84,13 @@ app.controller('addonIdController', ['$scope', '$http', '$routeParams', '$route'
     $scope.delete = function () {
         DeleteItem.deleteItem(addonIdApi, $routeParams.addonId, function (response) {
             $location.path('#/addons');
-            console.log(response);
         });
     };
 }]);
 
-app.controller('editAddonController', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+app.controller('editAddonController', ['$scope', '$uibModalInstance', 'items', function ($scope, $uibModalInstance, items) {
+   $scope.addon = items;
+
     $scope.ok = function () {
         $uibModalInstance.close({
             Name: $scope.name,

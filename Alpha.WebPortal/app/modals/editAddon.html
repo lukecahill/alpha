@@ -9,27 +9,20 @@
             </p>
             <p>
                 <label for="editName">Name</label>
-                <input class="form-control" data-ng-required="true" data-ng-maxlength="255" type="text" name="editName" data-ng-model="name" />
-            <p data-ng-show="editAddon.editName.$invalid && !editAddon.editName.$pristine" class="help-block">Publisher name is required.</p>
-            <span data-ng-bind="name"></span>
-            </p>
-            <p>
-                <label for="editType">Type</label>
-                <input class="form-control" data-ng-model="type" type="text" name="editType" />
-                <span data-ng-bind="type"></span>
-            </p>
+                <input class="form-control" data-ng-required="true" data-ng-maxlength="255" type="text" name="editName" data-ng-model="addon.AddonName" value="{{ addon.Name }}"/>
+                <p data-ng-show="editAddon.editName.$invalid && !editAddon.editName.$pristine" class="help-block">Publisher name is required.</p>
+                </p>
             <p>
                 <label for="editDate">Release Date</label>
-                <input class="form-control" data-ng-model="date" type="text" name="editDate" />
-                <span data-ng-bind="date"></span>
+                <input class="form-control" data-ng-model="addon.ReleaseDate" value="{{ addon.ReleaseDate }}" type="text" name="editDate" />
             </p>
             <p>
                 <label for="editDescription">Description</label>
-                <textarea class="form-control" data-ng-model="description" name="editDescription"></textarea>
+                <textarea class="form-control" data-ng-model="addon.Description" value=" {{ addon.Description }}" name="editDescription"></textarea>
             </p>
             <p>
                 <label for="editLocation">Game</label>
-                <select name="editGame" data-ng-required="true">
+                <select name="editGame" data-ng-required="true" class="form-control">
                     <option data-ng-repeat="game in games">
                         {{ game.Title }}
                     </option>

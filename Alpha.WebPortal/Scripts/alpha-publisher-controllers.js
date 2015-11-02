@@ -42,12 +42,11 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
     var publisherIdApi = 'http://localhost:57369/api/publishers/';
     var items;
     $scope.loading = true;
-    $scope.animationsEnabled = true;
 
     $scope.updatePublisher = function () {
 
         var modalInstance = $uibModal.open({
-            animation: $scope.animationsEnabled,
+            animation: true,
             templateUrl: '../app/modals/editPublisher.html',
             controller: 'editPublisherController',
             resolve: {
@@ -58,15 +57,6 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
         });
 
         modalInstance.result.then(function (result) {
-            // Find a better way to do this!
-            if (result.Name == undefined) {
-                result.Name = name
-            }
-
-            if (result.Location == undefined) {
-                result.Location = location
-            }
-
             var config = {
                 PublisherId: publisherId,
                 Name: result.Name,
@@ -102,10 +92,10 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
 }]);
 
 app.controller('editPublisherController', ['$scope', '$uibModalInstance', 'items', function ($scope, $uibModalInstance, items) {
-    console.log(items)
     $scope.publisher = items;
+
     $scope.ok = function () {
-        $uibModalInstance.close({ Name: $scope.name, Location: $scope.location });
+        $uibModalInstance.close({ Name: publisher.Name, Location: publisher.Location });
     };
 
     $scope.cancel = function () {

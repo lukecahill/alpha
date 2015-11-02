@@ -9,19 +9,16 @@
             </p>
             <p>
                 <label for="editName">Name</label>
-                <input class="form-control" data-ng-required="true" data-ng-maxlength="255" type="text" name="editName" data-ng-model="name" />
+                <input class="form-control" data-ng-required="true" data-ng-maxlength="255" type="text" name="editName" data-ng-model="accessory.Name" value="{{ accessory.Name }}"/>
                 <p data-ng-show="editAccessory.editName.$invalid && !editAccessory.editName.$pristine" class="help-block">Accessory name is required.</p>
-                <span data-ng-bind="name"></span>
             </p>
             <p>
-                <label for="editLocation">Type</label>
-                <input class="form-control" data-ng-model="location" type="text" name="editLocation" />
-                <span data-ng-bind="location"></span>
+                <label for="editType">Type</label>
+                <input class="form-control" data-ng-model="addon.Type" value="{{ accessory.Type }}" type="text" name="editType" />
             </p>
             <p>
                 <label for="editDescription">Description</label>
-                <textarea class="form-control" data-ng-model="description" name="editDescription"></textarea>
-                <span data-ng-bind="description"></span>
+                <textarea class="form-control" data-ng-model="accessory.Description" value="{{ accessory.Description}}" name="editDescription"></textarea>
             </p>
             <p>
                 <label for="editGame">Game</label>

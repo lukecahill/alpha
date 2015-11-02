@@ -51,7 +51,7 @@
     </h3>
     <ul>
         <li>
-            Updates for games
+            <s>Updates for games</s>
         </li>
         <li>
             <s>List accessories and addons</s>
@@ -65,7 +65,7 @@
     </h3>
     <ul>
         <li>
-            Finish publisher methods
+            <s>Finish publisher methods</s>
         </li>
         <li>
            <s>List the games for each publisher on the publisher details page</s>
