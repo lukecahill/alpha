@@ -82,8 +82,19 @@ app.controller('addonIdController', ['$scope', '$http', '$routeParams', '$route'
     };
 
     $scope.delete = function () {
-        DeleteItem.deleteItem(addonIdApi, $routeParams.addonId, function (response) {
-            $location.path('#/addons');
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: '../app/modals/deleteAddonConfirmation.html',
+            controller: 'deleteAddonController'
+        });
+
+        modalInstance.result.then(function (response) {
+            DeleteItem.deleteItem(addonIdApi, $routeParams.addonId, function (response) {
+                $location.path('#/addons');
+            });
+
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
         });
     };
 }]);
@@ -98,6 +109,16 @@ app.controller('editAddonController', ['$scope', '$uibModalInstance', 'items', f
             Description: $scope.description,
             GameId: $scope.gameId
         });
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+}]);
+
+app.controller('deleteAddonController', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+    $scope.ok = function () {
+        $uibModalInstance.close();
     };
 
     $scope.cancel = function () {
