@@ -83,9 +83,19 @@ app.controller('accessoryIdController', ['$scope', '$http', '$routeParams', '$ro
     };
 
     $scope.delete = function () {
-        DeleteItem.deleteItem(accessoryIdApi, accessoryId, function (response) {
-            $location.path('#/accessories');
-            console.log(response);
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: '../app/modals/deleteAccessoryConfirmation.html',
+            controller: 'deleteAccessoryController'
+        });
+
+        modalInstance.result.then(function (result) {
+            DeleteItem.deleteItem(accessoryIdApi, accessoryId, function (response) {
+                $location.path('#/accessories');
+            });
+
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
         });
     };
 }]);
@@ -100,6 +110,16 @@ app.controller('editAccessoryController', ['$scope', '$uibModalInstance', 'items
             Description: $scope.description,
             GameId: $scope.gameId
         });
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+}]);
+
+app.controller('deleteAccessoryController', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+    $scope.ok = function () {
+        $uibModalInstance.close();
     };
 
     $scope.cancel = function () {
