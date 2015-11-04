@@ -215,3 +215,7 @@ ModelManifest.xml
 #Added by me
 Web.config
 App.config
+Alpha.DAL/App.config
+Alpha.WebAPI/Web.config
+Alpha.DAL/App.config
+Alpha.WebAPI/Web.config

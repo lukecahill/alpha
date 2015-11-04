@@ -128,6 +128,10 @@
     <Compile Include="Migrations\201510291919557_add_price_to_models.Designer.cs">
       <DependentUpon>201510291919557_add_price_to_models.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511031243494_Game_Details_added.cs" />
+    <Compile Include="Migrations\201511031243494_Game_Details_added.Designer.cs">
+      <DependentUpon>201511031243494_Game_Details_added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Accessories.cs" />
     <Compile Include="Models\Addons.cs" />
@@ -162,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510291919557_add_price_to_models.resx">
       <DependentUpon>201510291919557_add_price_to_models.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511031243494_Game_Details_added.resx">
+      <DependentUpon>201511031243494_Game_Details_added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

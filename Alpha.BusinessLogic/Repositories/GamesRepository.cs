@@ -47,7 +47,8 @@ namespace Alpha.BusinessLogic.Repositories {
             var entity = new DAL.Models.Games {
                 Title = game.Title,
                 PublisherId = game.PublisherId,
-                ReleaseDate = returnDate
+                ReleaseDate = returnDate,
+                PictureLink = game.PictureLink
             };
 
             db.Games.Add(entity);
@@ -69,6 +70,7 @@ namespace Alpha.BusinessLogic.Repositories {
             entity.Title = game.Title;
             entity.ReleaseDate = returnDate;
             entity.PublisherId = game.PublisherId;
+            entity.PictureLink = game.PictureLink;
 
             db.Entry(entity).State = EntityState.Modified;
             db.SaveChanges();

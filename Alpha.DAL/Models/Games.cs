@@ -14,6 +14,9 @@ namespace Alpha.DAL.Models {
         [Required]
         public DateTime ReleaseDate { get; set; }
 
+        // Link to a picture for the game - easier than uploading a picture 
+        public string PictureLink { get; set; }
+
         public decimal Price { get; set; }
 
         // Relationships

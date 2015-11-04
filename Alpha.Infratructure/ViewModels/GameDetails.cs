@@ -8,7 +8,8 @@ namespace Alpha.Infrastructure.ViewModels {
         public string Title { get; set; }
         public string Publisher { get; set; }
         public DateTime ReleaseDate { get; set; }
-        
+        public string PictureLink { get; set; }
+
         public IEnumerable<AddonsDetails> AddonList { get; set; }
         public IEnumerable<AccessoriesDetails> AccessoryList { get; set; }
 
@@ -16,6 +17,7 @@ namespace Alpha.Infrastructure.ViewModels {
             this.Title = game.Title;
             this.Publisher = game.Publisher.Name;
             this.ReleaseDate = game.ReleaseDate;
+            this.PictureLink = game.PictureLink;
 
             // return the list of addons associated with the games ID, if any
             if (game.Addons.Any(g => g.GameId == game.GameId)) {

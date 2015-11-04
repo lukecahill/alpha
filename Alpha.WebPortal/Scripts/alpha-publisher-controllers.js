@@ -83,10 +83,20 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
         location = response.Location;
     });
 
+    // TODO: Probably should clean this up a bit
     $scope.delete = function () {
-        DeleteItem.deleteItem(publisherIdApi, publisherId, function (response) {
-            console.log(response);
-            $location.href.path('#/publishers');
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: '../app/modals/deletePublisher.html',
+            controller: 'deletePublisherConfirmation'
+        });
+
+        modalInstance.result.then(function (result) {
+            DeleteItem.deleteItem(publisherIdApi, publisherId, function (response) {
+                console.log("Delete confirmed");
+            })
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
         });
     };
 }]);
@@ -94,8 +104,22 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
 app.controller('editPublisherController', ['$scope', '$uibModalInstance', 'items', function ($scope, $uibModalInstance, items) {
     $scope.publisher = items;
 
+    // TODO: make this actually update
     $scope.ok = function () {
-        $uibModalInstance.close({ Name: publisher.Name, Location: publisher.Location });
+        console.log($scope);
+        $uibModalInstance.close({ Name: $scope.Name, Location: $scope.Location });
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+}]);
+
+app.controller('deletePublisherConfirmation', ['$scope', '$uibModalInstance', 'DeleteItem', function ($scope, $uibModalInstance, DeleteItem) {
+
+    $scope.ok = function () {
+        // TODO : Redirect to the publisher summary, also make the delete confirmation look nicer
+        $uibModalInstance.close();
     };
 
     $scope.cancel = function () {

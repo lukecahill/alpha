@@ -89,6 +89,7 @@
     <Content Include="app\modals\deleteAccessoryConfirmation.html" />
     <Content Include="app\modals\deleteAddonConfirmation.html" />
     <Content Include="app\modals\deleteGameConfirmation.html" />
+    <Content Include="app\modals\deletePublisher.html" />
     <Content Include="app\modals\editAccessory.html" />
     <Content Include="app\modals\editAddon.html" />
     <Content Include="app\modals\editGame.html" />

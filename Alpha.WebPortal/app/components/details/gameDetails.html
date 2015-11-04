@@ -12,7 +12,7 @@
 
     <div class="jumbotron text-center">
         <h1>
-            Details for {{ game.Title }}
+            <img src="{{ game.PictureLink }}" alt="{{ game.Title }}" width="125px" height="200px" />
         </h1>
     </div>
 
@@ -24,10 +24,10 @@
                 </small>
             </a>
         </div>
-        <div class="col-lg-3 text-right">
+        <div class="col-lg-3 pull-right">
             <button class="btn btn-default" data-ng-click="updateGame()"><span class="fa fa-edit"></span>   Edit this games details</button>
         </div>
-        <div class="col-lg-3 text-right">
+        <div class="col-lg-3 pull-right">
             <button class="btn btn-default" data-ng-click="delete()"><span class="glyphicon glyphicon-remove"></span> Delete this game</button>
         </div>
     </div>

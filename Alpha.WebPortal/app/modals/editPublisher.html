@@ -8,12 +8,10 @@
                 <label for="editName">Name</label>
                 <input class="form-control" data-ng-required="true" data-ng-maxlength="255" type="text" name="editName"  data-ng-model="publisher.Name" value="{{ publisher.Name }}" />
                 <p data-ng-show="editPublisher.editName.$invalid && !editPublisher.editName.$pristine" class="help-block">Publisher name is required.</p>
-                <span data-ng-bind="name"></span>
             </p>
             <p>
                 <label for="editLocation">Location</label>
                 <input class="form-control" data-ng-model="publisher.Location" value="{{ publisher.Location }}" type="text" name="editLocation" />
-                <span data-ng-bind="location"></span>
             </p>
         </div>
         <div class="modal-footer">
