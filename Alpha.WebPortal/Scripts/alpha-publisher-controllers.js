@@ -61,7 +61,9 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
                 PublisherId: publisherId,
                 Name: result.Name,
                 Location: result.Location
-            };
+            }
+            console.log(result)
+            console.log(config);
 
             UpdateItem.put(publisherIdApi + publisherId, config, function (response) {
                 $route.reload();
@@ -106,8 +108,7 @@ app.controller('editPublisherController', ['$scope', '$uibModalInstance', 'items
 
     // TODO: make this actually update
     $scope.ok = function () {
-        console.log($scope);
-        $uibModalInstance.close({ Name: $scope.Name, Location: $scope.Location });
+        $uibModalInstance.close({Name: $scope.publisher.Name, Location: $scope.publisher.Location});
     };
 
     $scope.cancel = function () {

@@ -1,4 +1,4 @@
-﻿app.controller('gamesController', ['$scope', '$http', '$modal', '$log', '$route', 'GetAll', function ($scope, $http, $modal, $log, $route, GetAll) {
+﻿app.controller('gamesController', ['$scope', '$http', '$log', '$route', 'GetAll', function ($scope, $http, $log, $route, GetAll) {
 
     var gameApiUrl = 'http://localhost:57369/api/games';
 
@@ -14,9 +14,9 @@
 
     var PostData = function () {
         var config = {
-            "PublisherId": $scope.Publisher,
-            "Title": $scope.Name,
-            "ReleaseDate": $scope.ReleaseDate
+            PublisherId: $scope.Publisher,
+            Title: $scope.Name,
+            ReleaseDate: $scope.ReleaseDate
         };
 
         PostItem.post(gameApiUrl, config, function () {
@@ -41,7 +41,7 @@
     });
 }]);
 
-app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$location', 'PostItem', 'DeleteItem', 'GetAll', '$route', '$uibModal', '$log', function ($scope, $http, $routeParams, $location, PostItem, DeleteItem, GetAll, $route, $uibModal, $log) {
+app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$location', 'PostItem', 'DeleteItem', 'GetAll', '$route', '$uibModal', '$log', 'UpdateItem', function ($scope, $http, $routeParams, $location, PostItem, DeleteItem, GetAll, $route, $uibModal, $log, UpdateItem) {
 
     var gameIdApiUrl = 'http://localhost:57369/api/games/';
     var gameId = $routeParams.gameId;
@@ -87,9 +87,11 @@ app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$locatio
             var config = {
                 GameId: gameId,
                 Title: result.Title,
-                PublisherId: result.PublisherId,
-                ReleaseDate: result.releaseDate
+                PublisherId: result.Publisher,
+                ReleaseDate: result.ReleaseDate
             };
+
+            console.log(config)
 
             UpdateItem.put(gameIdApiUrl + gameId, config, function (response) {
                 $route.reload();
@@ -111,9 +113,9 @@ app.controller('editGameController', ['$scope', '$uibModalInstance', 'GetAll', '
 
     $scope.ok = function () {
         $uibModalInstance.close({
-            Title: $scope.title,
+            Title: $scope.game.Title,
             Publisher: $scope.publisher,
-            ReleaseDate: $scope.releaseDate
+            ReleaseDate: $scope.game.ReleaseDate
         });
     };
 

@@ -105,9 +105,9 @@ app.controller('editAccessoryController', ['$scope', '$uibModalInstance', 'items
 
     $scope.ok = function () {
         $uibModalInstance.close({
-            Name: $scope.name,
-            Type: $scope.type,
-            Description: $scope.description,
+            Name: $scope.accessory.Name,
+            Type: $scope.accessory.Type,
+            Description: $scope.accessory.Description,
             GameId: $scope.gameId
         });
     };

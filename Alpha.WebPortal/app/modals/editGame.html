@@ -17,7 +17,7 @@
             </p>
             <p>
                 <label for="editPublisher">Game publisher</label>
-                <select name="editPublisher" class="form-control" data-ng-required="true">
+                <select name="editPublisher" class="form-control" data-ng-required="true" data-ng-model="publisher">
                     <option data-ng-repeat="item in publishers track by item.PublisherId">
                         {{ item.Name }}
                     </option>
