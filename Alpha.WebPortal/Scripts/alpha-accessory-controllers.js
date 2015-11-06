@@ -100,8 +100,16 @@ app.controller('accessoryIdController', ['$scope', '$http', '$routeParams', '$ro
     };
 }]);
 
-app.controller('editAccessoryController', ['$scope', '$uibModalInstance', 'items', function ($scope, $uibModalInstance, items) {
+app.controller('editAccessoryController', ['$scope', '$uibModalInstance', 'items', 'GetAll', function ($scope, $uibModalInstance, items, GetAll) {
     $scope.accessory = items;
+
+    var gamesIdApi = 'http://localhost:57369/api/games/';
+    var items;
+
+    GetAll.all(gamesIdApi, function (response) {
+        $scope.games = response;
+    });
+
 
     $scope.ok = function () {
         $uibModalInstance.close({

@@ -22,8 +22,10 @@
             </p>
             <p>
                 <label for="editGame">Game</label>
-                <select name="editGame">
-                    <option data-ng-repeat="game in games">{{ game.Title }}</option>
+                <select name="editGame" class="form-control" data-ng-required="true">
+                    <option data-ng-repeat="game in games" value="{{ game.GameId }}">
+                        {{ game.Title }}
+                    </option>
                 </select>
                 <p data-ng-show="editAccessory.editGame.$invalid && !editAccessory.editGame.$pristine" class="help-block">Game is required.</p>
             </p>

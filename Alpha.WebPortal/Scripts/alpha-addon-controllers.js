@@ -99,8 +99,14 @@ app.controller('addonIdController', ['$scope', '$http', '$routeParams', '$route'
     };
 }]);
 
-app.controller('editAddonController', ['$scope', '$uibModalInstance', 'items', function ($scope, $uibModalInstance, items) {
-   $scope.addon = items;
+app.controller('editAddonController', ['$scope', '$uibModalInstance', 'items', 'GetAll', function ($scope, $uibModalInstance, items, GetAll) {
+    $scope.addon = items;
+
+    var gamesIdApi = 'http://localhost:57369/api/games/';
+
+    GetAll.all(gamesIdApi, function (response) {
+        $scope.games = response;
+    });
 
     $scope.ok = function () {
         $uibModalInstance.close({
