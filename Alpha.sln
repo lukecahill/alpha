@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.WebPortal", "Alpha.We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.BusinessLogic", "Alpha.BusinessLogic\Alpha.BusinessLogic.csproj", "{921C97A7-9C77-4A68-93E2-FBCB3F06BE2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.Infratructure", "Alpha.Infratructure\Alpha.Infratructure.csproj", "{4E463DE5-8BFB-499F-BD67-C91C5EF65AF7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.Infrastructure", "Alpha.Infratructure\Alpha.Infrastructure.csproj", "{4E463DE5-8BFB-499F-BD67-C91C5EF65AF7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{40C23C2A-331E-4981-B22E-28A781DF7516}"
 	ProjectSection(SolutionItems) = preProject

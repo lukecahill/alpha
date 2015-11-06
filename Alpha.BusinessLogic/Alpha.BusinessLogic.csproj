@@ -64,9 +64,9 @@
       <Project>{ba3265c1-4307-4964-9a39-0bee55117754}</Project>
       <Name>Alpha.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Alpha.Infratructure\Alpha.Infratructure.csproj">
+    <ProjectReference Include="..\Alpha.Infratructure\Alpha.Infrastructure.csproj">
       <Project>{4e463de5-8bfb-499f-bd67-c91c5ef65af7}</Project>
-      <Name>Alpha.Infratructure</Name>
+      <Name>Alpha.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\Alpha.Interfaces\Alpha.Interfaces.csproj">
       <Project>{d7c71fd3-a2a7-48f5-ba5a-c5fce70c5274}</Project>
