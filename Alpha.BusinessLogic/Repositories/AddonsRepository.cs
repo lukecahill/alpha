@@ -58,7 +58,23 @@ namespace Alpha.BusinessLogic.Repositories {
         }
 
         public void Update(UpdateAddonBindingModel addon) {
-            throw new NotImplementedException();
+            var pattern = "dd-MM-yy";
+            DateTime returnDate;
+
+            if (!DateTime.TryParseExact(addon.ReleaseDate, pattern, null, DateTimeStyles.None, out returnDate)) {
+                returnDate = DateTime.UtcNow;
+            }
+
+            var entity = db.Addons.FirstOrDefault(a => a.ExtraId == addon.AddonId);
+
+            entity.Name = addon.Name;
+            entity.Description = addon.Description;
+            entity.GameId = addon.GameId;
+            entity.ReleaseDate = returnDate;
+            // entity.Price = addon.Price;
+
+            db.Entry(entity).State = EntityState.Modified;
+            db.SaveChanges();
         }
 
         public void Delete(DeleteAddonBindingModel addon) {

@@ -1,7 +1,5 @@
 ﻿app.controller('publisherController', ['$scope', '$http', '$route', 'GetAll', 'PostItem', function ($scope, $http, $route, GetAll, PostItem) {
 
-    var publisherApi = 'http://localhost:57369/api/publishers/';
-
     $scope.sortType = 'Name'; // set the default sort type
     $scope.sortReverse = false;  // set the default sort order
     $scope.searchPublishers = '';     // set the default search/filter term
@@ -39,7 +37,6 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
 
     var name, location;
     var publisherId = $routeParams.publisherId;
-    var publisherIdApi = 'http://localhost:57369/api/publishers/';
     var items;
     $scope.loading = true;
 
@@ -65,7 +62,7 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
             console.log(result)
             console.log(config);
 
-            UpdateItem.put(publisherIdApi + publisherId, config, function (response) {
+            UpdateItem.put(publisherApi + publisherId, config, function (response) {
                 $route.reload();
             });
 
@@ -74,7 +71,7 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
         });
     };
 
-    GetAll.all(publisherIdApi + publisherId, function (response) {
+    GetAll.all(publisherApi + publisherId, function (response) {
         $scope.publisher = response;
         publisherId = publisherId;
         $scope.PublisherId = publisherId

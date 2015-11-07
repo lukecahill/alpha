@@ -1,7 +1,5 @@
 ﻿app.controller('addonsController', ['$scope', '$http', '$route', 'GetAll', 'PostItem', function ($scope, $http, $route, GetAll, PostItem) {
 
-    var addonApi = 'http://localhost:57369/api/addons/';
-
     $scope.loading = true;
     $scope.showAddNew = false;
 
@@ -33,19 +31,18 @@
         }
     };
 
-    GetAll.all('http://localhost:57369/api/games', function (response) {
+    GetAll.all(gameApi, function (response) {
         $scope.games = response;
     });
 }]);
 
-app.controller('addonIdController', ['$scope', '$http', '$routeParams', '$route', '$location', 'GetAll', 'DeleteItem', '$uibModal', '$log', function ($scope, $http, $routeParams, $route, $location, GetAll, DeleteItem, $uibModal, $log) {
+app.controller('addonIdController', ['$scope', '$http', '$routeParams', '$route', '$location', 'GetAll', 'DeleteItem', '$uibModal', '$log', 'UpdateItem', function ($scope, $http, $routeParams, $route, $location, GetAll, DeleteItem, $uibModal, $log, UpdateItem) {
 
-    var addonIdApi = 'http://localhost:57369/api/addons/'
     var addonId = $routeParams.addonId;
     var items;
     $scope.loading = true;
 
-    GetAll.all(addonIdApi + addonId, function (response) {
+    GetAll.all(addonApi + addonId, function (response) {
         $scope.addon = response;
         $scope.loading = false;
         items = response;
@@ -72,7 +69,7 @@ app.controller('addonIdController', ['$scope', '$http', '$routeParams', '$route'
                 GameId: result.GameId
             };
 
-            UpdateItem.put(addonIdApi + addonId, config, function (response) {
+            UpdateItem.put(addonApi + addonId, config, function (response) {
                 $route.reload();
             });
 
@@ -102,9 +99,7 @@ app.controller('addonIdController', ['$scope', '$http', '$routeParams', '$route'
 app.controller('editAddonController', ['$scope', '$uibModalInstance', 'items', 'GetAll', function ($scope, $uibModalInstance, items, GetAll) {
     $scope.addon = items;
 
-    var gamesIdApi = 'http://localhost:57369/api/games/';
-
-    GetAll.all(gamesIdApi, function (response) {
+    GetAll.all(gameApi, function (response) {
         $scope.games = response;
     });
 

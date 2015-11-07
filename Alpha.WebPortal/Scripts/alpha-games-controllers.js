@@ -1,7 +1,5 @@
 ﻿app.controller('gamesController', ['$scope', '$http', '$log', '$route', 'GetAll', function ($scope, $http, $log, $route, GetAll) {
 
-    var gameApiUrl = 'http://localhost:57369/api/games';
-
     $scope.sortType = 'Title'; // set the default sort type
     $scope.sortReverse = false;  // set the default sort order
     $scope.searchGame = '';     // set the default search/filter term
@@ -19,7 +17,7 @@
             ReleaseDate: $scope.ReleaseDate
         };
 
-        PostItem.post(gameApiUrl, config, function () {
+        PostItem.post(gameApi, config, function () {
             $route.reload();
         });
     };
@@ -30,25 +28,24 @@
         }
     };
 
-    GetAll.all(gameApiUrl, function (response) {
+    GetAll.all(gameApi, function (response) {
         $scope.games = response;
         $scope.loading = false;
         $scope.totalGames = $scope.games.length;
     });
 
-    GetAll.all('http://localhost:57369/api/publishers', function (response) {
+    GetAll.all(publisherApi, function (response) {
         $scope.publishers = response;
     });
 }]);
 
 app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$location', 'PostItem', 'DeleteItem', 'GetAll', '$route', '$uibModal', '$log', 'UpdateItem', function ($scope, $http, $routeParams, $location, PostItem, DeleteItem, GetAll, $route, $uibModal, $log, UpdateItem) {
 
-    var gameIdApiUrl = 'http://localhost:57369/api/games/';
     var gameId = $routeParams.gameId;
     var items;
     $scope.loading = true;
 
-    GetAll.all(gameIdApiUrl + gameId, function (response) {
+    GetAll.all(gameApi + gameId, function (response) {
         $scope.game = response;
         $scope.loading = false;
         items = response;
@@ -62,7 +59,7 @@ app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$locatio
         });
 
         modalInstance.result.then(function (response) {
-            DeleteItem.deleteItem(gameIdApiUrl, gameId, function (response) {
+            DeleteItem.deleteItem(gameApi, gameId, function (response) {
                 console.log(response);
             });
 
@@ -105,10 +102,10 @@ app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$locatio
 
 app.controller('editGameController', ['$scope', '$uibModalInstance', 'GetAll', 'items', function ($scope, $uibModalInstance, GetAll, items) {
     $scope.game = items;
+    console.log(items);
 
-    GetAll.all('http://localhost:57369/api/publishers/', function (response) {
+    GetAll.all(publisherApi, function (response) {
         $scope.publishers = response;
-        console.log(response)
     });
 
     $scope.ok = function () {

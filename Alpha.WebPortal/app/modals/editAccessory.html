@@ -14,7 +14,7 @@
             </p>
             <p>
                 <label for="editType">Type</label>
-                <input class="form-control" data-ng-model="addon.Type" value="{{ accessory.Type }}" type="text" name="editType" />
+                <input class="form-control" data-ng-model="accessory.Type" value="{{ accessory.Type }}" type="text" name="editType" />
             </p>
             <p>
                 <label for="editDescription">Description</label>
@@ -22,10 +22,7 @@
             </p>
             <p>
                 <label for="editGame">Game</label>
-                <select name="editGame" class="form-control" data-ng-required="true">
-                    <option data-ng-repeat="game in games" value="{{ game.GameId }}">
-                        {{ game.Title }}
-                    </option>
+                <select name="editGame" class="form-control" data-ng-required="true" data-ng-model="accessory.game" data-ng-options="item.Title for item in games track by item.GameId">
                 </select>
                 <p data-ng-show="editAccessory.editGame.$invalid && !editAccessory.editGame.$pristine" class="help-block">Game is required.</p>
             </p>

@@ -8,19 +8,14 @@
                 <label for="editTitle">Title</label>
                 <input class="form-control" data-ng-required="true" data-ng-maxlength="255" type="text" name="editTitle" data-ng-model="game.Title" value="{{ game.Title }}" />
                 <p data-ng-show="editGame.editTitle.$invalid && !editGame.editTitle.$pristine" class="help-block">Game name is required.</p>
-                <span data-ng-bind="name"></span>
             </p>
             <p>
                 <label for="editDate">Release Date</label>
                 <input class="form-control" data-ng-model="game.ReleaseDate" type="text" name="editDate" value="{{ game.ReleaseDate }}"/>
-                <span data-ng-bind="date"></span>
             </p>
             <p>
                 <label for="editPublisher">Game publisher</label>
-                <select name="editPublisher" class="form-control" data-ng-required="true" data-ng-model="publisher">
-                    <option data-ng-repeat="item in publishers" value="{{ item.PublisherId }}">
-                        {{ item.Name }}
-                    </option>
+                <select name="editPublisher" class="form-control" data-ng-required="true" data-ng-model="publisher" data-ng-options="item.Name for item in publishers track by item.PublisherId">
                 </select>
                 <p data-ng-show="editGame.editPublisher.$invalid && !editGame.editPublisher.$pristine" class="help-block">Publisher is required.</p>
             </p>

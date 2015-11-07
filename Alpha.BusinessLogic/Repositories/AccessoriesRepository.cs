@@ -48,8 +48,17 @@ namespace Alpha.BusinessLogic.Repositories {
         }
 
         public void Update(UpdateAccessoriesBindingModels accessory) {
-            throw new NotImplementedException();
-        }
+            var entity = db.Accessories.FirstOrDefault(a => a.ExtraId == accessory.AccessoryId);
+
+            entity.Name = accessory.Name;
+            entity.Description = accessory.Description;
+            entity.GameId = accessory.GameId;
+            entity.Type = accessory.Type;
+            // entity.Price = accessory.Price;
+
+            db.Entry(entity).State = EntityState.Modified;
+            db.SaveChanges();
+         }
 
         public void Delete(DeleteAccessoriesBindingModels accessory) {
             var entity = db.Accessories.FirstOrDefault(a => a.ExtraId == accessory.AccessoryId);

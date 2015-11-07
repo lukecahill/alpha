@@ -1,7 +1,5 @@
 ﻿app.controller('accessoriesController', ['$scope', '$http', '$route', 'GetAll', 'PostItem', function ($scope, $http, $route, GetAll, PostItem) {
-
-    var accessoryApi = 'http://localhost:57369/api/accessories';
-
+    
     $scope.loading = true;
     $scope.showAddNew = false;
 
@@ -33,19 +31,18 @@
         }
     };
 
-    GetAll.all('http://localhost:57369/api/games', function (response) {
+    GetAll.all(gameApi, function (response) {
         $scope.games = response;
     });
 }]);
 
-app.controller('accessoryIdController', ['$scope', '$http', '$routeParams', '$route', '$location', 'GetAll', 'DeleteItem', '$uibModal', '$log', function ($scope, $http, $routeParams, $route, $location, GetAll, DeleteItem, $uibModal, $log) {
+app.controller('accessoryIdController', ['$scope', '$http', '$routeParams', '$route', '$location', 'GetAll', 'DeleteItem', '$uibModal', '$log', 'UpdateItem', function ($scope, $http, $routeParams, $route, $location, GetAll, DeleteItem, $uibModal, $log, UpdateItem) {
 
-    var accessoryIdApi = 'http://localhost:57369/api/accessories/';
     var accessoryId = $routeParams.accessoryId;
     var items;
     $scope.loading = true;
 
-    GetAll.all(accessoryIdApi + accessoryId, function (response) {
+    GetAll.all(accessoryApi + accessoryId, function (response) {
         $scope.accessory = response;
         $scope.loading = false;
         items = response;
@@ -64,16 +61,17 @@ app.controller('accessoryIdController', ['$scope', '$http', '$routeParams', '$ro
             }
         });
 
-        modalInstance.result.then(function (result) {
+        modalInstance.result.then(function (response) {
+            console.log(response)
             var config = {
                 AccessoryId: accessoryId,
                 Name: response.Name,
                 Type: response.Type,
                 Description: response.Description,
-                GameId: response.gameId
+                GameId: response.GameId
             };
 
-            UpdateItem.put(accessoryIdApi + accessoryId, config, function (response) {
+            UpdateItem.put(accessoryApi + accessoryId, config, function (response) {
                 $route.reload();
             });
 
@@ -101,22 +99,21 @@ app.controller('accessoryIdController', ['$scope', '$http', '$routeParams', '$ro
 }]);
 
 app.controller('editAccessoryController', ['$scope', '$uibModalInstance', 'items', 'GetAll', function ($scope, $uibModalInstance, items, GetAll) {
-    $scope.accessory = items;
 
-    var gamesIdApi = 'http://localhost:57369/api/games/';
+    $scope.accessory = items;
     var items;
 
-    GetAll.all(gamesIdApi, function (response) {
+    GetAll.all(gameApi, function (response) {
         $scope.games = response;
     });
 
-
     $scope.ok = function () {
+        console.log($scope.Name, $scope.Type, $scope.Description, $scope.game)
         $uibModalInstance.close({
             Name: $scope.accessory.Name,
             Type: $scope.accessory.Type,
             Description: $scope.accessory.Description,
-            GameId: $scope.gameId
+            GameId: $scope.accessory.game
         });
     };
 
