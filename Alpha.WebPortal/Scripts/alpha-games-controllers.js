@@ -60,7 +60,7 @@ app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$locatio
 
         modalInstance.result.then(function (response) {
             DeleteItem.deleteItem(gameApi, gameId, function (response) {
-                console.log(response);
+                console.log(response.Title + ' removed!');
             });
 
         }, function () {
@@ -88,8 +88,6 @@ app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$locatio
                 ReleaseDate: result.ReleaseDate
             };
 
-            console.log(config)
-
             UpdateItem.put(gameIdApiUrl + gameId, config, function (response) {
                 $route.reload();
             });
@@ -102,7 +100,6 @@ app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$locatio
 
 app.controller('editGameController', ['$scope', '$uibModalInstance', 'GetAll', 'items', function ($scope, $uibModalInstance, GetAll, items) {
     $scope.game = items;
-    console.log(items);
 
     GetAll.all(publisherApi, function (response) {
         $scope.publishers = response;

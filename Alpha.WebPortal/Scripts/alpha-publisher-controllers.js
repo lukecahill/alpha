@@ -59,8 +59,6 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
                 Name: result.Name,
                 Location: result.Location
             }
-            console.log(result)
-            console.log(config);
 
             UpdateItem.put(publisherApi + publisherId, config, function (response) {
                 $route.reload();
@@ -92,7 +90,7 @@ app.controller('publisherIdController', ['$rootScope', '$scope', '$routeParams',
 
         modalInstance.result.then(function (result) {
             DeleteItem.deleteItem(publisherIdApi, publisherId, function (response) {
-                console.log("Delete confirmed");
+                console.log(result.Name + ' removed!');
             })
         }, function () {
             $log.info('Modal dismissed at: ' + new Date());

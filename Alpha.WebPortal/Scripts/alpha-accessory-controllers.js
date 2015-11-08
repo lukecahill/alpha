@@ -46,7 +46,6 @@ app.controller('accessoryIdController', ['$scope', '$http', '$routeParams', '$ro
         $scope.accessory = response;
         $scope.loading = false;
         items = response;
-        console.log(response)
     });
 
     $scope.updateAccessory = function () {
