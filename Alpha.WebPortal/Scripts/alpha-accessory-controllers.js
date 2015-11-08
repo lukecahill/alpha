@@ -46,6 +46,7 @@ app.controller('accessoryIdController', ['$scope', '$http', '$routeParams', '$ro
         $scope.accessory = response;
         $scope.loading = false;
         items = response;
+        console.log(response)
     });
 
     $scope.updateAccessory = function () {
@@ -62,7 +63,6 @@ app.controller('accessoryIdController', ['$scope', '$http', '$routeParams', '$ro
         });
 
         modalInstance.result.then(function (response) {
-            console.log(response)
             var config = {
                 AccessoryId: accessoryId,
                 Name: response.Name,
@@ -108,12 +108,11 @@ app.controller('editAccessoryController', ['$scope', '$uibModalInstance', 'items
     });
 
     $scope.ok = function () {
-        console.log($scope.Name, $scope.Type, $scope.Description, $scope.game)
         $uibModalInstance.close({
             Name: $scope.accessory.Name,
             Type: $scope.accessory.Type,
             Description: $scope.accessory.Description,
-            GameId: $scope.accessory.game
+            GameId: $scope.accessory.game.GameId
         });
     };
 

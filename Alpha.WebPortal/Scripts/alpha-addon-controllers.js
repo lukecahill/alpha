@@ -105,7 +105,7 @@ app.controller('editAddonController', ['$scope', '$uibModalInstance', 'items', '
 
     $scope.ok = function () {
         $uibModalInstance.close({
-            Name: $scope.addon.Name,
+            Name: $scope.addon.AddonName,
             ReleaseDate: $scope.addon.ReleaseDate,
             Description: $scope.addon.Description,
             GameId: $scope.gameId

@@ -22,7 +22,7 @@
             </p>
             <p>
                 <label for="editLocation">Game</label>
-                <select name="editGame" data-ng-required="true" class="form-control">
+                <select name="editGame" data-ng-required="true" class="form-control" data-ng-model="gameId">
                     <option data-ng-repeat="game in games" value="{{ game.GameId }}">
                         {{ game.Title }}
                     </option>
