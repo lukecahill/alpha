@@ -25,10 +25,7 @@
             <s>Logging - use log4net?</s>
         </li>
         <li>
-            Email and notifications - how will these be done? Are these actually needed?
-        </li>
-        <li>
-            Add more details for everything - price etc.
+            <s>Add more details for everything - price etc.</s>
         </li>
         <li>
             <s>Split the controllers into different files</s>
