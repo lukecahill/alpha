@@ -21,6 +21,10 @@
                 <textarea class="form-control" data-ng-model="addon.Description" value=" {{ addon.Description }}" name="editDescription"></textarea>
             </p>
             <p>
+                <label for="editPrice">Price</label>
+                <input class="form-control" data-ng-model="addon.Price" value="{{ addon.Price }}" type="number" step="any" min="0" name="editPrice" />
+            </p>
+            <p>
                 <label for="editLocation">Game</label>
                 <select name="editGame" data-ng-required="true" class="form-control" data-ng-model="gameId">
                     <option data-ng-repeat="game in games" value="{{ game.GameId }}">

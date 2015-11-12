@@ -67,7 +67,8 @@ app.controller('addonIdController', ['$scope', '$http', '$routeParams', '$route'
                 Name: result.Name,
                 ReleaseDate: result.ReleaseDate,
                 Description: result.Description,
-                GameId: result.GameId
+                GameId: result.GameId,
+                Price: result.Price
             };
 
             UpdateItem.put(addonApi + addonId, config, function (response) {
@@ -109,7 +110,8 @@ app.controller('editAddonController', ['$scope', '$uibModalInstance', 'items', '
             Name: $scope.addon.AddonName,
             ReleaseDate: $scope.addon.ReleaseDate,
             Description: $scope.addon.Description,
-            GameId: $scope.gameId
+            GameId: $scope.gameId,
+            Price: $scope.addon.Price
         });
     };
 

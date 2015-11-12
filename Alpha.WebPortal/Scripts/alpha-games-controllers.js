@@ -87,7 +87,9 @@ app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$locatio
                 GameId: gameId,
                 Title: result.Title,
                 PublisherId: result.Publisher,
-                ReleaseDate: result.ReleaseDate
+                ReleaseDate: result.ReleaseDate,
+                PictureLink: result.PictureLink,
+                Price: result.Price
             };
 
             UpdateItem.put(gameIdApiUrl + gameId, config, function (response) {
@@ -111,7 +113,9 @@ app.controller('editGameController', ['$scope', '$uibModalInstance', 'GetAll', '
         $uibModalInstance.close({
             Title: $scope.game.Title,
             Publisher: $scope.publisher,
-            ReleaseDate: $scope.game.ReleaseDate
+            ReleaseDate: $scope.game.ReleaseDate,
+            PictureLink: $scope.game.PictureLink,
+            Price: $scope.game.Price
         });
     };
 

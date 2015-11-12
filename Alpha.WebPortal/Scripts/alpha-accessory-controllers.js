@@ -68,7 +68,8 @@ app.controller('accessoryIdController', ['$scope', '$http', '$routeParams', '$ro
                 Name: response.Name,
                 Type: response.Type,
                 Description: response.Description,
-                GameId: response.GameId
+                GameId: response.GameId,
+                Price: response.Price
             };
 
             UpdateItem.put(accessoryApi + accessoryId, config, function (response) {
@@ -112,7 +113,8 @@ app.controller('editAccessoryController', ['$scope', '$uibModalInstance', 'items
             Name: $scope.accessory.Name,
             Type: $scope.accessory.Type,
             Description: $scope.accessory.Description,
-            GameId: $scope.accessory.game.GameId
+            GameId: $scope.GameId,
+            Price: $scope.accessory.Price
         });
     };
 

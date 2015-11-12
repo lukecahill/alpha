@@ -11,7 +11,15 @@
             </p>
             <p>
                 <label for="editDate">Release Date</label>
-                <input class="form-control" data-ng-model="game.ReleaseDate" type="text" name="editDate" value="{{ game.ReleaseDate }}"/>
+                <input class="form-control" data-ng-model="game.ReleaseDate" type="text" name="editDate" value="{{ game.ReleaseDate }}" />
+            </p>
+            <p>
+                <label for="editLink">Game picture</label>
+                <input class="form-control" data-ng-model="game.PictureLink" type="text" name="editLink" value="{{ game.PictureLink }}" />
+            </p>
+            <p>
+                <label for="price">Price</label>
+                <input class="form-control" data-ng-model="game.Price" type="number" step="any" min="0" name="price" value="{{ game.Price }}" />
             </p>
             <p>
                 <label for="editPublisher">Game publisher</label>

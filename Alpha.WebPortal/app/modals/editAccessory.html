@@ -18,7 +18,11 @@
             </p>
             <p>
                 <label for="editDescription">Description</label>
-                <textarea class="form-control" data-ng-model="accessory.Description" value="{{ accessory.Description}}" name="editDescription"></textarea>
+                <textarea class="form-control" data-ng-model="accessory.Description" value="{{ accessory.Description }}" name="editDescription"></textarea>
+            </p>
+            <p>
+                <label for="editPrice">Price</label>
+                <input class="form-control" data-ng-model="accessory.Price" value="{{ accessory.Price }}" type="number" step="any" min="0" name="editPrice" />
             </p>
             <p>
                 <label for="editGame">Game</label>
