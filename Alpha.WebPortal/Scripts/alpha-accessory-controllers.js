@@ -113,7 +113,7 @@ app.controller('editAccessoryController', ['$scope', '$uibModalInstance', 'items
             Name: $scope.accessory.Name,
             Type: $scope.accessory.Type,
             Description: $scope.accessory.Description,
-            GameId: $scope.GameId,
+            GameId: $scope.gameId,
             Price: $scope.accessory.Price
         });
     };

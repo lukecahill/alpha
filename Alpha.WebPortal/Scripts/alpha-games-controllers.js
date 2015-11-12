@@ -92,7 +92,7 @@ app.controller('gameIdController', ['$scope', '$http', '$routeParams', '$locatio
                 Price: result.Price
             };
 
-            UpdateItem.put(gameIdApiUrl + gameId, config, function (response) {
+            UpdateItem.put(gameApi + gameId, config, function (response) {
                 $route.reload();
             });
 
@@ -112,7 +112,7 @@ app.controller('editGameController', ['$scope', '$uibModalInstance', 'GetAll', '
     $scope.ok = function () {
         $uibModalInstance.close({
             Title: $scope.game.Title,
-            Publisher: $scope.publisher,
+            Publisher: $scope.publisher.PublisherId,
             ReleaseDate: $scope.game.ReleaseDate,
             PictureLink: $scope.game.PictureLink,
             Price: $scope.game.Price
