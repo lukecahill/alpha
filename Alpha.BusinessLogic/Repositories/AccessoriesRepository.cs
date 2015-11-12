@@ -39,7 +39,8 @@ namespace Alpha.BusinessLogic.Repositories {
                 Name = accessory.Name,
                 Type = accessory.Type,
                 Description = accessory.Description,
-                GameId = accessory.GameId
+                GameId = accessory.GameId,
+                Price = accessory.Price
             };
 
             db.Accessories.Add(entity);
@@ -54,7 +55,7 @@ namespace Alpha.BusinessLogic.Repositories {
             entity.Description = accessory.Description;
             entity.GameId = accessory.GameId;
             entity.Type = accessory.Type;
-            // entity.Price = accessory.Price;
+            entity.Price = accessory.Price;
 
             db.Entry(entity).State = EntityState.Modified;
             db.SaveChanges();

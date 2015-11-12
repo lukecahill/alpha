@@ -10,6 +10,9 @@ namespace Alpha.Infrastructure.BindingModels {
         public string Description { get; set; }
 
         public int GameId { get; set; }
+
+        [Required]
+        public decimal Price { get; set; }
     }
 
     public class UpdateAccessoriesBindingModels {
@@ -24,6 +27,9 @@ namespace Alpha.Infrastructure.BindingModels {
         public string Description { get; set; }
 
         public int GameId { get; set; }
+
+        [Required]
+        public decimal Price { get; set; }
     }
 
     public class DeleteAccessoriesBindingModels {

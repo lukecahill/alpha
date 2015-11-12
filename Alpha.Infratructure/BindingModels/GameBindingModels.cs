@@ -11,6 +11,9 @@ namespace Alpha.Infrastructure.BindingModels {
         public int PublisherId { get; set; }
 
         public string PictureLink { get; set; }
+
+        [Required]
+        public decimal Price { get; set; }
     }
 
     public class UpdateGameBindingModel {
@@ -26,6 +29,9 @@ namespace Alpha.Infrastructure.BindingModels {
         public string ReleaseDate { get; set; }
 
         public string PictureLink { get; set; }
+
+        [Required]
+        public decimal Price { get; set; }
     }
 
     public class DeleteGameBindingModel {

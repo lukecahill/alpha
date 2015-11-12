@@ -48,7 +48,8 @@ namespace Alpha.BusinessLogic.Repositories {
                 Name = addon.Name,
                 GameId = addon.GameId,
                 ReleaseDate = returnDate,
-                Description = addon.Description
+                Description = addon.Description,
+                Price = addon.Price
             };
 
             db.Addons.Add(entity);
@@ -71,7 +72,7 @@ namespace Alpha.BusinessLogic.Repositories {
             entity.Description = addon.Description;
             entity.GameId = addon.GameId;
             entity.ReleaseDate = returnDate;
-            // entity.Price = addon.Price;
+            entity.Price = addon.Price;
 
             db.Entry(entity).State = EntityState.Modified;
             db.SaveChanges();

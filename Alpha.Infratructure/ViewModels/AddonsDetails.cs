@@ -8,6 +8,7 @@ namespace Alpha.Infrastructure.ViewModels {
         public string GameTitle { get; set; }
         public string Publisher { get; set; }
         public string Description { get; set; }
+        public decimal Price { get; set; }
         public DateTime ReleaseDate { get; set; }
 
         public AddonsDetails(DAL.Models.Addons addon) {
@@ -17,6 +18,7 @@ namespace Alpha.Infrastructure.ViewModels {
             this.Publisher = addon.Game.Publisher.Name;
             this.Description = addon.Description;
             this.ReleaseDate = addon.ReleaseDate;
+            this.Price = addon.Price;
         }
 
         public AddonsDetails() { }

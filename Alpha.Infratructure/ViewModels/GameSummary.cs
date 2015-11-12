@@ -7,12 +7,14 @@ namespace Alpha.Infrastructure.ViewModels {
 		public string Title { get; set; }
         public string PublisherName { get; set; }
         public DateTime ReleaseDate { get; set; }
+        public decimal Price { get; set; }
 
         public GameSummary(Games game) {
 			this.GameId = game.GameId;
             this.Title = game.Title;
             this.PublisherName = game.Publisher.Name;
             this.ReleaseDate = game.ReleaseDate;
+            this.Price = game.Price;
         }
     }
 }

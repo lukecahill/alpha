@@ -48,7 +48,8 @@ namespace Alpha.BusinessLogic.Repositories {
                 Title = game.Title,
                 PublisherId = game.PublisherId,
                 ReleaseDate = returnDate,
-                PictureLink = game.PictureLink
+                PictureLink = game.PictureLink,
+                Price = game.Price
             };
 
             db.Games.Add(entity);
@@ -71,6 +72,7 @@ namespace Alpha.BusinessLogic.Repositories {
             entity.ReleaseDate = returnDate;
             entity.PublisherId = game.PublisherId;
             entity.PictureLink = game.PictureLink;
+            entity.Price = game.Price;
 
             db.Entry(entity).State = EntityState.Modified;
             db.SaveChanges();
