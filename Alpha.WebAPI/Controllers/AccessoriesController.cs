@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Alpha.Infrastructure.BindingModels;
+using Alpha.Infrastructure.ViewModels;
+using Alpha.Interfaces.Interfaces;
+using log4net;
+using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Alpha.Infrastructure.ViewModels;
-using Alpha.Infrastructure.BindingModels;
-using Alpha.Interfaces.Interfaces;
 
 namespace Alpha.WebAPI.Controllers {
     public class AccessoriesController : ApiController {
