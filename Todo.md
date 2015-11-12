@@ -22,7 +22,7 @@
             Styling for all pages
         </li>
         <li>
-            Logging - use log4net?
+            <s>Logging - use log4net?</s>
         </li>
         <li>
             Email and notifications - how will these be done? Are these actually needed?
