@@ -18,25 +18,37 @@
 
     <div class="row well" data-ng-show="showAddNew">
         <form class="col-lg-12" name="gameForm" data-ng-submit="submitForm(gameForm.$valid)" novalidate>
-            <div class="col-md-3">
-                <label for="publisher">Enter a title: </label>
-                <input data-ng-model="Name" data-ng-required="true" data-ng-maxlength="255" class="form-control" name="Name" type="text" value="White Label" placeholder="Call of Duty 2" />
-                <p data-ng-show="gameForm.Name.$invalid && !gameForm.Name.$pristine" class="help-block">Game name is required.</p>
-                <p data-ng-show="gameForm.Name.$error.maxlength" class="help-block">Name is too long (maximum 255 characters!).</p>
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="publisher">Enter a title: </label>
+                    <input data-ng-model="Name" data-ng-required="true" data-ng-maxlength="255" class="form-control" name="Name" type="text" value="White Label" placeholder="Call of Duty 2" />
+                    <p data-ng-show="gameForm.Name.$invalid && !gameForm.Name.$pristine" class="help-block">Game name is required.</p>
+                    <p data-ng-show="gameForm.Name.$error.maxlength" class="help-block">Name is too long (maximum 255 characters!).</p>
+                </div>
+                <div class="col-md-3">
+                    <label for="Publisher">Choose a publisher: </label>
+                    <select name="Publisher" data-ng-required="true" data-ng-model="Publisher" class="form-control">
+                        <option data-ng-repeat="item in publishers | orderBy: 'Name' " value="{{ item.PublisherId }}">{{ item.Name }}</option>
+                    </select>
+                    <p data-ng-show="gameForm.Publisher.$invalid" class="help-block">Publisher name is required.</p>
+                </div>
+                <div class="col-md-3">
+                    <label for="release">Enter the release date: </label>
+                    <input data-ng-model="ReleaseDate" class="form-control" name="release" type="text" placeholder="dd-MM-yy e.g. 31-10-15" />
+                </div>
+                <div class="col-md-3">
+                    <label for="price">Enter the games price: </label>
+                    <input data-ng-model="Price" class="form-control" name="price" type="number" step="any" min="0" placeholder="$4.99" />
+                </div>
             </div>
-            <div class="col-md-3">
-                <label for="Publisher">Choose a publisher: </label>
-                <select name="Publisher" data-ng-required="true" data-ng-model="Publisher" class="form-control">
-                    <option data-ng-repeat="item in publishers | orderBy: 'Name' " value="{{ item.PublisherId }}">{{ item.Name }}</option>
-                </select>
-                <p data-ng-show="gameForm.Publisher.$invalid" class="help-block">Publisher name is required.</p>
-            </div>
-            <div class="col-md-3">
-                <label for="release">Enter the release date: </label>
-                <input data-ng-model="ReleaseDate" class="form-control" name="release" type="text" placeholder="dd-MM-yy e.g. 31-10-15" />
-            </div>
-            <div class="col-md-3 top-buffer pull-right">
-                <button class="btn btn-default" data-ng-disabled="gameForm.$invalid" type="submit"><span class="glyphicon glyphicon-plus-sign"></span> Add a new Game!</button>
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="picture">Link to picture: </label>
+                    <input data-ng-model="Picture" class="form-control" name="picture" type="text" placeholder="http://example.com/image.png" />
+                </div>
+                <div class="col-md-3 top-buffer pull-right">
+                    <button class="btn btn-default" data-ng-disabled="gameForm.$invalid" type="submit"><span class="glyphicon glyphicon-plus-sign"></span> Add a new Game!</button>
+                </div>
             </div>
         </form>
     </div>

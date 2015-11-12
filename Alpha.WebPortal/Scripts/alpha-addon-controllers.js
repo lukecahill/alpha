@@ -17,7 +17,8 @@
             Name: $scope.title,
             GameId: $scope.gameId,
             ReleaseDate: $scope.releaseDate,
-            Description: $scope.description
+            Description: $scope.description,
+            Price: $scope.price
         };
 
         PostItem.post(addonApi, config, function () {

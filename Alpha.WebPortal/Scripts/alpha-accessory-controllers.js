@@ -17,7 +17,8 @@
             Name: $scope.name,
             Type: $scope.type,
             Description: $scope.description,
-            GameId: $scope.gameId
+            GameId: $scope.gameId,
+            Price: $scope.price
         };
 
         PostItem.post(accessoryApi, config, function () {

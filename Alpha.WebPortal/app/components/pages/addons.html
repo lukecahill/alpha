@@ -18,7 +18,7 @@
 
     <div class="row well" data-ng-show="showAddNew">
         <form class="col-lg-12" name="addonForm" novalidate data-ng-submit="submitForm(addonForm.$valid)">
-            <div class="col-lg-12 row">
+            <div class="row">
                 <div class="col-md-3">
                     <label for="title">Enter addon title: </label>
                     <input data-ng-model="title" data-ng-required="true" data-ng-maxlength="255" class="form-control" name="title" type="text" placeholder="DLC 1" />
@@ -41,8 +41,14 @@
                     <input data-ng-model="releaseDate" type="text" name="releaseDate" class="form-control" placeholder="20-12-15" />
                 </div>
             </div>
-            <div class="row col-lg-12 pull-right">
-                <button class="btn btn-default top-buffer" data-ng-disabled="addonForm.$invalid" type="submit"><span class="glyphicon glyphicon-plus-sign"></span> Add a new Addon!</button>
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="price">Enter the price: </label>
+                    <input data-ng-model="price" type="number" step="any" min="0" name="price" class="form-control" placeholder="$4.99" />
+                </div>
+                <div class="row col-md-3 top-buffer pull-right">
+                    <button class="btn btn-default top-buffer" data-ng-disabled="addonForm.$invalid" type="submit"><span class="glyphicon glyphicon-plus-sign"></span> Add a new Addon!</button>
+                </div>
             </div>
         </form>
     </div>

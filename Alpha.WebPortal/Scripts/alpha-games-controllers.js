@@ -1,4 +1,4 @@
-﻿app.controller('gamesController', ['$scope', '$http', '$log', '$route', 'GetAll', function ($scope, $http, $log, $route, GetAll) {
+﻿app.controller('gamesController', ['$scope', '$http', '$log', '$route', 'GetAll', 'PostItem', function ($scope, $http, $log, $route, GetAll, PostItem) {
 
     $scope.sortType = 'Title'; // set the default sort type
     $scope.sortReverse = false;  // set the default sort order
@@ -14,7 +14,9 @@
         var config = {
             PublisherId: $scope.Publisher,
             Title: $scope.Name,
-            ReleaseDate: $scope.ReleaseDate
+            ReleaseDate: $scope.ReleaseDate,
+            Price: $scope.Price,
+            Picture: $scope.Picture
         };
 
         PostItem.post(gameApi, config, function () {

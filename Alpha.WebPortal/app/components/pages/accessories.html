@@ -17,8 +17,8 @@
     </div>
 
     <div class="row well" data-ng-show="showAddNew">
-        <form name="accessoryForm" data-ng-submit="submitForm(accessoryForm.$valid)" novalidate>
-            <div class="col-lg-12 row">
+        <form class="col-lg-12" name="accessoryForm" data-ng-submit="submitForm(accessoryForm.$valid)" novalidate>
+            <div class="row">
                 <div class="col-md-3">
                     <label for="name">Enter a name: </label>
                     <input data-ng-model="name" data-ng-required="true" data-ng-maxlength="255" class="form-control" name="name" type="text" placeholder="Controller" />
@@ -41,9 +41,16 @@
                     <input data-ng-model="description" type="text" name="Description" class="form-control" placeholder="New way to play!" />
                 </div>
             </div>
-            <div class="row col-lg-12 top-buffer pull-right">
-                <button class="btn btn-default top-buffer" data-ng-disabled="accessoryForm.$invalid" type="submit"><span class="glyphicon glyphicon-plus-sign"></span> Add a new accessory!</button>
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="price">Enter the price: </label>
+                    <input data-ng-model="price" type="number" step="any" min="0" name="price" class="form-control" placeholder="$4.99" />
+                </div>
+                <div class="col-md-3 top-buffer pull-right">
+                    <button class="btn btn-default" data-ng-disabled="accessoryForm.$invalid" type="submit"><span class="glyphicon glyphicon-plus-sign"></span> Add a new accessory!</button>
+                </div>
             </div>
+
         </form>
     </div>
 
