@@ -1,15 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using Alpha.Infrastructure.BindingModels;
+using Alpha.Infrastructure.ViewModels;
+using Alpha.Interfaces.Interfaces;
+using log4net;
+using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Alpha.Infrastructure.ViewModels;
-using Alpha.Interfaces.Interfaces;
-using Alpha.Infrastructure.BindingModels;
 
 namespace Alpha.WebAPI.Controllers {
     public class AddonsController : ApiController {
         IAddonsRepository _rep;
+
+        private static readonly ILog _log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public AddonsController(IAddonsRepository rep) {
             _rep = rep;
@@ -44,7 +47,9 @@ namespace Alpha.WebAPI.Controllers {
 
             try {
                 _rep.Update(addons);
-            } catch (DbUpdateConcurrencyException) {
+                _log.Info($"Addon with ID {addons.AddonId} has been updated.");
+            } catch (DbUpdateConcurrencyException db) {
+                _log.Error($"Error updating {addons.AddonId}. Error thrown: {db.Message}");
                 throw new System.Exception("Update failed");
             }
 
@@ -55,10 +60,12 @@ namespace Alpha.WebAPI.Controllers {
         [ResponseType(typeof(AddonsDetails))]
         public IHttpActionResult PostAddons(CreateAddonBindingModel addons) {
             if (!ModelState.IsValid) {
+                _log.Error($"Could not create addon with the name {addons.Name}. Invalid request!");
                 return BadRequest(ModelState);
             }
 
             _rep.Add(addons);
+            _log.Info($"Created addon with the name {addons.Name}");
             return CreatedAtRoute("DefaultApi", new { id = addons }, addons);
         }
 
@@ -67,10 +74,12 @@ namespace Alpha.WebAPI.Controllers {
         public IHttpActionResult DeleteAddons(int id) {
             var addons = _rep.GetById(id);
             if (addons == null) {
+                _log.Error($"Could not find the addon with the id {id}!");
                 return NotFound();
             }
 
             var entity = new DeleteAddonBindingModel { AddonId = id };
+            _log.Info($"Addon with the ID {id} has been deleted!");
             _rep.Delete(entity);
 
             return Ok(addons);

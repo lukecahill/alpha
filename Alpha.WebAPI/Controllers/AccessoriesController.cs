@@ -11,6 +11,8 @@ namespace Alpha.WebAPI.Controllers {
     public class AccessoriesController : ApiController {
         IAccessoriesRepository _rep;
 
+        private static readonly ILog _log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public AccessoriesController(IAccessoriesRepository rep) {
             _rep = rep;
         }
@@ -35,6 +37,7 @@ namespace Alpha.WebAPI.Controllers {
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAccessories(UpdateAccessoriesBindingModels accessories) {
             if (!ModelState.IsValid) {
+                _log.Info($"");
                 return BadRequest(ModelState);
             }
 
@@ -44,7 +47,9 @@ namespace Alpha.WebAPI.Controllers {
 
             try {
                 _rep.Update(accessories);
-            } catch (DbUpdateConcurrencyException) {
+                _log.Info($"Accessory with the ID {accessories.AccessoryId} has been updated.");
+            } catch (DbUpdateConcurrencyException db) {
+                _log.Error($"Error updating accessory ID: {accessories.AccessoryId}.");
                 throw new System.Exception("Update failed");
             }
 
@@ -55,9 +60,11 @@ namespace Alpha.WebAPI.Controllers {
         [ResponseType(typeof(AccessoriesDetails))]
         public IHttpActionResult PostAccessories(CreateAccessoriesBindingModels accessories) {
             if (!ModelState.IsValid) {
+                _log.Error($"Could not create the new accessory name {accessories.Name}");
                 return BadRequest(ModelState);
             }
 
+            _log.Info($"Accessory {accessories.Name} created!");
             _rep.Add(accessories);
             
 			// TODO : this
@@ -69,11 +76,12 @@ namespace Alpha.WebAPI.Controllers {
         public IHttpActionResult DeleteAccessories(int id) {
             var accessories = _rep.GetById(id);
             if (accessories == null) {
+                _log.Error($"Could not find the accessory with the ID {id}");
                 return NotFound();
             }
 
             var entity = new DeleteAccessoriesBindingModels { AccessoryId = id };
-
+            _log.Info($"Accessory with the ID {id} was deleted!");
             _rep.Delete(entity);
             return Ok(accessories);
         }
