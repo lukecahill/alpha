@@ -45,7 +45,7 @@
             </tr>
             <tr>
                 <td>
-                    <strong>Publisher</strong>
+                    <strong>Publisher Name</strong>
                 </td>
                 <td>
                     {{ game.Publisher }}
@@ -53,10 +53,18 @@
             </tr>
             <tr>
                 <td>
-                    <strong>Release date for this game</strong>
+                    <strong>Release date</strong>
                 </td>
                 <td>
                     {{ game.ReleaseDate | date:"dd/MM/yyyy 'at' h:mma" }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Price</strong>
+                </td>
+                <td>
+                    {{ game.Price | currency }}
                 </td>
             </tr>
         </table>

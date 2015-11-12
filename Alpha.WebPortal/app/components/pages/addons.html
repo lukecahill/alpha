@@ -52,11 +52,13 @@
             <th>Addon Name</th>
             <th>Game</th>
             <th>Publisher</th>
+            <th>Price</th>
         </tr>
         <tr data-ng-repeat="item in addons">
             <td><a href="#/addons/{{ item.AddonId }}">{{ item.Title }}</a></td>
             <td>{{ item.GameTitle }}</td>
             <td>{{ item.Publisher }}</td>
+            <td>{{ item.Price | currency }}</td>
         </tr>
     </table>
 </div>

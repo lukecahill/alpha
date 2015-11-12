@@ -81,6 +81,13 @@
                     <span data-ng-show="sortType == 'ReleaseDate' && sortReverse" class="fa fa-caret-up"></span>
                 </a>
             </th>
+            <th>
+                <a href="" data-ng-click="sortType = 'Price'; sortReverse = !sortReverse">
+                    Price
+                    <span data-ng-show="sortType == 'Price' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span data-ng-show="sortType == 'Price' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
         </tr>
         <tr data-ng-repeat="item in games | orderBy:sortType:sortReverse | filter: searchGames track by $index">
             <td>
@@ -91,6 +98,9 @@
             </td>
             <td>
                 {{ item.ReleaseDate | date:"dd/MM/yyyy 'at' h:mma"}}
+            </td>
+            <td>
+                {{ item.Price | currency }}
             </td>
         </tr>
     </table>

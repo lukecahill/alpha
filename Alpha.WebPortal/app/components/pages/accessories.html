@@ -51,10 +51,12 @@
         <tr>
             <th>Name</th>
             <th>Game</th>
+            <th>Price</th>
         </tr>
         <tr data-ng-repeat="item in accessories">
             <td><a href="#/accessories/{{ item.AccessoryId }}">{{ item.Name }}</a></td>
             <td>{{ item.GameTitle }}</td>
+            <td>{{ item.Price | currency }}</td>
         </tr>
     </table>
 </div>
