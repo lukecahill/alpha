@@ -2,8 +2,6 @@
 
 namespace Alpha.DAL.Context {
     public class AuthContext : IdentityDbContext<IdentityUser> {
-        public AuthContext() : base("AuthContext") {
-
-        }
+        public AuthContext() : base("AuthContext") { }
     }
 }
