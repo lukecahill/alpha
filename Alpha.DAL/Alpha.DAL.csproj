@@ -135,7 +135,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Accessories.cs" />
     <Compile Include="Models\Addons.cs" />
-    <Compile Include="Models\AuthContext.cs" />
+    <Compile Include="Context\AuthContext.cs" />
     <Compile Include="Models\EntityBase.cs" />
     <Compile Include="Models\Extras.cs" />
     <Compile Include="Models\Games.cs" />
