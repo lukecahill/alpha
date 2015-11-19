@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BindingModels\AccessoriesBindingModels.cs" />
+    <Compile Include="BindingModels\AccountBindingModels.cs" />
     <Compile Include="BindingModels\AddonsBindingModel.cs" />
     <Compile Include="BindingModels\GameBindingModels.cs" />
     <Compile Include="BindingModels\PublisherBindingModels.cs" />
