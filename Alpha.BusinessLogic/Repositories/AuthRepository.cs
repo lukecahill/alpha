@@ -1,9 +1,9 @@
 ﻿using Alpha.DAL.Context;
-using System;
-using System.Threading.Tasks;
+using Alpha.Infrastructure.BindingModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Alpha.DAL.Models;
+using System;
+using System.Threading.Tasks;
 
 namespace Alpha.BusinessLogic.Repositories {
     public class AuthRepository : IDisposable {
@@ -16,7 +16,7 @@ namespace Alpha.BusinessLogic.Repositories {
             _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(_ctx));
         }
 
-        public async Task<IdentityResult> RegisterUser(UserModel userModel) {
+        public async Task<IdentityResult> RegisterUser(CreateAccountBindingModels userModel) {
             IdentityUser user = new IdentityUser {
                 UserName = userModel.UserName
             };

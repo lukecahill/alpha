@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Alpha.Infrastructure.BindingModels;
 
 namespace Alpha.WebAPI.Controllers {
     [RoutePrefix("api/Account")]
@@ -14,23 +15,23 @@ namespace Alpha.WebAPI.Controllers {
 
         // TODO: The below method replacing the usermodel with a binding model
         // POST api/Account/Register
-        //[AllowAnonymous]
-        //[Route("Register")]
-        //public async Task<IHttpActionResult> Register(UserModel userModel) {
-        //    if (!ModelState.IsValid) {
-        //        return BadRequest(ModelState);
-        //    }
+        [AllowAnonymous]
+        [Route("Register")]
+        public async Task<IHttpActionResult> Register(CreateAccountBindingModels userModel) {
+            if (!ModelState.IsValid) {
+                return BadRequest(ModelState);
+            }
 
-        //    IdentityResult result = await _repo.RegisterUser(userModel);
+            IdentityResult result = await _repo.RegisterUser(userModel);
 
-        //    IHttpActionResult errorResult = GetErrorResult(result);
+            IHttpActionResult errorResult = GetErrorResult(result);
 
-        //    if (errorResult != null) {
-        //        return errorResult;
-        //    }
+            if (errorResult != null) {
+                return errorResult;
+            }
 
-        //    return Ok();
-        //}
+            return Ok();
+        }
 
         protected override void Dispose(bool disposing) {
             if (disposing) {
