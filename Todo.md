@@ -13,6 +13,9 @@
             Authentication using OWIN
         </li>
         <li>
+           Paging
+        </li>
+        <li>
             Unit tests
         </li>
         <li>
