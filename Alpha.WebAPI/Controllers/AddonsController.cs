@@ -7,6 +7,7 @@ using System.Data.Entity.Infrastructure;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Threading.Tasks;
 
 namespace Alpha.WebAPI.Controllers {
     public class AddonsController : ApiController {
@@ -25,8 +26,8 @@ namespace Alpha.WebAPI.Controllers {
 
         // GET: api/Addons/5
         [ResponseType(typeof(AddonsDetails))]
-        public IHttpActionResult GetAddons(int id) {
-            var addons = _rep.GetById(id);
+        public async Task<IHttpActionResult> GetAddons(int id) {
+            var addons = await _rep.GetById(id);
             if (addons == null) {
                 return NotFound();
             }

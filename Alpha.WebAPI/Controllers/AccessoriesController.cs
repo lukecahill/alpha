@@ -5,6 +5,7 @@ using log4net;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 
@@ -25,8 +26,8 @@ namespace Alpha.WebAPI.Controllers {
 
         // GET: api/Accessories/5
         [ResponseType(typeof(AccessoriesDetails))]
-        public IHttpActionResult GetAccessories(int id) {
-            var accessories = _rep.GetById(id);
+        public async Task<IHttpActionResult> GetAccessories(int id) {
+            var accessories = await _rep.GetById(id);
             if (accessories == null) {
                 return NotFound();
             }
@@ -38,7 +39,7 @@ namespace Alpha.WebAPI.Controllers {
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAccessories(UpdateAccessoriesBindingModels accessories) {
             if (!ModelState.IsValid) {
-                _log.Info($"");
+                _log.Info($"Model state for {accessories.AccessoryId}, {accessories.Name} is not valid!");
                 return BadRequest(ModelState);
             }
 

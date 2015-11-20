@@ -7,6 +7,7 @@ using Alpha.Infrastructure.ViewModels;
 using Alpha.Infrastructure.BindingModels;
 using Alpha.Interfaces.Interfaces;
 using log4net;
+using System.Threading.Tasks;
 
 namespace Alpha.WebAPI.Controllers {
     public class GamesController : ApiController {
@@ -25,8 +26,8 @@ namespace Alpha.WebAPI.Controllers {
 
         // GET: api/Games/5
         [ResponseType(typeof(GameDetails))]
-        public IHttpActionResult GetGames(int id) {
-            var games = _rep.GetById(id);
+        public async Task<IHttpActionResult> GetGames(int id) {
+            var games = await _rep.GetById(id);
             if (games == null) {
                 return NotFound();
             }

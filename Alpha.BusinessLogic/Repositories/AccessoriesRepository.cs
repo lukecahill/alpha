@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Data.Entity;
-using Alpha.Interfaces.Interfaces;
-using Alpha.DAL.Context;
-using Alpha.Infrastructure.ViewModels;
+﻿using Alpha.DAL.Context;
 using Alpha.Infrastructure.BindingModels;
+using Alpha.Infrastructure.ViewModels;
+using Alpha.Interfaces.Interfaces;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Alpha.BusinessLogic.Repositories {
     public class AccessoriesRepository : IAccessoriesRepository {
@@ -19,12 +20,12 @@ namespace Alpha.BusinessLogic.Repositories {
 			return entities.Select(e => new AccessoriesSummary(e)).ToList();
 		}
 
-        public AccessoriesDetails GetById(int id) {
-            var entity = db.Accessories
+        public async Task<AccessoriesDetails> GetById(int id) {
+            var entity = await db.Accessories
                 .Include(g => g.Game).Where(g => g.IsDeleted == false)
                 .Include(g => g.Game.Publisher).Where(g => g.IsDeleted == false)
                 .Where(a => a.IsDeleted == false)
-                .FirstOrDefault(a => a.ExtraId == id);
+                .FirstOrDefaultAsync(a => a.ExtraId == id);
 
             if(entity != null) {
                 return new AccessoriesDetails(entity);
