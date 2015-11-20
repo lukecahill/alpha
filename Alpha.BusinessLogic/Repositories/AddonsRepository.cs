@@ -7,6 +7,7 @@ using Alpha.DAL.Context;
 using Alpha.Infrastructure.ViewModels;
 using Alpha.Infrastructure.BindingModels;
 using System.Globalization;
+using System.Threading.Tasks;
 
 namespace Alpha.BusinessLogic.Repositories {
     public class AddonsRepository : IAddonsRepository {
@@ -22,12 +23,12 @@ namespace Alpha.BusinessLogic.Repositories {
             return entities.Select(e => new AddonSummary(e)).ToList();
         }
 
-        public AddonsDetails GetById(int id) {
-			var entity = db.Addons
+        public async Task<AddonsDetails> GetById(int id) {
+			var entity = await db.Addons
                 .Include(g => g.Game).Where(g => g.IsDeleted == false)
                 .Include(g => g.Game.Publisher).Where(g => g.IsDeleted == false)
                 .Where(a => a.IsDeleted == false)
-                .FirstOrDefault(p => p.ExtraId == id);
+                .FirstOrDefaultAsync(p => p.ExtraId == id);
 
             if(entity != null) {
                 return new AddonsDetails(entity);

@@ -7,6 +7,7 @@ using Alpha.DAL.Context;
 using Alpha.Infrastructure.BindingModels;
 using System.Data.Entity;
 using System.Globalization;
+using System.Threading.Tasks;
 
 namespace Alpha.BusinessLogic.Repositories {
     public class GamesRepository : IGamesRepository {
@@ -22,12 +23,12 @@ namespace Alpha.BusinessLogic.Repositories {
             return entities.Select(e => new GameSummary(e)).ToList();
         }
 
-        public GameDetails GetById(int id) {
-            var entity = db.Games.Include(p => p.Publisher)
+        public async Task<GameDetails> GetById(int id) {
+            var entity = await db.Games.Include(p => p.Publisher)
                 .Include(a => a.Accessories).Where(a => a.IsDeleted == false)
                 .Include(a => a.Addons).Where(a => a.IsDeleted == false)
                 .Where(g => g.IsDeleted == false)
-                .FirstOrDefault(g => g.GameId == id);
+                .FirstOrDefaultAsync(g => g.GameId == id);
 
             if(entity != null) {
                 return new GameDetails(entity);

@@ -5,6 +5,7 @@ using Alpha.Interfaces.Interfaces;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Alpha.BusinessLogic.Repositories {
     public class PublisherRepository : IPublisherRepository {
@@ -19,11 +20,11 @@ namespace Alpha.BusinessLogic.Repositories {
 			return entities.Select(e => new PublisherSummary(e)).ToList();
         }
 
-        public PublisherDetails GetById(int id) {
-			var entity = db.Publishers
+        public async Task<PublisherDetails> GetById(int id) {
+			var entity = await db.Publishers
                 .Include(g => g.Games).Where(g => g.IsDeleted == false)
                 .Where(p => p.IsDeleted == false)
-                .FirstOrDefault(p => p.PublisherId == id);
+                .FirstOrDefaultAsync(p => p.PublisherId == id);
 
             if(entity != null) {
 			    return new PublisherDetails(entity);

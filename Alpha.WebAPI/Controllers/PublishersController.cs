@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 
@@ -26,8 +27,8 @@ namespace Alpha.WebAPI.Controllers {
 
         // GET: api/Publishers/5
         [ResponseType(typeof(PublisherDetails))]
-        public IHttpActionResult GetPublisher(int id) {
-            var publisher = _rep.GetById(id);
+        public async Task<IHttpActionResult> GetPublisher(int id) {
+            var publisher = await _rep.GetById(id);
             if (publisher == null) {
                 return NotFound();
             }
