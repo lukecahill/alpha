@@ -16,9 +16,9 @@
         }).success(function (repsonse) {
             // if successful
             console.log(repsonse);
-        }).error(function () {
+        }).error(function (error) {
             // if there is an error
-            console.log(response);
+            console.log(error);
         });
     }
 }]);
