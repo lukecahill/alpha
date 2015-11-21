@@ -4,13 +4,14 @@ using Alpha.Infrastructure.ViewModels;
 using Alpha.Interfaces.Interfaces;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Alpha.BusinessLogic.Repositories {
-    public class PublisherRepository : IPublisherRepository {
+    public class PublisherRepository : IDisposable, IPublisherRepository {
 
-        private AlphaContext db = new AlphaContext();
+        private readonly AlphaContext db = new AlphaContext();
 
         public IEnumerable<PublisherSummary> GetAll() {
             //         var entities = await db.Publishers
@@ -73,6 +74,10 @@ namespace Alpha.BusinessLogic.Repositories {
 
             db.Publishers.Remove(entity);
             db.SaveChanges();
+        }
+
+        public void Dispose() {
+            db.Dispose();
         }
     }
 }

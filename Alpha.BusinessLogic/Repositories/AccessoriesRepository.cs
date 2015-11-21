@@ -2,13 +2,14 @@
 using Alpha.Infrastructure.BindingModels;
 using Alpha.Infrastructure.ViewModels;
 using Alpha.Interfaces.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Alpha.BusinessLogic.Repositories {
-    public class AccessoriesRepository : IAccessoriesRepository {
+    public class AccessoriesRepository : IDisposable, IAccessoriesRepository {
         private readonly AlphaContext db = new AlphaContext();
 
         public IEnumerable<AccessoriesSummary> GetAll() {
@@ -73,6 +74,10 @@ namespace Alpha.BusinessLogic.Repositories {
 
             db.Accessories.Remove(entity);
             db.SaveChanges();
+        }
+
+        public void Dispose() {
+            db.Dispose();
         }
     }
 }

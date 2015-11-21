@@ -10,8 +10,9 @@ using System.Globalization;
 using System.Threading.Tasks;
 
 namespace Alpha.BusinessLogic.Repositories {
-    public class AddonsRepository : IAddonsRepository {
-        private AlphaContext db = new AlphaContext();
+    public class AddonsRepository : IDisposable, IAddonsRepository {
+
+        private readonly AlphaContext db = new AlphaContext();
 
         public IEnumerable<AddonSummary> GetAll() {
             var entities = db.Addons
@@ -91,6 +92,10 @@ namespace Alpha.BusinessLogic.Repositories {
 
             db.Addons.Remove(entity);
             db.SaveChanges();
+        }
+
+        public void Dispose() {
+            db.Dispose();
         }
     }
 }

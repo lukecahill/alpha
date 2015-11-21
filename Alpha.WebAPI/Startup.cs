@@ -10,13 +10,12 @@ namespace Alpha.WebAPI {
     public partial class Startup {
         public void Configuration(IAppBuilder app) {
             
+            var config = new HttpConfiguration();
             ConfigureOAth(app);
 
-            var config = new HttpConfiguration();
             WebApiConfig.Register(config);
-            app.UseWebApi(config);
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
-            //ConfigureAuth(app);
+            app.UseWebApi(config);
         }
 
         public void ConfigureOAth(IAppBuilder app) {
