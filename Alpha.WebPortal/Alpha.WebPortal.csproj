@@ -85,7 +85,9 @@
     <Content Include="app\components\pages\accessories.html" />
     <Content Include="app\components\pages\addons.html" />
     <Content Include="app\components\pages\games.html" />
+    <Content Include="app\components\pages\login.html" />
     <Content Include="app\components\pages\publishers.html" />
+    <Content Include="app\components\pages\register.html" />
     <Content Include="app\modals\deleteAccessoryConfirmation.html" />
     <Content Include="app\modals\deleteAddonConfirmation.html" />
     <Content Include="app\modals\deleteGameConfirmation.html" />
@@ -109,7 +111,9 @@
     <Content Include="Scripts\alpha-addon-controllers.js" />
     <Content Include="Scripts\alpha-constants.js" />
     <Content Include="Scripts\alpha-games-controllers.js" />
+    <Content Include="Scripts\alpha-login-controller.js" />
     <Content Include="Scripts\alpha-publisher-controllers.js" />
+    <Content Include="Scripts\alpha-register-controller.js" />
     <Content Include="Scripts\alpha-services.js" />
     <Content Include="Scripts\Alpha.js" />
     <Content Include="Scripts\alpha-routes.js" />

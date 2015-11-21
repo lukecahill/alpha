@@ -51,7 +51,7 @@ namespace Alpha.WebAPI.Controllers {
                 _rep.Update(accessories);
                 _log.Info($"Accessory with the ID {accessories.AccessoryId} has been updated.");
             } catch (DbUpdateConcurrencyException db) {
-                _log.Error($"Error updating accessory ID: {accessories.AccessoryId}.");
+                _log.Error($"Error updating accessory ID: {accessories.AccessoryId}. Error: {db.Message}.");
                 throw new System.Exception("Update failed");
             }
 

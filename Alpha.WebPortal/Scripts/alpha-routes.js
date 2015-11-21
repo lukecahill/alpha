@@ -72,6 +72,18 @@ app.config(function ($routeProvider, $locationProvider) {
             controller: 'contactController'
         })
 
+        // route for the login page
+        .when('/login', {
+            templateUrl: 'app/components/pages/login.html',
+            controller: 'loginController'
+        })
+
+        // route for the register page
+        .when('/register', {
+            templateUrl: 'app/components/pages/register.html',
+            controller: 'registerController'
+        })
+
         // default to redirect to the home page.
         .otherwise({ redirectTo: '/' });
 });

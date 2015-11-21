@@ -13,6 +13,12 @@ namespace Alpha.BusinessLogic.Repositories {
         private AlphaContext db = new AlphaContext();
 
         public IEnumerable<PublisherSummary> GetAll() {
+            //         var entities = await db.Publishers
+            //             .Where(p => p.IsDeleted == false)
+            //             .ToListAsync();
+
+            //return entities.Select(e => new PublisherSummary(e)).ToList();
+
             var entities = db.Publishers
                 .ToList()
                 .Where(p => p.IsDeleted == false);
