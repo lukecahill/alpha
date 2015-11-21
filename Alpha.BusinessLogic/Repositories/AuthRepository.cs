@@ -35,7 +35,6 @@ namespace Alpha.BusinessLogic.Repositories {
         public void Dispose() {
             _ctx.Dispose();
             _userManager.Dispose();
-
         }
     }
 }

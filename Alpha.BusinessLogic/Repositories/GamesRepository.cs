@@ -10,7 +10,7 @@ using System.Globalization;
 using System.Threading.Tasks;
 
 namespace Alpha.BusinessLogic.Repositories {
-    public class GamesRepository : IGamesRepository {
+    public class GamesRepository : IDisposable, IGamesRepository {
 
         private AlphaContext db = new AlphaContext();
 
@@ -91,6 +91,10 @@ namespace Alpha.BusinessLogic.Repositories {
 
             db.Games.Remove(entity);
             db.SaveChanges();
+        }
+
+        public void Dispose() {
+            db.Dispose();
         }
     }
 }
