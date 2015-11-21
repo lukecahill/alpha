@@ -78,7 +78,7 @@ app.config(function ($routeProvider, $locationProvider) {
             controller: 'loginController'
         })
 
-        // route for the contact page
+        // route for the register page
         .when('/register', {
             templateUrl: 'app/components/pages/register.html',
             controller: 'registerController'
