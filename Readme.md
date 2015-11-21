@@ -8,5 +8,8 @@
     <p>Created by Luke Cahill as a prototype application.</p>
     <p>This is mostly used for learning both the C# web API approach and AngularJS.</p>
     <p>Uses code-first methodologies with Entity Framework.</p>
+    
+    > Known Issues:
+    > not allowing login CORS 
 </body>
 </html>
