@@ -1,9 +1,8 @@
 ﻿var app = angular.module('alphaApp', ['ngRoute', 'ngAnimate','ui.bootstrap']);
 
 // configure routes
-app.config(function ($routeProvider, $locationProvider) {
+app.config([ '$routeProvider', function ($routeProvider) {
 
-    //$locationProvider.html5Mode(true);
     $routeProvider
 
         // route for the home page
@@ -86,4 +85,4 @@ app.config(function ($routeProvider, $locationProvider) {
 
         // default to redirect to the home page.
         .otherwise({ redirectTo: '/' });
-});
+}]);
