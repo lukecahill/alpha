@@ -1,10 +1,11 @@
 ﻿app.controller('loginController', ['$scope', '$http', function ($scope, $http) {
 
     $scope.login = function () {
-        var data = {
-            UserName: $scope.username,
-            Password: $scope.password
-        };
+        var data = "grant_type=password&username=" + $scope.username + "&password=" + $scope.password;
+        //var data = {
+        //    UserName: $scope.username,
+        //    Password: $scope.password
+        //};
 
         console.log(data)
 
