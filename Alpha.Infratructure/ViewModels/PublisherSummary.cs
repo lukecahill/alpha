@@ -11,5 +11,7 @@ namespace Alpha.Infrastructure.ViewModels {
 			this.Name = publisher.Name;
             this.Location = publisher.Location;
 		}
+
+		public PublisherSummary() { }
 	}
 }
