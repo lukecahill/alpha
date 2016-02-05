@@ -20,47 +20,8 @@ namespace Alpha.Infrastructure.ViewModels {
             this.ReleaseDate = game.ReleaseDate;
             this.PictureLink = game.PictureLink;
             this.Price = game.Price;
-
-            // return the list of addons associated with the games ID, if any
-            if (game.Addons.Any(g => g.GameId == game.GameId)) {
-
-                // there is probably a better ay of doing the below, but I do not know it yet
-                var list = new List<AddonsDetails>();
-                var ListofAddons = game.Addons.ToList().Where(g => g.GameId == game.GameId && g.IsDeleted == false);
-
-                foreach (var item in ListofAddons) {
-                    var entity = new AddonsDetails {
-                        AddonId = item.ExtraId,
-                        GameTitle = this.Title,
-                        AddonName = item.Name,
-                        Description = item.Description,
-                        Publisher = this.Publisher,
-                        ReleaseDate = item.ReleaseDate
-                    };
-                    list.Add(entity);
-                }
-
-                this.AddonList = list;
-            }
-
-            // return the list of accessories associated with the games ID, if any 
-            if (game.Accessories.Any(g => g.GameId == game.GameId)) {
-                var list = new List<AccessoriesDetails>();
-                var ListOfAccessories = game.Accessories.ToList().Where(g => g.GameId == game.GameId && g.IsDeleted == false);
-
-                foreach (var item in ListOfAccessories) {
-                    var entity = new AccessoriesDetails {
-                        AccessoryId = item.ExtraId,
-                        Description = item.Description,
-                        Name = item.Name,
-                        GameTitle = this.Title,
-                        Publisher = this.Publisher
-                    };
-
-                    list.Add(entity);
-                    this.AccessoryList = list;
-                }
-            }
+			this.AddonList = game.Addons.Select(e => new AddonsDetails(e)).ToList();
+			this.AccessoryList = game.Accessories.Select(e => new AccessoriesDetails(e)).ToList();
         }
 
         public GameDetails() { }
