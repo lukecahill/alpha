@@ -22,5 +22,13 @@ namespace Alpha.Infrastructure.ViewModels {
 		}
 
         public AccessoriesDetails() { }
+
+		public override bool Equals(object obj) {
+			if (obj is AccessoriesDetails) {
+				var that = obj as AccessoriesDetails;
+				return this.AccessoryId == that.AccessoryId && this.Name == that.Name;
+			}
+			return false;
+		}
 	}
 }
