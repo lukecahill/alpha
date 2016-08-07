@@ -16,5 +16,14 @@ namespace Alpha.Infrastructure.ViewModels {
             this.ReleaseDate = game.ReleaseDate;
             this.Price = game.Price;
         }
-    }
+
+		public GameSummary() { }
+		public override bool Equals(object obj) {
+			if (obj is GameSummary) {
+				var that = obj as GameSummary;
+				return this.GameId == that.GameId && this.Title == that.Title;
+			}
+			return false;
+		}
+	}
 }
