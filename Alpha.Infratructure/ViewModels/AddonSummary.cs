@@ -18,5 +18,12 @@ namespace Alpha.Infrastructure.ViewModels {
         }
 
         public AddonSummary() { }
-    }
+		public override bool Equals(object obj) {
+			if (obj is AddonSummary) {
+				var that = obj as AddonSummary;
+				return this.AddonId == that.AddonId && this.Title == that.Title;
+			}
+			return false;
+		}
+	}
 }
