@@ -25,5 +25,12 @@ namespace Alpha.Infrastructure.ViewModels {
         }
 
         public GameDetails() { }
-    }
+		public override bool Equals(object obj) {
+			if (obj is GameDetails) {
+				var that = obj as GameDetails;
+				return this.Title == that.Title && this.Price == that.Price;
+			}
+			return false;
+		}
+	}
 }

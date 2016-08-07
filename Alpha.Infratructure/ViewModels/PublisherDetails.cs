@@ -16,5 +16,13 @@ namespace Alpha.Infrastructure.ViewModels {
 		}
 
 		public PublisherDetails() { }
+
+		public override bool Equals(object obj) {
+			if(obj is PublisherDetails) {
+				var that = obj as PublisherDetails;
+				return this.Location == that.Location && this.Name == that.Name;
+			}
+			return false;
+		}
 	}
 }

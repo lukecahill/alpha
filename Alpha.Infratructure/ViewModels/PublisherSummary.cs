@@ -11,5 +11,15 @@ namespace Alpha.Infrastructure.ViewModels {
 			this.Name = publisher.Name;
             this.Location = publisher.Location;
 		}
+
+		public PublisherSummary() { }
+
+		public override bool Equals(object obj) {
+			if (obj is PublisherSummary) {
+				var that = obj as PublisherSummary;
+				return this.PublisherId == that.PublisherId && this.Name == that.Name;
+			}
+			return false;
+		}
 	}
 }
