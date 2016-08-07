@@ -16,4 +16,5 @@ This uses the MVVM architecture, and is also backed using LINQ.
 
 ##Known Issues:
 > not allowing login CORS, and login not currently fully implemented
+
 > Foreign key relationship is not selected automatically when editing an item.
