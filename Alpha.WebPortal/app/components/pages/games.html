@@ -38,7 +38,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="price">Enter the games price: </label>
-                    <input data-ng-model="Price" class="form-control" name="price" type="number" step="any" min="0" placeholder="$4.99" />
+                    <input data-ng-model="Price" class="form-control" name="price" type="number" step="any" min="0" placeholder="£4.99" />
                 </div>
             </div>
             <div class="row">
@@ -112,7 +112,7 @@
                 {{ item.ReleaseDate | date:"dd/MM/yyyy 'at' h:mma"}}
             </td>
             <td>
-                {{ item.Price | currency }}
+                {{ item.Price | currency: "£" }}
             </td>
         </tr>
     </table>

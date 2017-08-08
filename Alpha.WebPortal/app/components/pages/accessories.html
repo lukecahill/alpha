@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <label for="price">Enter the price: </label>
-                    <input data-ng-model="price" type="number" step="any" min="0" name="price" class="form-control" placeholder="$4.99" />
+                    <input data-ng-model="price" type="number" step="any" min="0" name="price" class="form-control" placeholder="£4.99"/>
                 </div>
                 <div class="col-md-3 top-buffer pull-right">
                     <button class="btn btn-default" data-ng-disabled="accessoryForm.$invalid" type="submit"><span class="glyphicon glyphicon-plus-sign"></span> Add a new accessory!</button>
@@ -63,7 +63,7 @@
         <tr data-ng-repeat="item in accessories">
             <td><a href="#/accessories/{{ item.AccessoryId }}">{{ item.Name }}</a></td>
             <td>{{ item.GameTitle }}</td>
-            <td>{{ item.Price | currency }}</td>
+            <td>{{ item.Price | currency: "£" }}</td>
         </tr>
     </table>
 </div>

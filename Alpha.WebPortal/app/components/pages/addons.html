@@ -64,7 +64,7 @@
             <td><a href="#/addons/{{ item.AddonId }}">{{ item.Title }}</a></td>
             <td>{{ item.GameTitle }}</td>
             <td>{{ item.Publisher }}</td>
-            <td>{{ item.Price | currency }}</td>
+            <td>{{ item.Price | currency: "£" }}</td>
         </tr>
     </table>
 </div>
