@@ -219,3 +219,6 @@ Alpha.DAL/App.config
 Alpha.WebAPI/Web.config
 Alpha.DAL/App.config
 Alpha.WebAPI/Web.config
+App.config
+Web.config
+log-file.txt
