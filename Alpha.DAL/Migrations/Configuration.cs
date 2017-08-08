@@ -5,7 +5,7 @@ namespace Alpha.DAL.Migrations {
     using Alpha.DAL.Models;
     using System.Collections.Generic;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Alpha.DAL.Context.AlphaContext> {
+    internal sealed class Configuration : DbMigrationsConfiguration<Context.AlphaContext> {
         public Configuration() {
             AutomaticMigrationsEnabled = false;
         }
@@ -17,44 +17,28 @@ namespace Alpha.DAL.Migrations {
             context.Addons.AddOrUpdate(GetAddons.ToArray());
         }
 
-        private IList<Publisher> GetPublishers {
-            get {
-                return new List<Publisher> {
-                    new Publisher { PublisherId = 1, Name = "Activision", Location = "USA" },
-                    new Publisher { PublisherId = 2, Name = "SEGA", Location = "USA" },
-                    new Publisher { PublisherId = 3, Name = "Sierra", Location = "France" }
-                };
-            }
-        }
+        private IList<Publisher> GetPublishers => new List<Publisher> {
+            new Publisher { PublisherId = 1, Name = "Activision", Location = "USA" },
+            new Publisher { PublisherId = 2, Name = "SEGA", Location = "USA" },
+            new Publisher { PublisherId = 3, Name = "Sierra", Location = "France" }
+        };
 
-        private IList<Games> GetGames {
-            get {
-                return new List<Games> {
-                    new Games { GameId = 1, PublisherId = 1, Title = "Call of Duty 2", ReleaseDate = DateTime.UtcNow },
-                    new Games { GameId = 2 , PublisherId = 2, Title = "Rome: Total War", ReleaseDate = DateTime.UtcNow },
-                    new Games { GameId = 3 , PublisherId = 1, Title = "Call of Duty: Moden Warfare", ReleaseDate = DateTime.UtcNow },
-                    new Games { GameId = 4 , PublisherId = 3, Title = "Empire Earth", ReleaseDate = DateTime.UtcNow }
-                };
-            }
-        }
+        private IList<Games> GetGames => new List<Games> {
+            new Games { GameId = 1, PublisherId = 1, Title = "Call of Duty 2", ReleaseDate = DateTime.UtcNow, Price = 15.99M },
+            new Games { GameId = 2 , PublisherId = 2, Title = "Rome: Total War", ReleaseDate = DateTime.UtcNow, Price = 16M },
+            new Games { GameId = 3 , PublisherId = 1, Title = "Call of Duty: Moden Warfare", ReleaseDate = DateTime.UtcNow, Price = 30M },
+            new Games { GameId = 4 , PublisherId = 3, Title = "Empire Earth", ReleaseDate = DateTime.UtcNow, Price = 3.50M }
+        };
 
-        private IList<Addons> GetAddons {
-            get {
-                return new List<Addons> {
-                    new Addons { ExtraId = 1, GameId = 1, ReleaseDate = DateTime.UtcNow, Name = "Map Pack 1", Description = "Play the game as it should have been released!" },
-                    new Addons { ExtraId = 2, GameId = 3, ReleaseDate = DateTime.UtcNow, Name = "Map Pack 2", Description = "Explore new places with the map pack" },
-                    new Addons { ExtraId = 3, GameId = 4, ReleaseDate = DateTime.UtcNow, Name = "The Art of Conquest", Description = "Expand to a new frontier: space!" }
-                };
-            }
-        }
+        private IList<Addons> GetAddons => new List<Addons> {
+            new Addons { ExtraId = 1, GameId = 1, ReleaseDate = DateTime.UtcNow, Name = "Map Pack 1", Description = "Play the game as it should have been released!", Price = 8.50M },
+            new Addons { ExtraId = 2, GameId = 3, ReleaseDate = DateTime.UtcNow, Name = "Map Pack 2", Description = "Explore new places with the map pack", Price = 3.20M },
+            new Addons { ExtraId = 3, GameId = 4, ReleaseDate = DateTime.UtcNow, Name = "The Art of Conquest", Description = "Expand to a new frontier: space!", Price = 5.60M }
+        };
 
-        private IList<Accessories> GetAccessories {
-            get {
-                return new List<Accessories> {
-                    new Accessories { ExtraId = 1, GameId = 1, Name = "Gun", Type = "WWII themed gun.", Description = "It is not real." },
-                    new Accessories { ExtraId = 2, GameId = 2, Name = "Funny hat", Type = "Clothing", Description = "Has absolutly nothing to do with the game." }
-                };
-            }
-        }
+        private IList<Accessories> GetAccessories => new List<Accessories> {
+            new Accessories { ExtraId = 1, GameId = 1, Name = "Gun", Type = "WWII themed gun.", Description = "It is not real.", Price = 9.99M },
+            new Accessories { ExtraId = 2, GameId = 2, Name = "Funny hat", Type = "Clothing", Description = "Has absolutly nothing to do with the game.", Price = 3.99M }
+        };
     }
 }
